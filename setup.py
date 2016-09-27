@@ -50,19 +50,27 @@ SETUP_BASE = {
 
 
 REQUIREMENTS = [
+    'google-cloud-bigquery',
+    'google-cloud-bigtable',
     'google-cloud-core',
+    'google-cloud-datastore',
+    'google-cloud-dns',
+    'google-cloud-error-reporting',
+    'google-cloud-language',
+    'google-cloud-logging',
+    'google-cloud-monitoring',
+    'google-cloud-pubsub',
+    'google-cloud-resource-manager',
+    'google-cloud-storage',
+    'google-cloud-translate',
+    'google-cloud-vision',
 ]
 
 setup(
-    name='google-cloud-speech',
+    name='google-cloud',
     version='0.20.0dev',
-    description='Python Client for Google Cloud Speech',
+    description='API Client library for Google Cloud',
     long_description=README,
-    namespace_packages=[
-        'google',
-        'google.cloud',
-    ],
-    packages=find_packages(),
     install_requires=REQUIREMENTS,
     **SETUP_BASE
 )
