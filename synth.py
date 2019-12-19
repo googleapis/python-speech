@@ -57,6 +57,10 @@ s.replace(
     r"from google.cloud.speech_\1.gapic import speech_client as speech_\1",
 )
 
+# Remove local deps
+s.replace("noxfile.py", "LOCAL_DEPS = .+", "LOCAL_DEPS = []")
+s.replace("noxfile.py", r"""session\.install\("-e", "\.\./test\_utils/"\)""", "")
+
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------

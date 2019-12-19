@@ -23,7 +23,7 @@ import shutil
 import nox
 
 
-LOCAL_DEPS = (os.path.join("..", "api_core"), os.path.join("..", "core"))
+LOCAL_DEPS = []
 BLACK_VERSION = "black==19.3b0"
 BLACK_PATHS = ["docs", "google", "tests", "noxfile.py", "setup.py"]
 
@@ -115,7 +115,7 @@ def system(session):
     session.install("mock", "pytest")
     for local_dep in LOCAL_DEPS:
         session.install("-e", local_dep)
-    session.install("-e", "../test_utils/")
+
     session.install("-e", ".")
 
     # Run py.test against the system tests.
