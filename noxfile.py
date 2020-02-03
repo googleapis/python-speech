@@ -133,8 +133,6 @@ def samples(session):
 
     session.install("pyyaml")
     session.install("sample-tester")
-    for local_dep in LOCAL_DEPS:
-        session.install("-e", local_dep)
     session.install("-e", ".")
 
     session.run("sample-tester", samples_path, *session.posargs)
