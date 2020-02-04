@@ -1,5 +1,5 @@
 {
-  "updateTime": "2020-02-03T22:57:22.365987Z",
+  "updateTime": "2020-02-04T13:22:23.279726Z",
   "sources": [
     {
       "generator": {
@@ -12,8 +12,9 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "29d40b78e3dc1579b0b209463fbcb76e5767f72a",
-        "internalRef": "292979741"
+        "sha": "69d9945330a5721cd679f17331a78850e2618226",
+        "internalRef": "293080182",
+        "log": "69d9945330a5721cd679f17331a78850e2618226\nAdd file-level `Session` resource definition\n\nPiperOrigin-RevId: 293080182\n\nf6a1a6b417f39694275ca286110bc3c1ca4db0dc\nAdd file-level `Session` resource definition\n\nPiperOrigin-RevId: 293080178\n\n"
       }
     },
     {

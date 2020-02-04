@@ -72,6 +72,7 @@ def default(session):
     session.run(
         "py.test",
         "--quiet",
+        "--cov=google.cloud.speech",
         "--cov=google.cloud",
         "--cov=tests.unit",
         "--cov-append",
@@ -118,24 +119,6 @@ def system(session):
         session.run("py.test", "--quiet", system_test_path, *session.posargs)
     if system_test_folder_exists:
         session.run("py.test", "--quiet", system_test_folder_path, *session.posargs)
-
-
-@nox.session(python=["3.7"])
-def samples(session):
-    """Run the sample test suite."""
-    # Sanity check: Only run tests if the environment variable is set.
-    if not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", ""):
-        session.skip("Credentials must be set via environment variable")
-
-    samples_path = "samples"
-    if not os.path.exists(samples_path):
-        session.skip("Samples not found.")
-
-    session.install("pyyaml")
-    session.install("sample-tester")
-    session.install("-e", ".")
-
-    session.run("sample-tester", samples_path, *session.posargs)
 
 
 @nox.session(python="3.7")
