@@ -18,6 +18,10 @@ _sym_db = _symbol_database.Default()
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior__pb2
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
+from google.cloud.speech_v1p1beta1.proto import (
+    resource_pb2 as google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_resource__pb2,
+)
 from google.longrunning import (
     operations_pb2 as google_dot_longrunning_dot_operations__pb2,
 )
@@ -35,12 +39,14 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n!com.google.cloud.speech.v1p1beta1B\013SpeechProtoP\001ZCgoogle.golang.org/genproto/googleapis/cloud/speech/v1p1beta1;speech\370\001\001\242\002\003GCS"
     ),
     serialized_pb=_b(
-        '\n6google/cloud/speech_v1p1beta1/proto/cloud_speech.proto\x12\x1dgoogle.cloud.speech.v1p1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a#google/longrunning/operations.proto\x1a\x19google/protobuf/any.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto"\x9e\x01\n\x10RecognizeRequest\x12\x45\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x30.google.cloud.speech.v1p1beta1.RecognitionConfigB\x03\xe0\x41\x02\x12\x43\n\x05\x61udio\x18\x02 \x01(\x0b\x32/.google.cloud.speech.v1p1beta1.RecognitionAudioB\x03\xe0\x41\x02"\xa9\x01\n\x1bLongRunningRecognizeRequest\x12\x45\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x30.google.cloud.speech.v1p1beta1.RecognitionConfigB\x03\xe0\x41\x02\x12\x43\n\x05\x61udio\x18\x02 \x01(\x0b\x32/.google.cloud.speech.v1p1beta1.RecognitionAudioB\x03\xe0\x41\x02"\xa0\x01\n\x19StreamingRecognizeRequest\x12U\n\x10streaming_config\x18\x01 \x01(\x0b\x32\x39.google.cloud.speech.v1p1beta1.StreamingRecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x42\x13\n\x11streaming_request"\x96\x01\n\x1aStreamingRecognitionConfig\x12\x45\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x30.google.cloud.speech.v1p1beta1.RecognitionConfigB\x03\xe0\x41\x02\x12\x18\n\x10single_utterance\x18\x02 \x01(\x08\x12\x17\n\x0finterim_results\x18\x03 \x01(\x08"\x97\x07\n\x11RecognitionConfig\x12P\n\x08\x65ncoding\x18\x01 \x01(\x0e\x32>.google.cloud.speech.v1p1beta1.RecognitionConfig.AudioEncoding\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\x05\x12\x1b\n\x13\x61udio_channel_count\x18\x07 \x01(\x05\x12/\n\'enable_separate_recognition_per_channel\x18\x0c \x01(\x08\x12\x1a\n\rlanguage_code\x18\x03 \x01(\tB\x03\xe0\x41\x02\x12"\n\x1a\x61lternative_language_codes\x18\x12 \x03(\t\x12\x18\n\x10max_alternatives\x18\x04 \x01(\x05\x12\x18\n\x10profanity_filter\x18\x05 \x01(\x08\x12\x45\n\x0fspeech_contexts\x18\x06 \x03(\x0b\x32,.google.cloud.speech.v1p1beta1.SpeechContext\x12 \n\x18\x65nable_word_time_offsets\x18\x08 \x01(\x08\x12\x1e\n\x16\x65nable_word_confidence\x18\x0f \x01(\x08\x12$\n\x1c\x65nable_automatic_punctuation\x18\x0b \x01(\x08\x12&\n\x1a\x65nable_speaker_diarization\x18\x10 \x01(\x08\x42\x02\x18\x01\x12%\n\x19\x64iarization_speaker_count\x18\x11 \x01(\x05\x42\x02\x18\x01\x12S\n\x12\x64iarization_config\x18\x13 \x01(\x0b\x32\x37.google.cloud.speech.v1p1beta1.SpeakerDiarizationConfig\x12\x44\n\x08metadata\x18\t \x01(\x0b\x32\x32.google.cloud.speech.v1p1beta1.RecognitionMetadata\x12\r\n\x05model\x18\r \x01(\t\x12\x14\n\x0cuse_enhanced\x18\x0e \x01(\x08"\x94\x01\n\rAudioEncoding\x12\x18\n\x14\x45NCODING_UNSPECIFIED\x10\x00\x12\x0c\n\x08LINEAR16\x10\x01\x12\x08\n\x04\x46LAC\x10\x02\x12\t\n\x05MULAW\x10\x03\x12\x07\n\x03\x41MR\x10\x04\x12\n\n\x06\x41MR_WB\x10\x05\x12\x0c\n\x08OGG_OPUS\x10\x06\x12\x1a\n\x16SPEEX_WITH_HEADER_BYTE\x10\x07\x12\x07\n\x03MP3\x10\x08"t\n\x18SpeakerDiarizationConfig\x12"\n\x1a\x65nable_speaker_diarization\x18\x01 \x01(\x08\x12\x19\n\x11min_speaker_count\x18\x02 \x01(\x05\x12\x19\n\x11max_speaker_count\x18\x03 \x01(\x05"\xd7\x08\n\x13RecognitionMetadata\x12\\\n\x10interaction_type\x18\x01 \x01(\x0e\x32\x42.google.cloud.speech.v1p1beta1.RecognitionMetadata.InteractionType\x12$\n\x1cindustry_naics_code_of_audio\x18\x03 \x01(\r\x12\x62\n\x13microphone_distance\x18\x04 \x01(\x0e\x32\x45.google.cloud.speech.v1p1beta1.RecognitionMetadata.MicrophoneDistance\x12\x61\n\x13original_media_type\x18\x05 \x01(\x0e\x32\x44.google.cloud.speech.v1p1beta1.RecognitionMetadata.OriginalMediaType\x12\x65\n\x15recording_device_type\x18\x06 \x01(\x0e\x32\x46.google.cloud.speech.v1p1beta1.RecognitionMetadata.RecordingDeviceType\x12\x1d\n\x15recording_device_name\x18\x07 \x01(\t\x12\x1a\n\x12original_mime_type\x18\x08 \x01(\t\x12\x19\n\robfuscated_id\x18\t \x01(\x03\x42\x02\x18\x01\x12\x13\n\x0b\x61udio_topic\x18\n \x01(\t"\xc5\x01\n\x0fInteractionType\x12 \n\x1cINTERACTION_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nDISCUSSION\x10\x01\x12\x10\n\x0cPRESENTATION\x10\x02\x12\x0e\n\nPHONE_CALL\x10\x03\x12\r\n\tVOICEMAIL\x10\x04\x12\x1b\n\x17PROFESSIONALLY_PRODUCED\x10\x05\x12\x10\n\x0cVOICE_SEARCH\x10\x06\x12\x11\n\rVOICE_COMMAND\x10\x07\x12\r\n\tDICTATION\x10\x08"d\n\x12MicrophoneDistance\x12#\n\x1fMICROPHONE_DISTANCE_UNSPECIFIED\x10\x00\x12\r\n\tNEARFIELD\x10\x01\x12\x0c\n\x08MIDFIELD\x10\x02\x12\x0c\n\x08\x46\x41RFIELD\x10\x03"N\n\x11OriginalMediaType\x12#\n\x1fORIGINAL_MEDIA_TYPE_UNSPECIFIED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02"\xa4\x01\n\x13RecordingDeviceType\x12%\n!RECORDING_DEVICE_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nSMARTPHONE\x10\x01\x12\x06\n\x02PC\x10\x02\x12\x0e\n\nPHONE_LINE\x10\x03\x12\x0b\n\x07VEHICLE\x10\x04\x12\x18\n\x14OTHER_OUTDOOR_DEVICE\x10\x05\x12\x17\n\x13OTHER_INDOOR_DEVICE\x10\x06"/\n\rSpeechContext\x12\x0f\n\x07phrases\x18\x01 \x03(\t\x12\r\n\x05\x62oost\x18\x04 \x01(\x02"D\n\x10RecognitionAudio\x12\x11\n\x07\x63ontent\x18\x01 \x01(\x0cH\x00\x12\r\n\x03uri\x18\x02 \x01(\tH\x00\x42\x0e\n\x0c\x61udio_source"\\\n\x11RecognizeResponse\x12G\n\x07results\x18\x02 \x03(\x0b\x32\x36.google.cloud.speech.v1p1beta1.SpeechRecognitionResult"g\n\x1cLongRunningRecognizeResponse\x12G\n\x07results\x18\x02 \x03(\x0b\x32\x36.google.cloud.speech.v1p1beta1.SpeechRecognitionResult"\x9e\x01\n\x1cLongRunningRecognizeMetadata\x12\x18\n\x10progress_percent\x18\x01 \x01(\x05\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x34\n\x10last_update_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp"\xbf\x02\n\x1aStreamingRecognizeResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.Status\x12J\n\x07results\x18\x02 \x03(\x0b\x32\x39.google.cloud.speech.v1p1beta1.StreamingRecognitionResult\x12\x64\n\x11speech_event_type\x18\x04 \x01(\x0e\x32I.google.cloud.speech.v1p1beta1.StreamingRecognizeResponse.SpeechEventType"L\n\x0fSpeechEventType\x12\x1c\n\x18SPEECH_EVENT_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x45ND_OF_SINGLE_UTTERANCE\x10\x01"\xf4\x01\n\x1aStreamingRecognitionResult\x12Q\n\x0c\x61lternatives\x18\x01 \x03(\x0b\x32;.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative\x12\x10\n\x08is_final\x18\x02 \x01(\x08\x12\x11\n\tstability\x18\x03 \x01(\x02\x12\x32\n\x0fresult_end_time\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x13\n\x0b\x63hannel_tag\x18\x05 \x01(\x05\x12\x15\n\rlanguage_code\x18\x06 \x01(\t"\x98\x01\n\x17SpeechRecognitionResult\x12Q\n\x0c\x61lternatives\x18\x01 \x03(\x0b\x32;.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative\x12\x13\n\x0b\x63hannel_tag\x18\x02 \x01(\x05\x12\x15\n\rlanguage_code\x18\x05 \x01(\t"~\n\x1cSpeechRecognitionAlternative\x12\x12\n\ntranscript\x18\x01 \x01(\t\x12\x12\n\nconfidence\x18\x02 \x01(\x02\x12\x36\n\x05words\x18\x03 \x03(\x0b\x32\'.google.cloud.speech.v1p1beta1.WordInfo"\x9d\x01\n\x08WordInfo\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x0c\n\x04word\x18\x03 \x01(\t\x12\x12\n\nconfidence\x18\x04 \x01(\x02\x12\x13\n\x0bspeaker_tag\x18\x05 \x01(\x05\x32\x82\x05\n\x06Speech\x12\xa5\x01\n\tRecognize\x12/.google.cloud.speech.v1p1beta1.RecognizeRequest\x1a\x30.google.cloud.speech.v1p1beta1.RecognizeResponse"5\x82\xd3\xe4\x93\x02 "\x1b/v1p1beta1/speech:recognize:\x01*\xda\x41\x0c\x63onfig,audio\x12\xf2\x01\n\x14LongRunningRecognize\x12:.google.cloud.speech.v1p1beta1.LongRunningRecognizeRequest\x1a\x1d.google.longrunning.Operation"\x7f\x82\xd3\xe4\x93\x02+"&/v1p1beta1/speech:longrunningrecognize:\x01*\xda\x41\x0c\x63onfig,audio\xca\x41<\n\x1cLongRunningRecognizeResponse\x12\x1cLongRunningRecognizeMetadata\x12\x8f\x01\n\x12StreamingRecognize\x12\x38.google.cloud.speech.v1p1beta1.StreamingRecognizeRequest\x1a\x39.google.cloud.speech.v1p1beta1.StreamingRecognizeResponse"\x00(\x01\x30\x01\x1aI\xca\x41\x15speech.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\x80\x01\n!com.google.cloud.speech.v1p1beta1B\x0bSpeechProtoP\x01ZCgoogle.golang.org/genproto/googleapis/cloud/speech/v1p1beta1;speech\xf8\x01\x01\xa2\x02\x03GCSb\x06proto3'
+        '\n6google/cloud/speech_v1p1beta1/proto/cloud_speech.proto\x12\x1dgoogle.cloud.speech.v1p1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a\x32google/cloud/speech_v1p1beta1/proto/resource.proto\x1a#google/longrunning/operations.proto\x1a\x19google/protobuf/any.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto"\x9e\x01\n\x10RecognizeRequest\x12\x45\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x30.google.cloud.speech.v1p1beta1.RecognitionConfigB\x03\xe0\x41\x02\x12\x43\n\x05\x61udio\x18\x02 \x01(\x0b\x32/.google.cloud.speech.v1p1beta1.RecognitionAudioB\x03\xe0\x41\x02"\xa9\x01\n\x1bLongRunningRecognizeRequest\x12\x45\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x30.google.cloud.speech.v1p1beta1.RecognitionConfigB\x03\xe0\x41\x02\x12\x43\n\x05\x61udio\x18\x02 \x01(\x0b\x32/.google.cloud.speech.v1p1beta1.RecognitionAudioB\x03\xe0\x41\x02"\xa0\x01\n\x19StreamingRecognizeRequest\x12U\n\x10streaming_config\x18\x01 \x01(\x0b\x32\x39.google.cloud.speech.v1p1beta1.StreamingRecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x42\x13\n\x11streaming_request"\x96\x01\n\x1aStreamingRecognitionConfig\x12\x45\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x30.google.cloud.speech.v1p1beta1.RecognitionConfigB\x03\xe0\x41\x02\x12\x18\n\x10single_utterance\x18\x02 \x01(\x08\x12\x17\n\x0finterim_results\x18\x03 \x01(\x08"\xdc\x07\n\x11RecognitionConfig\x12P\n\x08\x65ncoding\x18\x01 \x01(\x0e\x32>.google.cloud.speech.v1p1beta1.RecognitionConfig.AudioEncoding\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\x05\x12\x1b\n\x13\x61udio_channel_count\x18\x07 \x01(\x05\x12/\n\'enable_separate_recognition_per_channel\x18\x0c \x01(\x08\x12\x1a\n\rlanguage_code\x18\x03 \x01(\tB\x03\xe0\x41\x02\x12"\n\x1a\x61lternative_language_codes\x18\x12 \x03(\t\x12\x18\n\x10max_alternatives\x18\x04 \x01(\x05\x12\x18\n\x10profanity_filter\x18\x05 \x01(\x08\x12\x43\n\nadaptation\x18\x14 \x01(\x0b\x32/.google.cloud.speech.v1p1beta1.SpeechAdaptation\x12\x45\n\x0fspeech_contexts\x18\x06 \x03(\x0b\x32,.google.cloud.speech.v1p1beta1.SpeechContext\x12 \n\x18\x65nable_word_time_offsets\x18\x08 \x01(\x08\x12\x1e\n\x16\x65nable_word_confidence\x18\x0f \x01(\x08\x12$\n\x1c\x65nable_automatic_punctuation\x18\x0b \x01(\x08\x12&\n\x1a\x65nable_speaker_diarization\x18\x10 \x01(\x08\x42\x02\x18\x01\x12%\n\x19\x64iarization_speaker_count\x18\x11 \x01(\x05\x42\x02\x18\x01\x12S\n\x12\x64iarization_config\x18\x13 \x01(\x0b\x32\x37.google.cloud.speech.v1p1beta1.SpeakerDiarizationConfig\x12\x44\n\x08metadata\x18\t \x01(\x0b\x32\x32.google.cloud.speech.v1p1beta1.RecognitionMetadata\x12\r\n\x05model\x18\r \x01(\t\x12\x14\n\x0cuse_enhanced\x18\x0e \x01(\x08"\x94\x01\n\rAudioEncoding\x12\x18\n\x14\x45NCODING_UNSPECIFIED\x10\x00\x12\x0c\n\x08LINEAR16\x10\x01\x12\x08\n\x04\x46LAC\x10\x02\x12\t\n\x05MULAW\x10\x03\x12\x07\n\x03\x41MR\x10\x04\x12\n\n\x06\x41MR_WB\x10\x05\x12\x0c\n\x08OGG_OPUS\x10\x06\x12\x1a\n\x16SPEEX_WITH_HEADER_BYTE\x10\x07\x12\x07\n\x03MP3\x10\x08"\x90\x01\n\x18SpeakerDiarizationConfig\x12"\n\x1a\x65nable_speaker_diarization\x18\x01 \x01(\x08\x12\x19\n\x11min_speaker_count\x18\x02 \x01(\x05\x12\x19\n\x11max_speaker_count\x18\x03 \x01(\x05\x12\x1a\n\x0bspeaker_tag\x18\x05 \x01(\x05\x42\x05\x18\x01\xe0\x41\x03"\xd7\x08\n\x13RecognitionMetadata\x12\\\n\x10interaction_type\x18\x01 \x01(\x0e\x32\x42.google.cloud.speech.v1p1beta1.RecognitionMetadata.InteractionType\x12$\n\x1cindustry_naics_code_of_audio\x18\x03 \x01(\r\x12\x62\n\x13microphone_distance\x18\x04 \x01(\x0e\x32\x45.google.cloud.speech.v1p1beta1.RecognitionMetadata.MicrophoneDistance\x12\x61\n\x13original_media_type\x18\x05 \x01(\x0e\x32\x44.google.cloud.speech.v1p1beta1.RecognitionMetadata.OriginalMediaType\x12\x65\n\x15recording_device_type\x18\x06 \x01(\x0e\x32\x46.google.cloud.speech.v1p1beta1.RecognitionMetadata.RecordingDeviceType\x12\x1d\n\x15recording_device_name\x18\x07 \x01(\t\x12\x1a\n\x12original_mime_type\x18\x08 \x01(\t\x12\x19\n\robfuscated_id\x18\t \x01(\x03\x42\x02\x18\x01\x12\x13\n\x0b\x61udio_topic\x18\n \x01(\t"\xc5\x01\n\x0fInteractionType\x12 \n\x1cINTERACTION_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nDISCUSSION\x10\x01\x12\x10\n\x0cPRESENTATION\x10\x02\x12\x0e\n\nPHONE_CALL\x10\x03\x12\r\n\tVOICEMAIL\x10\x04\x12\x1b\n\x17PROFESSIONALLY_PRODUCED\x10\x05\x12\x10\n\x0cVOICE_SEARCH\x10\x06\x12\x11\n\rVOICE_COMMAND\x10\x07\x12\r\n\tDICTATION\x10\x08"d\n\x12MicrophoneDistance\x12#\n\x1fMICROPHONE_DISTANCE_UNSPECIFIED\x10\x00\x12\r\n\tNEARFIELD\x10\x01\x12\x0c\n\x08MIDFIELD\x10\x02\x12\x0c\n\x08\x46\x41RFIELD\x10\x03"N\n\x11OriginalMediaType\x12#\n\x1fORIGINAL_MEDIA_TYPE_UNSPECIFIED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02"\xa4\x01\n\x13RecordingDeviceType\x12%\n!RECORDING_DEVICE_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nSMARTPHONE\x10\x01\x12\x06\n\x02PC\x10\x02\x12\x0e\n\nPHONE_LINE\x10\x03\x12\x0b\n\x07VEHICLE\x10\x04\x12\x18\n\x14OTHER_OUTDOOR_DEVICE\x10\x05\x12\x17\n\x13OTHER_INDOOR_DEVICE\x10\x06"/\n\rSpeechContext\x12\x0f\n\x07phrases\x18\x01 \x03(\t\x12\r\n\x05\x62oost\x18\x04 \x01(\x02"D\n\x10RecognitionAudio\x12\x11\n\x07\x63ontent\x18\x01 \x01(\x0cH\x00\x12\r\n\x03uri\x18\x02 \x01(\tH\x00\x42\x0e\n\x0c\x61udio_source"\\\n\x11RecognizeResponse\x12G\n\x07results\x18\x02 \x03(\x0b\x32\x36.google.cloud.speech.v1p1beta1.SpeechRecognitionResult"g\n\x1cLongRunningRecognizeResponse\x12G\n\x07results\x18\x02 \x03(\x0b\x32\x36.google.cloud.speech.v1p1beta1.SpeechRecognitionResult"\xb0\x01\n\x1cLongRunningRecognizeMetadata\x12\x18\n\x10progress_percent\x18\x01 \x01(\x05\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x34\n\x10last_update_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x03uri\x18\x04 \x01(\tB\x03\xe0\x41\x03"\xbf\x02\n\x1aStreamingRecognizeResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.Status\x12J\n\x07results\x18\x02 \x03(\x0b\x32\x39.google.cloud.speech.v1p1beta1.StreamingRecognitionResult\x12\x64\n\x11speech_event_type\x18\x04 \x01(\x0e\x32I.google.cloud.speech.v1p1beta1.StreamingRecognizeResponse.SpeechEventType"L\n\x0fSpeechEventType\x12\x1c\n\x18SPEECH_EVENT_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x45ND_OF_SINGLE_UTTERANCE\x10\x01"\xf9\x01\n\x1aStreamingRecognitionResult\x12Q\n\x0c\x61lternatives\x18\x01 \x03(\x0b\x32;.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative\x12\x10\n\x08is_final\x18\x02 \x01(\x08\x12\x11\n\tstability\x18\x03 \x01(\x02\x12\x32\n\x0fresult_end_time\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x13\n\x0b\x63hannel_tag\x18\x05 \x01(\x05\x12\x1a\n\rlanguage_code\x18\x06 \x01(\tB\x03\xe0\x41\x03"\x9d\x01\n\x17SpeechRecognitionResult\x12Q\n\x0c\x61lternatives\x18\x01 \x03(\x0b\x32;.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative\x12\x13\n\x0b\x63hannel_tag\x18\x02 \x01(\x05\x12\x1a\n\rlanguage_code\x18\x05 \x01(\tB\x03\xe0\x41\x03"~\n\x1cSpeechRecognitionAlternative\x12\x12\n\ntranscript\x18\x01 \x01(\t\x12\x12\n\nconfidence\x18\x02 \x01(\x02\x12\x36\n\x05words\x18\x03 \x03(\x0b\x32\'.google.cloud.speech.v1p1beta1.WordInfo"\xa2\x01\n\x08WordInfo\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x0c\n\x04word\x18\x03 \x01(\t\x12\x12\n\nconfidence\x18\x04 \x01(\x02\x12\x18\n\x0bspeaker_tag\x18\x05 \x01(\x05\x42\x03\xe0\x41\x03\x32\x82\x05\n\x06Speech\x12\xa5\x01\n\tRecognize\x12/.google.cloud.speech.v1p1beta1.RecognizeRequest\x1a\x30.google.cloud.speech.v1p1beta1.RecognizeResponse"5\x82\xd3\xe4\x93\x02 "\x1b/v1p1beta1/speech:recognize:\x01*\xda\x41\x0c\x63onfig,audio\x12\xf2\x01\n\x14LongRunningRecognize\x12:.google.cloud.speech.v1p1beta1.LongRunningRecognizeRequest\x1a\x1d.google.longrunning.Operation"\x7f\x82\xd3\xe4\x93\x02+"&/v1p1beta1/speech:longrunningrecognize:\x01*\xda\x41\x0c\x63onfig,audio\xca\x41<\n\x1cLongRunningRecognizeResponse\x12\x1cLongRunningRecognizeMetadata\x12\x8f\x01\n\x12StreamingRecognize\x12\x38.google.cloud.speech.v1p1beta1.StreamingRecognizeRequest\x1a\x39.google.cloud.speech.v1p1beta1.StreamingRecognizeResponse"\x00(\x01\x30\x01\x1aI\xca\x41\x15speech.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\x80\x01\n!com.google.cloud.speech.v1p1beta1B\x0bSpeechProtoP\x01ZCgoogle.golang.org/genproto/googleapis/cloud/speech/v1p1beta1;speech\xf8\x01\x01\xa2\x02\x03GCSb\x06proto3'
     ),
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
         google_dot_api_dot_client__pb2.DESCRIPTOR,
         google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
+        google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_resource__pb2.DESCRIPTOR,
         google_dot_longrunning_dot_operations__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_any__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,
@@ -94,8 +100,8 @@ _RECOGNITIONCONFIG_AUDIOENCODING = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=1752,
-    serialized_end=1900,
+    serialized_start=1900,
+    serialized_end=2048,
 )
 _sym_db.RegisterEnumDescriptor(_RECOGNITIONCONFIG_AUDIOENCODING)
 
@@ -143,8 +149,8 @@ _RECOGNITIONMETADATA_INTERACTIONTYPE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=2586,
-    serialized_end=2783,
+    serialized_start=2763,
+    serialized_end=2960,
 )
 _sym_db.RegisterEnumDescriptor(_RECOGNITIONMETADATA_INTERACTIONTYPE)
 
@@ -173,8 +179,8 @@ _RECOGNITIONMETADATA_MICROPHONEDISTANCE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=2785,
-    serialized_end=2885,
+    serialized_start=2962,
+    serialized_end=3062,
 )
 _sym_db.RegisterEnumDescriptor(_RECOGNITIONMETADATA_MICROPHONEDISTANCE)
 
@@ -200,8 +206,8 @@ _RECOGNITIONMETADATA_ORIGINALMEDIATYPE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=2887,
-    serialized_end=2965,
+    serialized_start=3064,
+    serialized_end=3142,
 )
 _sym_db.RegisterEnumDescriptor(_RECOGNITIONMETADATA_ORIGINALMEDIATYPE)
 
@@ -247,8 +253,8 @@ _RECOGNITIONMETADATA_RECORDINGDEVICETYPE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=2968,
-    serialized_end=3132,
+    serialized_start=3145,
+    serialized_end=3309,
 )
 _sym_db.RegisterEnumDescriptor(_RECOGNITIONMETADATA_RECORDINGDEVICETYPE)
 
@@ -275,8 +281,8 @@ _STREAMINGRECOGNIZERESPONSE_SPEECHEVENTTYPE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=3857,
-    serialized_end=3933,
+    serialized_start=4052,
+    serialized_end=4128,
 )
 _sym_db.RegisterEnumDescriptor(_STREAMINGRECOGNIZERESPONSE_SPEECHEVENTTYPE)
 
@@ -333,8 +339,8 @@ _RECOGNIZEREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=332,
-    serialized_end=490,
+    serialized_start=411,
+    serialized_end=569,
 )
 
 
@@ -390,8 +396,8 @@ _LONGRUNNINGRECOGNIZEREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=493,
-    serialized_end=662,
+    serialized_start=572,
+    serialized_end=741,
 )
 
 
@@ -455,8 +461,8 @@ _STREAMINGRECOGNIZEREQUEST = _descriptor.Descriptor(
             fields=[],
         )
     ],
-    serialized_start=665,
-    serialized_end=825,
+    serialized_start=744,
+    serialized_end=904,
 )
 
 
@@ -530,8 +536,8 @@ _STREAMINGRECOGNITIONCONFIG = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=828,
-    serialized_end=978,
+    serialized_start=907,
+    serialized_end=1057,
 )
 
 
@@ -687,9 +693,27 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
+            name="adaptation",
+            full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.adaptation",
+            index=8,
+            number=20,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+        _descriptor.FieldDescriptor(
             name="speech_contexts",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.speech_contexts",
-            index=8,
+            index=9,
             number=6,
             type=11,
             cpp_type=10,
@@ -707,7 +731,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="enable_word_time_offsets",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.enable_word_time_offsets",
-            index=9,
+            index=10,
             number=8,
             type=8,
             cpp_type=7,
@@ -725,7 +749,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="enable_word_confidence",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.enable_word_confidence",
-            index=10,
+            index=11,
             number=15,
             type=8,
             cpp_type=7,
@@ -743,7 +767,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="enable_automatic_punctuation",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.enable_automatic_punctuation",
-            index=11,
+            index=12,
             number=11,
             type=8,
             cpp_type=7,
@@ -761,7 +785,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="enable_speaker_diarization",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.enable_speaker_diarization",
-            index=12,
+            index=13,
             number=16,
             type=8,
             cpp_type=7,
@@ -779,7 +803,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="diarization_speaker_count",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.diarization_speaker_count",
-            index=13,
+            index=14,
             number=17,
             type=5,
             cpp_type=1,
@@ -797,7 +821,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="diarization_config",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.diarization_config",
-            index=14,
+            index=15,
             number=19,
             type=11,
             cpp_type=10,
@@ -815,7 +839,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="metadata",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.metadata",
-            index=15,
+            index=16,
             number=9,
             type=11,
             cpp_type=10,
@@ -833,7 +857,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="model",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.model",
-            index=16,
+            index=17,
             number=13,
             type=9,
             cpp_type=9,
@@ -851,7 +875,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name="use_enhanced",
             full_name="google.cloud.speech.v1p1beta1.RecognitionConfig.use_enhanced",
-            index=17,
+            index=18,
             number=14,
             type=8,
             cpp_type=7,
@@ -875,8 +899,8 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=981,
-    serialized_end=1900,
+    serialized_start=1060,
+    serialized_end=2048,
 )
 
 
@@ -941,6 +965,24 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
         ),
+        _descriptor.FieldDescriptor(
+            name="speaker_tag",
+            full_name="google.cloud.speech.v1p1beta1.SpeakerDiarizationConfig.speaker_tag",
+            index=3,
+            number=5,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=_b("\030\001\340A\003"),
+            file=DESCRIPTOR,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -950,8 +992,8 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1902,
-    serialized_end=2018,
+    serialized_start=2051,
+    serialized_end=2195,
 )
 
 
@@ -1138,8 +1180,8 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2021,
-    serialized_end=3132,
+    serialized_start=2198,
+    serialized_end=3309,
 )
 
 
@@ -1195,8 +1237,8 @@ _SPEECHCONTEXT = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3134,
-    serialized_end=3181,
+    serialized_start=3311,
+    serialized_end=3358,
 )
 
 
@@ -1260,8 +1302,8 @@ _RECOGNITIONAUDIO = _descriptor.Descriptor(
             fields=[],
         )
     ],
-    serialized_start=3183,
-    serialized_end=3251,
+    serialized_start=3360,
+    serialized_end=3428,
 )
 
 
@@ -1299,8 +1341,8 @@ _RECOGNIZERESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3253,
-    serialized_end=3345,
+    serialized_start=3430,
+    serialized_end=3522,
 )
 
 
@@ -1338,8 +1380,8 @@ _LONGRUNNINGRECOGNIZERESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3347,
-    serialized_end=3450,
+    serialized_start=3524,
+    serialized_end=3627,
 )
 
 
@@ -1404,6 +1446,24 @@ _LONGRUNNINGRECOGNIZEMETADATA = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
         ),
+        _descriptor.FieldDescriptor(
+            name="uri",
+            full_name="google.cloud.speech.v1p1beta1.LongRunningRecognizeMetadata.uri",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=_b("").decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=_b("\340A\003"),
+            file=DESCRIPTOR,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1413,8 +1473,8 @@ _LONGRUNNINGRECOGNIZEMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3453,
-    serialized_end=3611,
+    serialized_start=3630,
+    serialized_end=3806,
 )
 
 
@@ -1488,8 +1548,8 @@ _STREAMINGRECOGNIZERESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3614,
-    serialized_end=3933,
+    serialized_start=3809,
+    serialized_end=4128,
 )
 
 
@@ -1605,7 +1665,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\003"),
             file=DESCRIPTOR,
         ),
     ],
@@ -1617,8 +1677,8 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3936,
-    serialized_end=4180,
+    serialized_start=4131,
+    serialized_end=4380,
 )
 
 
@@ -1680,7 +1740,7 @@ _SPEECHRECOGNITIONRESULT = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\003"),
             file=DESCRIPTOR,
         ),
     ],
@@ -1692,8 +1752,8 @@ _SPEECHRECOGNITIONRESULT = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=4183,
-    serialized_end=4335,
+    serialized_start=4383,
+    serialized_end=4540,
 )
 
 
@@ -1767,8 +1827,8 @@ _SPEECHRECOGNITIONALTERNATIVE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=4337,
-    serialized_end=4463,
+    serialized_start=4542,
+    serialized_end=4668,
 )
 
 
@@ -1866,7 +1926,7 @@ _WORDINFO = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\003"),
             file=DESCRIPTOR,
         ),
     ],
@@ -1878,8 +1938,8 @@ _WORDINFO = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=4466,
-    serialized_end=4623,
+    serialized_start=4671,
+    serialized_end=4833,
 )
 
 _RECOGNIZEREQUEST.fields_by_name["config"].message_type = _RECOGNITIONCONFIG
@@ -1905,6 +1965,11 @@ _STREAMINGRECOGNITIONCONFIG.fields_by_name["config"].message_type = _RECOGNITION
 _RECOGNITIONCONFIG.fields_by_name[
     "encoding"
 ].enum_type = _RECOGNITIONCONFIG_AUDIOENCODING
+_RECOGNITIONCONFIG.fields_by_name[
+    "adaptation"
+].message_type = (
+    google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_resource__pb2._SPEECHADAPTATION
+)
 _RECOGNITIONCONFIG.fields_by_name["speech_contexts"].message_type = _SPEECHCONTEXT
 _RECOGNITIONCONFIG.fields_by_name[
     "diarization_config"
@@ -2018,10 +2083,7 @@ RecognizeRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_RECOGNIZEREQUEST,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""The top-level message sent by the client for the
-  ``Recognize`` method.
-  
-  
+        __doc__="""The top-level message sent by the client for the ``Recognize`` method.
   Attributes:
       config:
           Required. Provides information to the recognizer that
@@ -2042,8 +2104,6 @@ LongRunningRecognizeRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""The top-level message sent by the client for the
   ``LongRunningRecognize`` method.
-  
-  
   Attributes:
       config:
           Required. Provides information to the recognizer that
@@ -2064,12 +2124,10 @@ StreamingRecognizeRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""The top-level message sent by the client for the
   ``StreamingRecognize`` method. Multiple ``StreamingRecognizeRequest``
-  messages are sent. The first message must contain a ``streaming_config``
-  message and must not contain ``audio_content``. All subsequent messages
-  must contain ``audio_content`` and must not contain a
-  ``streaming_config`` message.
-  
-  
+  messages are sent. The first message must contain a
+  ``streaming_config`` message and must not contain ``audio_content``.
+  All subsequent messages must contain ``audio_content`` and must not
+  contain a ``streaming_config`` message.
   Attributes:
       streaming_request:
           The streaming request, which is either a streaming config or
@@ -2101,10 +2159,8 @@ StreamingRecognitionConfig = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_STREAMINGRECOGNITIONCONFIG,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""Provides information to the recognizer that specifies how
-  to process the request.
-  
-  
+        __doc__="""Provides information to the recognizer that specifies how to process
+  the request.
   Attributes:
       config:
           Required. Provides information to the recognizer that
@@ -2139,10 +2195,8 @@ RecognitionConfig = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_RECOGNITIONCONFIG,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""Provides information to the recognizer that specifies how
-  to process the request.
-  
-  
+        __doc__="""Provides information to the recognizer that specifies how to process
+  the request.
   Attributes:
       encoding:
           Encoding of audio data sent in all ``RecognitionAudio``
@@ -2212,6 +2266,13 @@ RecognitionConfig = _reflection.GeneratedProtocolMessageType(
           profanities, replacing all but the initial character in each
           filtered word with asterisks, e.g. "f\*\*\*". If set to
           ``false`` or omitted, profanities won't be filtered out.
+      adaptation:
+          Speech adaptation configuration improves the accuracy of
+          speech recognition. When speech adaptation is set it
+          supersedes the ``speech_contexts`` field. For more
+          information, see the `speech adaptation
+          <https://cloud.google.com/speech-to-text/docs/context-
+          strength>`__ documentation.
       speech_contexts:
           Array of
           [SpeechContext][google.cloud.speech.v1p1beta1.SpeechContext].
@@ -2233,9 +2294,7 @@ RecognitionConfig = _reflection.GeneratedProtocolMessageType(
           This feature is only available in select languages. Setting
           this for requests in other languages has no effect at all. The
           default 'false' value does not add punctuation to result
-          hypotheses. Note: This is currently offered as an experimental
-          service, complimentary to all users. In the future this may be
-          exclusively available as a premium feature.
+          hypotheses.
       enable_speaker_diarization:
           If 'true', enables speaker detection for each recognized word
           in the top alternative of the recognition result using a
@@ -2304,8 +2363,6 @@ SpeakerDiarizationConfig = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_SPEAKERDIARIZATIONCONFIG,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""Config to enable speaker diarization.
-  
-  
   Attributes:
       enable_speaker_diarization:
           If 'true', enables speaker detection for each recognized word
@@ -2321,6 +2378,8 @@ SpeakerDiarizationConfig = _reflection.GeneratedProtocolMessageType(
           gives you more flexibility by allowing the system to
           automatically determine the correct number of speakers. If not
           set, the default value is 6.
+      speaker_tag:
+          Output only. Unused.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.speech.v1p1beta1.SpeakerDiarizationConfig)
     ),
@@ -2334,8 +2393,6 @@ RecognitionMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_RECOGNITIONMETADATA,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""Description of audio data to be recognized.
-  
-  
   Attributes:
       interaction_type:
           The use case most closely describing the audio content to be
@@ -2380,10 +2437,8 @@ SpeechContext = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_SPEECHCONTEXT,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""Provides "hints" to the speech recognizer to favor
-  specific words and phrases in the results.
-  
-  
+        __doc__="""Provides "hints" to the speech recognizer to favor specific words and
+  phrases in the results.
   Attributes:
       phrases:
           A list of strings containing words and phrases "hints" so that
@@ -2423,12 +2478,9 @@ RecognitionAudio = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""Contains audio data in the encoding specified in the
   ``RecognitionConfig``. Either ``content`` or ``uri`` must be supplied.
-  Supplying both or neither returns
-  [google.rpc.Code.INVALID\_ARGUMENT][google.rpc.Code.INVALID\_ARGUMENT].
-  See `content
-  limits <https://cloud.google.com/speech-to-text/quotas#content>`__.
-  
-  
+  Supplying both or neither returns [google.rpc.Code.INVALID\_ARGUMENT][
+  google.rpc.Code.INVALID\_ARGUMENT]. See `content limits
+  <https://cloud.google.com/speech-to-text/quotas#content>`__.
   Attributes:
       audio_source:
           The audio source, which is either inline content or a Google
@@ -2460,11 +2512,9 @@ RecognizeResponse = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_RECOGNIZERESPONSE,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""The only message returned to the client by the
-  ``Recognize`` method. It contains the result as zero or more sequential
+        __doc__="""The only message returned to the client by the ``Recognize`` method.
+  It contains the result as zero or more sequential
   ``SpeechRecognitionResult`` messages.
-  
-  
   Attributes:
       results:
           Sequential list of transcription results corresponding to
@@ -2482,13 +2532,11 @@ LongRunningRecognizeResponse = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_LONGRUNNINGRECOGNIZERESPONSE,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""The only message returned to the client by the
-  ``LongRunningRecognize`` method. It contains the result as zero or more
-  sequential ``SpeechRecognitionResult`` messages. It is included in the
-  ``result.response`` field of the ``Operation`` returned by the
+  ``LongRunningRecognize`` method. It contains the result as zero or
+  more sequential ``SpeechRecognitionResult`` messages. It is included
+  in the ``result.response`` field of the ``Operation`` returned by the
   ``GetOperation`` call of the ``google::longrunning::Operations``
   service.
-  
-  
   Attributes:
       results:
           Sequential list of transcription results corresponding to
@@ -2505,12 +2553,10 @@ LongRunningRecognizeMetadata = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LONGRUNNINGRECOGNIZEMETADATA,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""Describes the progress of a long-running
-  ``LongRunningRecognize`` call. It is included in the ``metadata`` field
-  of the ``Operation`` returned by the ``GetOperation`` call of the
+        __doc__="""Describes the progress of a long-running ``LongRunningRecognize``
+  call. It is included in the ``metadata`` field of the ``Operation``
+  returned by the ``GetOperation`` call of the
   ``google::longrunning::Operations`` service.
-  
-  
   Attributes:
       progress_percent:
           Approximate percentage of audio processed thus far. Guaranteed
@@ -2520,6 +2566,9 @@ LongRunningRecognizeMetadata = _reflection.GeneratedProtocolMessageType(
           Time when the request was received.
       last_update_time:
           Time of the most recent processing update.
+      uri:
+          The URI of the audio file being transcribed. Empty if the
+          audio was sent as byte content.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.speech.v1p1beta1.LongRunningRecognizeMetadata)
     ),
@@ -2532,57 +2581,37 @@ StreamingRecognizeResponse = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_STREAMINGRECOGNIZERESPONSE,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""\ ``StreamingRecognizeResponse`` is the only message
-  returned to the client by ``StreamingRecognize``. A series of zero or
-  more ``StreamingRecognizeResponse`` messages are streamed back to the
+        __doc__="""\ ``StreamingRecognizeResponse`` is the only message returned to the
+  client by ``StreamingRecognize``. A series of zero or more
+  ``StreamingRecognizeResponse`` messages are streamed back to the
   client. If there is no recognizable audio, and ``single_utterance`` is
   set to false, then no messages are streamed back to the client.
-  
   Here's an example of a series of ten ``StreamingRecognizeResponse``\ s
-  that might be returned while processing audio:
-  
-  1. results { alternatives { transcript: "tube" } stability: 0.01 }
-  
-  2. results { alternatives { transcript: "to be a" } stability: 0.01 }
-  
-  3. results { alternatives { transcript: "to be" } stability: 0.9 }
-     results { alternatives { transcript: " or not to be" } stability:
-     0.01 }
-  
-  4. results { alternatives { transcript: "to be or not to be" confidence:
-     0.92 } alternatives { transcript: "to bee or not to bee" } is\_final:
-     true }
-  
-  5. results { alternatives { transcript: " that's" } stability: 0.01 }
-  
-  6. results { alternatives { transcript: " that is" } stability: 0.9 }
-     results { alternatives { transcript: " the question" } stability:
-     0.01 }
-  
-  7. results { alternatives { transcript: " that is the question"
-     confidence: 0.98 } alternatives { transcript: " that was the
-     question" } is\_final: true }
-  
-  Notes:
-  
-  -  Only two of the above responses #4 and #7 contain final results; they
-     are indicated by ``is_final: true``. Concatenating these together
-     generates the full transcript: "to be or not to be that is the
-     question".
-  
-  -  The others contain interim ``results``. #3 and #6 contain two interim
-     ``results``: the first portion has a high stability and is less
-     likely to change; the second portion has a low stability and is very
-     likely to change. A UI designer might choose to show only high
-     stability ``results``.
-  
-  -  The specific ``stability`` and ``confidence`` values shown above are
-     only for illustrative purposes. Actual values may vary.
-  
-  -  In each response, only one of these fields will be set: ``error``,
-     ``speech_event_type``, or one or more (repeated) ``results``.
-  
-  
+  that might be returned while processing audio:  1. results {
+  alternatives { transcript: "tube" } stability: 0.01 }  2. results {
+  alternatives { transcript: "to be a" } stability: 0.01 }  3. results {
+  alternatives { transcript: "to be" } stability: 0.9 }    results {
+  alternatives { transcript: " or not to be" } stability:    0.01 }  4.
+  results { alternatives { transcript: "to be or not to be" confidence:
+  0.92 } alternatives { transcript: "to bee or not to bee" } is\_final:
+  true }  5. results { alternatives { transcript: " that's" } stability:
+  0.01 }  6. results { alternatives { transcript: " that is" }
+  stability: 0.9 }    results { alternatives { transcript: " the
+  question" } stability:    0.01 }  7. results { alternatives {
+  transcript: " that is the question"    confidence: 0.98 } alternatives
+  { transcript: " that was the    question" } is\_final: true }  Notes:
+  -  Only two of the above responses #4 and #7 contain final results;
+  they    are indicated by ``is_final: true``. Concatenating these
+  together    generates the full transcript: "to be or not to be that is
+  the    question".  -  The others contain interim ``results``. #3 and
+  #6 contain two interim    ``results``: the first portion has a high
+  stability and is less    likely to change; the second portion has a
+  low stability and is very    likely to change. A UI designer might
+  choose to show only high    stability ``results``.  -  The specific
+  ``stability`` and ``confidence`` values shown above are    only for
+  illustrative purposes. Actual values may vary.  -  In each response,
+  only one of these fields will be set: ``error``,
+  ``speech_event_type``, or one or more (repeated) ``results``.
   Attributes:
       error:
           If set, returns a [google.rpc.Status][google.rpc.Status]
@@ -2607,10 +2636,8 @@ StreamingRecognitionResult = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_STREAMINGRECOGNITIONRESULT,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
-        __doc__="""A streaming speech recognition result corresponding to a
-  portion of the audio that is currently being processed.
-  
-  
+        __doc__="""A streaming speech recognition result corresponding to a portion of
+  the audio that is currently being processed.
   Attributes:
       alternatives:
           May contain one or more recognition hypotheses (up to the
@@ -2641,10 +2668,10 @@ StreamingRecognitionResult = _reflection.GeneratedProtocolMessageType(
           channel. For audio\_channel\_count = N, its output values can
           range from '1' to 'N'.
       language_code:
-          The `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__
-          language tag of the language in this result. This language
-          code was detected to have the most likelihood of being spoken
-          in the audio.
+          Output only. The `BCP-47 <https://www.rfc-
+          editor.org/rfc/bcp/bcp47.txt>`__ language tag of the language
+          in this result. This language code was detected to have the
+          most likelihood of being spoken in the audio.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.speech.v1p1beta1.StreamingRecognitionResult)
     ),
@@ -2658,8 +2685,6 @@ SpeechRecognitionResult = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_SPEECHRECOGNITIONRESULT,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""A speech recognition result corresponding to a portion of the audio.
-  
-  
   Attributes:
       alternatives:
           May contain one or more recognition hypotheses (up to the
@@ -2673,10 +2698,10 @@ SpeechRecognitionResult = _reflection.GeneratedProtocolMessageType(
           channel. For audio\_channel\_count = N, its output values can
           range from '1' to 'N'.
       language_code:
-          The `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__
-          language tag of the language in this result. This language
-          code was detected to have the most likelihood of being spoken
-          in the audio.
+          Output only. The `BCP-47 <https://www.rfc-
+          editor.org/rfc/bcp/bcp47.txt>`__ language tag of the language
+          in this result. This language code was detected to have the
+          most likelihood of being spoken in the audio.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.speech.v1p1beta1.SpeechRecognitionResult)
     ),
@@ -2690,8 +2715,6 @@ SpeechRecognitionAlternative = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_SPEECHRECOGNITIONALTERNATIVE,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""Alternative hypotheses (a.k.a. n-best list).
-  
-  
   Attributes:
       transcript:
           Transcript text representing the words that the user spoke.
@@ -2721,8 +2744,6 @@ WordInfo = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_WORDINFO,
         __module__="google.cloud.speech_v1p1beta1.proto.cloud_speech_pb2",
         __doc__="""Word-specific information for recognized words.
-  
-  
   Attributes:
       start_time:
           Time offset relative to the beginning of the audio, and
@@ -2748,12 +2769,12 @@ WordInfo = _reflection.GeneratedProtocolMessageType(
           provided. The default of 0.0 is a sentinel value indicating
           ``confidence`` was not set.
       speaker_tag:
-          A distinct integer value is assigned for every speaker within
-          the audio. This field specifies which one of those speakers
-          was detected to have spoken this word. Value ranges from '1'
-          to diarization\_speaker\_count. speaker\_tag is set if
-          enable\_speaker\_diarization = 'true' and only in the top
-          alternative.
+          Output only. A distinct integer value is assigned for every
+          speaker within the audio. This field specifies which one of
+          those speakers was detected to have spoken this word. Value
+          ranges from '1' to diarization\_speaker\_count. speaker\_tag
+          is set if enable\_speaker\_diarization = 'true' and only in
+          the top alternative.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.speech.v1p1beta1.WordInfo)
     ),
@@ -2770,7 +2791,12 @@ _STREAMINGRECOGNITIONCONFIG.fields_by_name["config"]._options = None
 _RECOGNITIONCONFIG.fields_by_name["language_code"]._options = None
 _RECOGNITIONCONFIG.fields_by_name["enable_speaker_diarization"]._options = None
 _RECOGNITIONCONFIG.fields_by_name["diarization_speaker_count"]._options = None
+_SPEAKERDIARIZATIONCONFIG.fields_by_name["speaker_tag"]._options = None
 _RECOGNITIONMETADATA.fields_by_name["obfuscated_id"]._options = None
+_LONGRUNNINGRECOGNIZEMETADATA.fields_by_name["uri"]._options = None
+_STREAMINGRECOGNITIONRESULT.fields_by_name["language_code"]._options = None
+_SPEECHRECOGNITIONRESULT.fields_by_name["language_code"]._options = None
+_WORDINFO.fields_by_name["speaker_tag"]._options = None
 
 _SPEECH = _descriptor.ServiceDescriptor(
     name="Speech",
@@ -2780,8 +2806,8 @@ _SPEECH = _descriptor.ServiceDescriptor(
     serialized_options=_b(
         "\312A\025speech.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform"
     ),
-    serialized_start=4626,
-    serialized_end=5268,
+    serialized_start=4836,
+    serialized_end=5478,
     methods=[
         _descriptor.MethodDescriptor(
             name="Recognize",
