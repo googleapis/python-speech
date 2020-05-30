@@ -1882,10 +1882,7 @@ RecognizeRequest = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _RECOGNIZEREQUEST,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """The top-level message sent by the client for the
-  ``Recognize`` method.
-  
-  
+        "__doc__": """The top-level message sent by the client for the ``Recognize`` method.
   Attributes:
       config:
           Required. Provides information to the recognizer that
@@ -1906,8 +1903,6 @@ LongRunningRecognizeRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """The top-level message sent by the client for the
   ``LongRunningRecognize`` method.
-  
-  
   Attributes:
       config:
           Required. Provides information to the recognizer that
@@ -1928,12 +1923,10 @@ StreamingRecognizeRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """The top-level message sent by the client for the
   ``StreamingRecognize`` method. Multiple ``StreamingRecognizeRequest``
-  messages are sent. The first message must contain a ``streaming_config``
-  message and must not contain ``audio_content``. All subsequent messages
-  must contain ``audio_content`` and must not contain a
-  ``streaming_config`` message.
-  
-  
+  messages are sent. The first message must contain a
+  ``streaming_config`` message and must not contain ``audio_content``.
+  All subsequent messages must contain ``audio_content`` and must not
+  contain a ``streaming_config`` message.
   Attributes:
       streaming_request:
           The streaming request, which is either a streaming config or
@@ -1965,10 +1958,8 @@ StreamingRecognitionConfig = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _STREAMINGRECOGNITIONCONFIG,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """Provides information to the recognizer that specifies how
-  to process the request.
-  
-  
+        "__doc__": """Provides information to the recognizer that specifies how to process
+  the request.
   Attributes:
       config:
           Required. Provides information to the recognizer that
@@ -2003,10 +1994,8 @@ RecognitionConfig = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _RECOGNITIONCONFIG,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """Provides information to the recognizer that specifies how
-  to process the request.
-  
-  
+        "__doc__": """Provides information to the recognizer that specifies how to process
+  the request.
   Attributes:
       encoding:
           Encoding of audio data sent in all ``RecognitionAudio``
@@ -2142,8 +2131,6 @@ SpeakerDiarizationConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _SPEAKERDIARIZATIONCONFIG,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """Config to enable speaker diarization.
-  
-  
   Attributes:
       enable_speaker_diarization:
           If ‘true’, enables speaker detection for each recognized word
@@ -2174,8 +2161,6 @@ RecognitionMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _RECOGNITIONMETADATA,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """Description of audio data to be recognized.
-  
-  
   Attributes:
       interaction_type:
           The use case most closely describing the audio content to be
@@ -2217,10 +2202,8 @@ SpeechContext = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _SPEECHCONTEXT,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """Provides “hints” to the speech recognizer to favor
-  specific words and phrases in the results.
-  
-  
+        "__doc__": """Provides “hints” to the speech recognizer to favor specific words and
+  phrases in the results.
   Attributes:
       phrases:
           A list of strings containing words and phrases “hints” so that
@@ -2251,10 +2234,8 @@ RecognitionAudio = _reflection.GeneratedProtocolMessageType(
   ``RecognitionConfig``. Either ``content`` or ``uri`` must be supplied.
   Supplying both or neither returns
   [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
-  See `content
-  limits <https://cloud.google.com/speech-to-text/quotas#content>`__.
-  
-  
+  See `content limits <https://cloud.google.com/speech-to-
+  text/quotas#content>`__.
   Attributes:
       audio_source:
           The audio source, which is either inline content or a Google
@@ -2286,11 +2267,9 @@ RecognizeResponse = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _RECOGNIZERESPONSE,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """The only message returned to the client by the ``Recognize`` method. It
-  contains the result as zero or more sequential
+        "__doc__": """The only message returned to the client by the ``Recognize`` method.
+  It contains the result as zero or more sequential
   ``SpeechRecognitionResult`` messages.
-  
-  
   Attributes:
       results:
           Sequential list of transcription results corresponding to
@@ -2308,13 +2287,11 @@ LongRunningRecognizeResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LONGRUNNINGRECOGNIZERESPONSE,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """The only message returned to the client by the
-  ``LongRunningRecognize`` method. It contains the result as zero or more
-  sequential ``SpeechRecognitionResult`` messages. It is included in the
-  ``result.response`` field of the ``Operation`` returned by the
+  ``LongRunningRecognize`` method. It contains the result as zero or
+  more sequential ``SpeechRecognitionResult`` messages. It is included
+  in the ``result.response`` field of the ``Operation`` returned by the
   ``GetOperation`` call of the ``google::longrunning::Operations``
   service.
-  
-  
   Attributes:
       results:
           Sequential list of transcription results corresponding to
@@ -2331,12 +2308,10 @@ LongRunningRecognizeMetadata = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _LONGRUNNINGRECOGNIZEMETADATA,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """Describes the progress of a long-running
-  ``LongRunningRecognize`` call. It is included in the ``metadata`` field
-  of the ``Operation`` returned by the ``GetOperation`` call of the
+        "__doc__": """Describes the progress of a long-running ``LongRunningRecognize``
+  call. It is included in the ``metadata`` field of the ``Operation``
+  returned by the ``GetOperation`` call of the
   ``google::longrunning::Operations`` service.
-  
-  
   Attributes:
       progress_percent:
           Approximate percentage of audio processed thus far. Guaranteed
@@ -2358,57 +2333,37 @@ StreamingRecognizeResponse = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _STREAMINGRECOGNIZERESPONSE,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """\ ``StreamingRecognizeResponse`` is the only message
-  returned to the client by ``StreamingRecognize``. A series of zero or
-  more ``StreamingRecognizeResponse`` messages are streamed back to the
+        "__doc__": """``StreamingRecognizeResponse`` is the only message returned to the
+  client by ``StreamingRecognize``. A series of zero or more
+  ``StreamingRecognizeResponse`` messages are streamed back to the
   client. If there is no recognizable audio, and ``single_utterance`` is
   set to false, then no messages are streamed back to the client.
-  
   Here’s an example of a series of ten ``StreamingRecognizeResponse``\ s
-  that might be returned while processing audio:
-  
-  1. results { alternatives { transcript: “tube” } stability: 0.01 }
-  
-  2. results { alternatives { transcript: “to be a” } stability: 0.01 }
-  
-  3. results { alternatives { transcript: “to be” } stability: 0.9 }
-     results { alternatives { transcript: " or not to be" } stability:
-     0.01 }
-  
-  4. results { alternatives { transcript: “to be or not to be” confidence:
-     0.92 } alternatives { transcript: “to bee or not to bee” } is_final:
-     true }
-  
-  5. results { alternatives { transcript: " that’s" } stability: 0.01 }
-  
-  6. results { alternatives { transcript: " that is" } stability: 0.9 }
-     results { alternatives { transcript: " the question" } stability:
-     0.01 }
-  
-  7. results { alternatives { transcript: " that is the question"
-     confidence: 0.98 } alternatives { transcript: " that was the
-     question" } is_final: true }
-  
-  Notes:
-  
-  -  Only two of the above responses #4 and #7 contain final results; they
-     are indicated by ``is_final: true``. Concatenating these together
-     generates the full transcript: “to be or not to be that is the
-     question”.
-  
-  -  The others contain interim ``results``. #3 and #6 contain two interim
-     ``results``: the first portion has a high stability and is less
-     likely to change; the second portion has a low stability and is very
-     likely to change. A UI designer might choose to show only high
-     stability ``results``.
-  
-  -  The specific ``stability`` and ``confidence`` values shown above are
-     only for illustrative purposes. Actual values may vary.
-  
-  -  In each response, only one of these fields will be set: ``error``,
-     ``speech_event_type``, or one or more (repeated) ``results``.
-  
-  
+  that might be returned while processing audio:  1. results {
+  alternatives { transcript: “tube” } stability: 0.01 }  2. results {
+  alternatives { transcript: “to be a” } stability: 0.01 }  3. results {
+  alternatives { transcript: “to be” } stability: 0.9 }    results {
+  alternatives { transcript: " or not to be" } stability:    0.01 }  4.
+  results { alternatives { transcript: “to be or not to be” confidence:
+  0.92 } alternatives { transcript: “to bee or not to bee” } is_final:
+  true }  5. results { alternatives { transcript: " that’s" } stability:
+  0.01 }  6. results { alternatives { transcript: " that is" }
+  stability: 0.9 }    results { alternatives { transcript: " the
+  question" } stability:    0.01 }  7. results { alternatives {
+  transcript: " that is the question"    confidence: 0.98 } alternatives
+  { transcript: " that was the    question" } is_final: true }  Notes:
+  -  Only two of the above responses #4 and #7 contain final results;
+  they    are indicated by ``is_final: true``. Concatenating these
+  together    generates the full transcript: “to be or not to be that is
+  the    question”.  -  The others contain interim ``results``. #3 and
+  #6 contain two interim    ``results``: the first portion has a high
+  stability and is less    likely to change; the second portion has a
+  low stability and is very    likely to change. A UI designer might
+  choose to show only high    stability ``results``.  -  The specific
+  ``stability`` and ``confidence`` values shown above are    only for
+  illustrative purposes. Actual values may vary.  -  In each response,
+  only one of these fields will be set: ``error``,
+  ``speech_event_type``, or one or more (repeated) ``results``.
   Attributes:
       error:
           If set, returns a [google.rpc.Status][google.rpc.Status]
@@ -2433,10 +2388,8 @@ StreamingRecognitionResult = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _STREAMINGRECOGNITIONRESULT,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """A streaming speech recognition result corresponding to a
-  portion of the audio that is currently being processed.
-  
-  
+        "__doc__": """A streaming speech recognition result corresponding to a portion of
+  the audio that is currently being processed.
   Attributes:
       alternatives:
           May contain one or more recognition hypotheses (up to the
@@ -2483,10 +2436,7 @@ SpeechRecognitionResult = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _SPEECHRECOGNITIONRESULT,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """A speech recognition result corresponding to a portion of
-  the audio.
-  
-  
+        "__doc__": """A speech recognition result corresponding to a portion of the audio.
   Attributes:
       alternatives:
           May contain one or more recognition hypotheses (up to the
@@ -2512,8 +2462,6 @@ SpeechRecognitionAlternative = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _SPEECHRECOGNITIONALTERNATIVE,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """Alternative hypotheses (a.k.a. n-best list).
-  
-  
   Attributes:
       transcript:
           Transcript text representing the words that the user spoke.
@@ -2543,8 +2491,6 @@ WordInfo = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _WORDINFO,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
         "__doc__": """Word-specific information for recognized words.
-  
-  
   Attributes:
       start_time:
           Time offset relative to the beginning of the audio, and
