@@ -360,8 +360,6 @@ class SpeechClient(object):
         Performs bidirectional streaming speech recognition: receive results while
         sending audio. This method is only available via the gRPC API (not REST).
 
-        EXPERIMENTAL: This method interface might change in the future.
-
         Example:
             >>> from google.cloud import speech_v1p1beta1
             >>>
