@@ -2333,7 +2333,7 @@ StreamingRecognizeResponse = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _STREAMINGRECOGNIZERESPONSE,
         "__module__": "google.cloud.speech_v1.proto.cloud_speech_pb2",
-        "__doc__": """``StreamingRecognizeResponse`` is the only message returned to the
+        "__doc__": """\ ``StreamingRecognizeResponse`` is the only message returned to the
   client by ``StreamingRecognize``. A series of zero or more
   ``StreamingRecognizeResponse`` messages are streamed back to the
   client. If there is no recognizable audio, and ``single_utterance`` is
