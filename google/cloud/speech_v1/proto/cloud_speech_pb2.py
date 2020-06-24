@@ -29,6 +29,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.speech.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.speech.v1B\013SpeechProtoP\001Z<google.golang.org/genproto/googleapis/cloud/speech/v1;speech\370\001\001\242\002\003GCS",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n/google/cloud/speech_v1/proto/cloud_speech.proto\x12\x16google.cloud.speech.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a#google/longrunning/operations.proto\x1a\x19google/protobuf/any.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto"\x90\x01\n\x10RecognizeRequest\x12>\n\x06\x63onfig\x18\x01 \x01(\x0b\x32).google.cloud.speech.v1.RecognitionConfigB\x03\xe0\x41\x02\x12<\n\x05\x61udio\x18\x02 \x01(\x0b\x32(.google.cloud.speech.v1.RecognitionAudioB\x03\xe0\x41\x02"\x9b\x01\n\x1bLongRunningRecognizeRequest\x12>\n\x06\x63onfig\x18\x01 \x01(\x0b\x32).google.cloud.speech.v1.RecognitionConfigB\x03\xe0\x41\x02\x12<\n\x05\x61udio\x18\x02 \x01(\x0b\x32(.google.cloud.speech.v1.RecognitionAudioB\x03\xe0\x41\x02"\x99\x01\n\x19StreamingRecognizeRequest\x12N\n\x10streaming_config\x18\x01 \x01(\x0b\x32\x32.google.cloud.speech.v1.StreamingRecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x42\x13\n\x11streaming_request"\x8f\x01\n\x1aStreamingRecognitionConfig\x12>\n\x06\x63onfig\x18\x01 \x01(\x0b\x32).google.cloud.speech.v1.RecognitionConfigB\x03\xe0\x41\x02\x12\x18\n\x10single_utterance\x18\x02 \x01(\x08\x12\x17\n\x0finterim_results\x18\x03 \x01(\x08"\xdf\x05\n\x11RecognitionConfig\x12I\n\x08\x65ncoding\x18\x01 \x01(\x0e\x32\x37.google.cloud.speech.v1.RecognitionConfig.AudioEncoding\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\x05\x12\x1b\n\x13\x61udio_channel_count\x18\x07 \x01(\x05\x12/\n\'enable_separate_recognition_per_channel\x18\x0c \x01(\x08\x12\x1a\n\rlanguage_code\x18\x03 \x01(\tB\x03\xe0\x41\x02\x12\x18\n\x10max_alternatives\x18\x04 \x01(\x05\x12\x18\n\x10profanity_filter\x18\x05 \x01(\x08\x12>\n\x0fspeech_contexts\x18\x06 \x03(\x0b\x32%.google.cloud.speech.v1.SpeechContext\x12 \n\x18\x65nable_word_time_offsets\x18\x08 \x01(\x08\x12$\n\x1c\x65nable_automatic_punctuation\x18\x0b \x01(\x08\x12L\n\x12\x64iarization_config\x18\x13 \x01(\x0b\x32\x30.google.cloud.speech.v1.SpeakerDiarizationConfig\x12=\n\x08metadata\x18\t \x01(\x0b\x32+.google.cloud.speech.v1.RecognitionMetadata\x12\r\n\x05model\x18\r \x01(\t\x12\x14\n\x0cuse_enhanced\x18\x0e \x01(\x08"\x8b\x01\n\rAudioEncoding\x12\x18\n\x14\x45NCODING_UNSPECIFIED\x10\x00\x12\x0c\n\x08LINEAR16\x10\x01\x12\x08\n\x04\x46LAC\x10\x02\x12\t\n\x05MULAW\x10\x03\x12\x07\n\x03\x41MR\x10\x04\x12\n\n\x06\x41MR_WB\x10\x05\x12\x0c\n\x08OGG_OPUS\x10\x06\x12\x1a\n\x16SPEEX_WITH_HEADER_BYTE\x10\x07"\x90\x01\n\x18SpeakerDiarizationConfig\x12"\n\x1a\x65nable_speaker_diarization\x18\x01 \x01(\x08\x12\x19\n\x11min_speaker_count\x18\x02 \x01(\x05\x12\x19\n\x11max_speaker_count\x18\x03 \x01(\x05\x12\x1a\n\x0bspeaker_tag\x18\x05 \x01(\x05\x42\x05\x18\x01\xe0\x41\x03"\xa0\x08\n\x13RecognitionMetadata\x12U\n\x10interaction_type\x18\x01 \x01(\x0e\x32;.google.cloud.speech.v1.RecognitionMetadata.InteractionType\x12$\n\x1cindustry_naics_code_of_audio\x18\x03 \x01(\r\x12[\n\x13microphone_distance\x18\x04 \x01(\x0e\x32>.google.cloud.speech.v1.RecognitionMetadata.MicrophoneDistance\x12Z\n\x13original_media_type\x18\x05 \x01(\x0e\x32=.google.cloud.speech.v1.RecognitionMetadata.OriginalMediaType\x12^\n\x15recording_device_type\x18\x06 \x01(\x0e\x32?.google.cloud.speech.v1.RecognitionMetadata.RecordingDeviceType\x12\x1d\n\x15recording_device_name\x18\x07 \x01(\t\x12\x1a\n\x12original_mime_type\x18\x08 \x01(\t\x12\x13\n\x0b\x61udio_topic\x18\n \x01(\t"\xc5\x01\n\x0fInteractionType\x12 \n\x1cINTERACTION_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nDISCUSSION\x10\x01\x12\x10\n\x0cPRESENTATION\x10\x02\x12\x0e\n\nPHONE_CALL\x10\x03\x12\r\n\tVOICEMAIL\x10\x04\x12\x1b\n\x17PROFESSIONALLY_PRODUCED\x10\x05\x12\x10\n\x0cVOICE_SEARCH\x10\x06\x12\x11\n\rVOICE_COMMAND\x10\x07\x12\r\n\tDICTATION\x10\x08"d\n\x12MicrophoneDistance\x12#\n\x1fMICROPHONE_DISTANCE_UNSPECIFIED\x10\x00\x12\r\n\tNEARFIELD\x10\x01\x12\x0c\n\x08MIDFIELD\x10\x02\x12\x0c\n\x08\x46\x41RFIELD\x10\x03"N\n\x11OriginalMediaType\x12#\n\x1fORIGINAL_MEDIA_TYPE_UNSPECIFIED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02"\xa4\x01\n\x13RecordingDeviceType\x12%\n!RECORDING_DEVICE_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nSMARTPHONE\x10\x01\x12\x06\n\x02PC\x10\x02\x12\x0e\n\nPHONE_LINE\x10\x03\x12\x0b\n\x07VEHICLE\x10\x04\x12\x18\n\x14OTHER_OUTDOOR_DEVICE\x10\x05\x12\x17\n\x13OTHER_INDOOR_DEVICE\x10\x06" \n\rSpeechContext\x12\x0f\n\x07phrases\x18\x01 \x03(\t"D\n\x10RecognitionAudio\x12\x11\n\x07\x63ontent\x18\x01 \x01(\x0cH\x00\x12\r\n\x03uri\x18\x02 \x01(\tH\x00\x42\x0e\n\x0c\x61udio_source"U\n\x11RecognizeResponse\x12@\n\x07results\x18\x02 \x03(\x0b\x32/.google.cloud.speech.v1.SpeechRecognitionResult"`\n\x1cLongRunningRecognizeResponse\x12@\n\x07results\x18\x02 \x03(\x0b\x32/.google.cloud.speech.v1.SpeechRecognitionResult"\x9e\x01\n\x1cLongRunningRecognizeMetadata\x12\x18\n\x10progress_percent\x18\x01 \x01(\x05\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x34\n\x10last_update_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp"\xb1\x02\n\x1aStreamingRecognizeResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.Status\x12\x43\n\x07results\x18\x02 \x03(\x0b\x32\x32.google.cloud.speech.v1.StreamingRecognitionResult\x12]\n\x11speech_event_type\x18\x04 \x01(\x0e\x32\x42.google.cloud.speech.v1.StreamingRecognizeResponse.SpeechEventType"L\n\x0fSpeechEventType\x12\x1c\n\x18SPEECH_EVENT_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x45ND_OF_SINGLE_UTTERANCE\x10\x01"\xf2\x01\n\x1aStreamingRecognitionResult\x12J\n\x0c\x61lternatives\x18\x01 \x03(\x0b\x32\x34.google.cloud.speech.v1.SpeechRecognitionAlternative\x12\x10\n\x08is_final\x18\x02 \x01(\x08\x12\x11\n\tstability\x18\x03 \x01(\x02\x12\x32\n\x0fresult_end_time\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x13\n\x0b\x63hannel_tag\x18\x05 \x01(\x05\x12\x1a\n\rlanguage_code\x18\x06 \x01(\tB\x03\xe0\x41\x03"z\n\x17SpeechRecognitionResult\x12J\n\x0c\x61lternatives\x18\x01 \x03(\x0b\x32\x34.google.cloud.speech.v1.SpeechRecognitionAlternative\x12\x13\n\x0b\x63hannel_tag\x18\x02 \x01(\x05"w\n\x1cSpeechRecognitionAlternative\x12\x12\n\ntranscript\x18\x01 \x01(\t\x12\x12\n\nconfidence\x18\x02 \x01(\x02\x12/\n\x05words\x18\x03 \x03(\x0b\x32 .google.cloud.speech.v1.WordInfo"\x8e\x01\n\x08WordInfo\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x0c\n\x04word\x18\x03 \x01(\t\x12\x18\n\x0bspeaker_tag\x18\x05 \x01(\x05\x42\x03\xe0\x41\x03\x32\xd1\x04\n\x06Speech\x12\x90\x01\n\tRecognize\x12(.google.cloud.speech.v1.RecognizeRequest\x1a).google.cloud.speech.v1.RecognizeResponse".\x82\xd3\xe4\x93\x02\x19"\x14/v1/speech:recognize:\x01*\xda\x41\x0c\x63onfig,audio\x12\xe4\x01\n\x14LongRunningRecognize\x12\x33.google.cloud.speech.v1.LongRunningRecognizeRequest\x1a\x1d.google.longrunning.Operation"x\x82\xd3\xe4\x93\x02$"\x1f/v1/speech:longrunningrecognize:\x01*\xda\x41\x0c\x63onfig,audio\xca\x41<\n\x1cLongRunningRecognizeResponse\x12\x1cLongRunningRecognizeMetadata\x12\x81\x01\n\x12StreamingRecognize\x12\x31.google.cloud.speech.v1.StreamingRecognizeRequest\x1a\x32.google.cloud.speech.v1.StreamingRecognizeResponse"\x00(\x01\x30\x01\x1aI\xca\x41\x15speech.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformBr\n\x1a\x63om.google.cloud.speech.v1B\x0bSpeechProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/speech/v1;speech\xf8\x01\x01\xa2\x02\x03GCSb\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -48,6 +49,7 @@ _RECOGNITIONCONFIG_AUDIOENCODING = _descriptor.EnumDescriptor(
     full_name="google.cloud.speech.v1.RecognitionConfig.AudioEncoding",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="ENCODING_UNSPECIFIED",
@@ -55,24 +57,55 @@ _RECOGNITIONCONFIG_AUDIOENCODING = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="LINEAR16", index=1, number=1, serialized_options=None, type=None
+            name="LINEAR16",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FLAC", index=2, number=2, serialized_options=None, type=None
+            name="FLAC",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="MULAW", index=3, number=3, serialized_options=None, type=None
+            name="MULAW",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="AMR", index=4, number=4, serialized_options=None, type=None
+            name="AMR",
+            index=4,
+            number=4,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="AMR_WB", index=5, number=5, serialized_options=None, type=None
+            name="AMR_WB",
+            index=5,
+            number=5,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="OGG_OPUS", index=6, number=6, serialized_options=None, type=None
+            name="OGG_OPUS",
+            index=6,
+            number=6,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="SPEEX_WITH_HEADER_BYTE",
@@ -80,6 +113,7 @@ _RECOGNITIONCONFIG_AUDIOENCODING = _descriptor.EnumDescriptor(
             number=7,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -94,6 +128,7 @@ _RECOGNITIONMETADATA_INTERACTIONTYPE = _descriptor.EnumDescriptor(
     full_name="google.cloud.speech.v1.RecognitionMetadata.InteractionType",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="INTERACTION_TYPE_UNSPECIFIED",
@@ -101,18 +136,39 @@ _RECOGNITIONMETADATA_INTERACTIONTYPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="DISCUSSION", index=1, number=1, serialized_options=None, type=None
+            name="DISCUSSION",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="PRESENTATION", index=2, number=2, serialized_options=None, type=None
+            name="PRESENTATION",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="PHONE_CALL", index=3, number=3, serialized_options=None, type=None
+            name="PHONE_CALL",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="VOICEMAIL", index=4, number=4, serialized_options=None, type=None
+            name="VOICEMAIL",
+            index=4,
+            number=4,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="PROFESSIONALLY_PRODUCED",
@@ -120,15 +176,31 @@ _RECOGNITIONMETADATA_INTERACTIONTYPE = _descriptor.EnumDescriptor(
             number=5,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="VOICE_SEARCH", index=6, number=6, serialized_options=None, type=None
+            name="VOICE_SEARCH",
+            index=6,
+            number=6,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="VOICE_COMMAND", index=7, number=7, serialized_options=None, type=None
+            name="VOICE_COMMAND",
+            index=7,
+            number=7,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="DICTATION", index=8, number=8, serialized_options=None, type=None
+            name="DICTATION",
+            index=8,
+            number=8,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -143,6 +215,7 @@ _RECOGNITIONMETADATA_MICROPHONEDISTANCE = _descriptor.EnumDescriptor(
     full_name="google.cloud.speech.v1.RecognitionMetadata.MicrophoneDistance",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="MICROPHONE_DISTANCE_UNSPECIFIED",
@@ -150,15 +223,31 @@ _RECOGNITIONMETADATA_MICROPHONEDISTANCE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="NEARFIELD", index=1, number=1, serialized_options=None, type=None
+            name="NEARFIELD",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="MIDFIELD", index=2, number=2, serialized_options=None, type=None
+            name="MIDFIELD",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FARFIELD", index=3, number=3, serialized_options=None, type=None
+            name="FARFIELD",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -173,6 +262,7 @@ _RECOGNITIONMETADATA_ORIGINALMEDIATYPE = _descriptor.EnumDescriptor(
     full_name="google.cloud.speech.v1.RecognitionMetadata.OriginalMediaType",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="ORIGINAL_MEDIA_TYPE_UNSPECIFIED",
@@ -180,12 +270,23 @@ _RECOGNITIONMETADATA_ORIGINALMEDIATYPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="AUDIO", index=1, number=1, serialized_options=None, type=None
+            name="AUDIO",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="VIDEO", index=2, number=2, serialized_options=None, type=None
+            name="VIDEO",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -200,6 +301,7 @@ _RECOGNITIONMETADATA_RECORDINGDEVICETYPE = _descriptor.EnumDescriptor(
     full_name="google.cloud.speech.v1.RecognitionMetadata.RecordingDeviceType",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="RECORDING_DEVICE_TYPE_UNSPECIFIED",
@@ -207,18 +309,39 @@ _RECOGNITIONMETADATA_RECORDINGDEVICETYPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="SMARTPHONE", index=1, number=1, serialized_options=None, type=None
+            name="SMARTPHONE",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="PC", index=2, number=2, serialized_options=None, type=None
+            name="PC",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="PHONE_LINE", index=3, number=3, serialized_options=None, type=None
+            name="PHONE_LINE",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="VEHICLE", index=4, number=4, serialized_options=None, type=None
+            name="VEHICLE",
+            index=4,
+            number=4,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="OTHER_OUTDOOR_DEVICE",
@@ -226,6 +349,7 @@ _RECOGNITIONMETADATA_RECORDINGDEVICETYPE = _descriptor.EnumDescriptor(
             number=5,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="OTHER_INDOOR_DEVICE",
@@ -233,6 +357,7 @@ _RECOGNITIONMETADATA_RECORDINGDEVICETYPE = _descriptor.EnumDescriptor(
             number=6,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -247,6 +372,7 @@ _STREAMINGRECOGNIZERESPONSE_SPEECHEVENTTYPE = _descriptor.EnumDescriptor(
     full_name="google.cloud.speech.v1.StreamingRecognizeResponse.SpeechEventType",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="SPEECH_EVENT_UNSPECIFIED",
@@ -254,6 +380,7 @@ _STREAMINGRECOGNIZERESPONSE_SPEECHEVENTTYPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="END_OF_SINGLE_UTTERANCE",
@@ -261,6 +388,7 @@ _STREAMINGRECOGNIZERESPONSE_SPEECHEVENTTYPE = _descriptor.EnumDescriptor(
             number=1,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -277,6 +405,7 @@ _RECOGNIZEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="config",
@@ -295,6 +424,7 @@ _RECOGNIZEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="audio",
@@ -313,6 +443,7 @@ _RECOGNIZEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -334,6 +465,7 @@ _LONGRUNNINGRECOGNIZEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="config",
@@ -352,6 +484,7 @@ _LONGRUNNINGRECOGNIZEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="audio",
@@ -370,6 +503,7 @@ _LONGRUNNINGRECOGNIZEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -391,6 +525,7 @@ _STREAMINGRECOGNIZEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="streaming_config",
@@ -409,6 +544,7 @@ _STREAMINGRECOGNIZEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="audio_content",
@@ -427,6 +563,7 @@ _STREAMINGRECOGNIZEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -442,6 +579,7 @@ _STREAMINGRECOGNIZEREQUEST = _descriptor.Descriptor(
             full_name="google.cloud.speech.v1.StreamingRecognizeRequest.streaming_request",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -456,6 +594,7 @@ _STREAMINGRECOGNITIONCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="config",
@@ -474,6 +613,7 @@ _STREAMINGRECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="single_utterance",
@@ -492,6 +632,7 @@ _STREAMINGRECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="interim_results",
@@ -510,6 +651,7 @@ _STREAMINGRECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -531,6 +673,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="encoding",
@@ -549,6 +692,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="sample_rate_hertz",
@@ -567,6 +711,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="audio_channel_count",
@@ -585,6 +730,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="enable_separate_recognition_per_channel",
@@ -603,6 +749,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="language_code",
@@ -621,6 +768,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="max_alternatives",
@@ -639,6 +787,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="profanity_filter",
@@ -657,6 +806,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="speech_contexts",
@@ -675,6 +825,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="enable_word_time_offsets",
@@ -693,6 +844,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="enable_automatic_punctuation",
@@ -711,6 +863,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="diarization_config",
@@ -729,6 +882,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="metadata",
@@ -747,6 +901,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="model",
@@ -765,6 +920,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="use_enhanced",
@@ -783,6 +939,7 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -804,6 +961,7 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="enable_speaker_diarization",
@@ -822,6 +980,7 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="min_speaker_count",
@@ -840,6 +999,7 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="max_speaker_count",
@@ -858,6 +1018,7 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="speaker_tag",
@@ -876,6 +1037,7 @@ _SPEAKERDIARIZATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\030\001\340A\003",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -897,6 +1059,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="interaction_type",
@@ -915,6 +1078,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="industry_naics_code_of_audio",
@@ -933,6 +1097,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="microphone_distance",
@@ -951,6 +1116,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="original_media_type",
@@ -969,6 +1135,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="recording_device_type",
@@ -987,6 +1154,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="recording_device_name",
@@ -1005,6 +1173,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="original_mime_type",
@@ -1023,6 +1192,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="audio_topic",
@@ -1041,6 +1211,7 @@ _RECOGNITIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1067,6 +1238,7 @@ _SPEECHCONTEXT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="phrases",
@@ -1085,6 +1257,7 @@ _SPEECHCONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1106,6 +1279,7 @@ _RECOGNITIONAUDIO = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="content",
@@ -1124,6 +1298,7 @@ _RECOGNITIONAUDIO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="uri",
@@ -1142,6 +1317,7 @@ _RECOGNITIONAUDIO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1157,6 +1333,7 @@ _RECOGNITIONAUDIO = _descriptor.Descriptor(
             full_name="google.cloud.speech.v1.RecognitionAudio.audio_source",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -1171,6 +1348,7 @@ _RECOGNIZERESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="results",
@@ -1189,6 +1367,7 @@ _RECOGNIZERESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1210,6 +1389,7 @@ _LONGRUNNINGRECOGNIZERESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="results",
@@ -1228,6 +1408,7 @@ _LONGRUNNINGRECOGNIZERESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1249,6 +1430,7 @@ _LONGRUNNINGRECOGNIZEMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="progress_percent",
@@ -1267,6 +1449,7 @@ _LONGRUNNINGRECOGNIZEMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="start_time",
@@ -1285,6 +1468,7 @@ _LONGRUNNINGRECOGNIZEMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="last_update_time",
@@ -1303,6 +1487,7 @@ _LONGRUNNINGRECOGNIZEMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1324,6 +1509,7 @@ _STREAMINGRECOGNIZERESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="error",
@@ -1342,6 +1528,7 @@ _STREAMINGRECOGNIZERESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="results",
@@ -1360,6 +1547,7 @@ _STREAMINGRECOGNIZERESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="speech_event_type",
@@ -1378,6 +1566,7 @@ _STREAMINGRECOGNIZERESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1399,6 +1588,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="alternatives",
@@ -1417,6 +1607,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="is_final",
@@ -1435,6 +1626,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="stability",
@@ -1453,6 +1645,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="result_end_time",
@@ -1471,6 +1664,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="channel_tag",
@@ -1489,6 +1683,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="language_code",
@@ -1507,6 +1702,7 @@ _STREAMINGRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\003",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1528,6 +1724,7 @@ _SPEECHRECOGNITIONRESULT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="alternatives",
@@ -1546,6 +1743,7 @@ _SPEECHRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="channel_tag",
@@ -1564,6 +1762,7 @@ _SPEECHRECOGNITIONRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1585,6 +1784,7 @@ _SPEECHRECOGNITIONALTERNATIVE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="transcript",
@@ -1603,6 +1803,7 @@ _SPEECHRECOGNITIONALTERNATIVE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="confidence",
@@ -1621,6 +1822,7 @@ _SPEECHRECOGNITIONALTERNATIVE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="words",
@@ -1639,6 +1841,7 @@ _SPEECHRECOGNITIONALTERNATIVE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1660,6 +1863,7 @@ _WORDINFO = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="start_time",
@@ -1678,6 +1882,7 @@ _WORDINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="end_time",
@@ -1696,6 +1901,7 @@ _WORDINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="word",
@@ -1714,6 +1920,7 @@ _WORDINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="speaker_tag",
@@ -1732,6 +1939,7 @@ _WORDINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\003",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2537,6 +2745,7 @@ _SPEECH = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=b"\312A\025speech.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform",
+    create_key=_descriptor._internal_create_key,
     serialized_start=4262,
     serialized_end=4855,
     methods=[
@@ -2548,6 +2757,7 @@ _SPEECH = _descriptor.ServiceDescriptor(
             input_type=_RECOGNIZEREQUEST,
             output_type=_RECOGNIZERESPONSE,
             serialized_options=b'\202\323\344\223\002\031"\024/v1/speech:recognize:\001*\332A\014config,audio',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="LongRunningRecognize",
@@ -2557,6 +2767,7 @@ _SPEECH = _descriptor.ServiceDescriptor(
             input_type=_LONGRUNNINGRECOGNIZEREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\002$"\037/v1/speech:longrunningrecognize:\001*\332A\014config,audio\312A<\n\034LongRunningRecognizeResponse\022\034LongRunningRecognizeMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="StreamingRecognize",
@@ -2566,6 +2777,7 @@ _SPEECH = _descriptor.ServiceDescriptor(
             input_type=_STREAMINGRECOGNIZEREQUEST,
             output_type=_STREAMINGRECOGNIZERESPONSE,
             serialized_options=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
 )
