@@ -351,8 +351,6 @@ CustomClass = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _CUSTOMCLASS_CLASSITEM,
                 "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
                 "__doc__": """An item of the class.
-    
-    
     Attributes:
         value:
             The class item’s value.
@@ -366,8 +364,6 @@ CustomClass = _reflection.GeneratedProtocolMessageType(
   appear in your audio, for example a list of passenger ship names.
   CustomClass items can be substituted into placeholders that you set in
   PhraseSet phrases.
-  
-  
   Attributes:
       name:
           The resource name of the custom class.
@@ -393,24 +389,26 @@ PhraseSet = _reflection.GeneratedProtocolMessageType(
             {
                 "DESCRIPTOR": _PHRASESET_PHRASE,
                 "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
-                "__doc__": """A phrases containing words and phrase “hints” so that the
-    speech recognition is more likely to recognize them. This can be used to
+                "__doc__": """A phrases containing words and phrase “hints” so that the speech
+    recognition is more likely to recognize them. This can be used to
     improve the accuracy for specific words and phrases, for example, if
     specific commands are typically spoken by the user. This can also be
     used to add additional words to the vocabulary of the recognizer. See
-    `usage
-    limits <https://cloud.google.com/speech-to-text/quotas#content>`__.
-    
-    List items can also include pre-built or custom classes containing
-    groups of words that represent common concepts that occur in natural
-    language. For example, rather than providing a phrase hint for every
-    month of the year (e.g. “i was born in january”, “i was born in
-    febuary”, …), use the pre-built ``$MONTH`` class improves the likelihood
-    of correctly transcribing audio that includes months (e.g. "i was born
-    in
-    :math:`month"). To refer to pre-built classes, use the class' symbol prepended with ``\ ``e.g.``\ $MONTH\ ``. To refer to custom classes that were defined inline in the request, set the class's``\ custom_class_id\ ``to a string unique to all class resources and inline classes. Then use the class' id wrapped in $``\ {…}``e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in``\ :math:`{}` (e.g. ``\ {my-months}`).
-    
-    
+    `usage limits <https://cloud.google.com/speech-to-
+    text/quotas#content>`__.  List items can also include pre-built or
+    custom classes containing groups of words that represent common
+    concepts that occur in natural language. For example, rather than
+    providing a phrase hint for every month of the year (e.g. “i was born
+    in january”, “i was born in febuary”, …), use the pre-built ``$MONTH``
+    class improves the likelihood of correctly transcribing audio that
+    includes months (e.g. "i was born in :math:`month"). To refer to pre-
+    built classes, use the class' symbol prepended with ``\ ``e.g.``\
+    $MONTH\ ``. To refer to custom classes that were defined inline in the
+    request, set the class's``\ custom_class_id\ ``to a string unique to
+    all class resources and inline classes. Then use the class' id wrapped
+    in $``\ {…}``e.g. "${my-months}". To refer to custom classes
+    resources, use the class' id wrapped in``\ :math:`{}` (e.g. ``\ {my-
+    months}`).
     Attributes:
         value:
             The phrase itself.
@@ -433,10 +431,8 @@ PhraseSet = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _PHRASESET,
         "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
-        "__doc__": """Provides “hints” to the speech recognizer to favor
-  specific words and phrases in the results.
-  
-  
+        "__doc__": """Provides “hints” to the speech recognizer to favor specific words and
+  phrases in the results.
   Attributes:
       name:
           The resource name of the phrase set.
@@ -468,8 +464,6 @@ SpeechAdaptation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _SPEECHADAPTATION,
         "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
         "__doc__": """Speech adaptation configuration.
-  
-  
   Attributes:
       phrase_sets:
           A collection of phrase sets. To specify the hints inline,
