@@ -368,6 +368,7 @@ CustomClass = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _CUSTOMCLASS_CLASSITEM,
                 "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
                 "__doc__": """An item of the class.
+    
     Attributes:
         value:
             The class item’s value.
@@ -381,6 +382,7 @@ CustomClass = _reflection.GeneratedProtocolMessageType(
   appear in your audio, for example a list of passenger ship names.
   CustomClass items can be substituted into placeholders that you set in
   PhraseSet phrases.
+  
   Attributes:
       name:
           The resource name of the custom class.
@@ -426,6 +428,7 @@ PhraseSet = _reflection.GeneratedProtocolMessageType(
     in $``\ {…}``e.g. "${my-months}". To refer to custom classes
     resources, use the class' id wrapped in``\ :math:`{}` (e.g. ``\ {my-
     months}`).
+    
     Attributes:
         value:
             The phrase itself.
@@ -450,6 +453,7 @@ PhraseSet = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
         "__doc__": """Provides “hints” to the speech recognizer to favor specific words and
   phrases in the results.
+  
   Attributes:
       name:
           The resource name of the phrase set.
@@ -481,6 +485,7 @@ SpeechAdaptation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _SPEECHADAPTATION,
         "__module__": "google.cloud.speech_v1p1beta1.proto.resource_pb2",
         "__doc__": """Speech adaptation configuration.
+  
   Attributes:
       phrase_sets:
           A collection of phrase sets. To specify the hints inline,
