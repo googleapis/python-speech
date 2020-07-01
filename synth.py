@@ -55,6 +55,15 @@ s.replace(
     r"from google.cloud.speech_\1.gapic import speech_client as speech_\1",
 )
 
+
+# Fix bad docstring
+s.replace(
+    "google/**/resource_pb2.py",
+    r"""``\\ ``e\.g\.``\\
+    \$MONTH\\ ``\.""",
+    """""",
+    """``\ ``e.g.``\$MONTH\ ``."""
+)
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
