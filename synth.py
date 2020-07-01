@@ -59,10 +59,16 @@ s.replace(
 # Fix bad docstring
 s.replace(
     "google/**/resource_pb2.py",
-    r"""``\\ ``e\.g\.``\\
-    \$MONTH\\ ``\.""",
-    """""",
+    """``\\\\ ``e\.g\.``\\\\
+    \$MONTH\\\\ ``\.""",
     """``\ ``e.g.``\$MONTH\ ``."""
+)
+
+s.replace(
+    "google/**/resource_pb2.py",
+    """\(e\.g\. ``\\\\ \{my-
+    months\}`\)\.""",
+    """(e.g. ``\ {my-months}``)."""
 )
 # ----------------------------------------------------------------------------
 # Add templated files
