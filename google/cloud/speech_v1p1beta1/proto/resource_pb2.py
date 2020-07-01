@@ -425,7 +425,7 @@ PhraseSet = _reflection.GeneratedProtocolMessageType(
     request, set the class's``\ custom_class_id\ ``to a string unique to
     all class resources and inline classes. Then use the class' id wrapped
     in $``\ {…}``e.g. "${my-months}". To refer to custom classes
-    resources, use the class' id wrapped in``\ :math:`{}` (e.g. ``\ {my-months}`).
+    resources, use the class' id wrapped in``\ :math:`{}` (e.g. ``\ {my-months}``).
     
     Attributes:
         value:
