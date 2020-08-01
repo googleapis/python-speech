@@ -2,12 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from google.cloud.speech_v1p1beta1.proto import (
-    cloud_speech_pb2 as google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2,
-)
-from google.longrunning import (
-    operations_pb2 as google_dot_longrunning_dot_operations__pb2,
-)
+from google.cloud.speech_v1p1beta1.proto import cloud_speech_pb2 as google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2
+from google.longrunning import operations_pb2 as google_dot_longrunning_dot_operations__pb2
 
 
 class SpeechStub(object):
@@ -21,20 +17,20 @@ class SpeechStub(object):
             channel: A grpc.Channel.
         """
         self.Recognize = channel.unary_unary(
-            "/google.cloud.speech.v1p1beta1.Speech/Recognize",
-            request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeRequest.SerializeToString,
-            response_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeResponse.FromString,
-        )
+                '/google.cloud.speech.v1p1beta1.Speech/Recognize',
+                request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeRequest.SerializeToString,
+                response_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeResponse.FromString,
+                )
         self.LongRunningRecognize = channel.unary_unary(
-            "/google.cloud.speech.v1p1beta1.Speech/LongRunningRecognize",
-            request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.LongRunningRecognizeRequest.SerializeToString,
-            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-        )
+                '/google.cloud.speech.v1p1beta1.Speech/LongRunningRecognize',
+                request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.LongRunningRecognizeRequest.SerializeToString,
+                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+                )
         self.StreamingRecognize = channel.stream_stream(
-            "/google.cloud.speech.v1p1beta1.Speech/StreamingRecognize",
-            request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeRequest.SerializeToString,
-            response_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeResponse.FromString,
-        )
+                '/google.cloud.speech.v1p1beta1.Speech/StreamingRecognize',
+                request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeRequest.SerializeToString,
+                response_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeResponse.FromString,
+                )
 
 
 class SpeechServicer(object):
@@ -46,8 +42,8 @@ class SpeechServicer(object):
         has been sent and processed.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details("Method not implemented!")
-        raise NotImplementedError("Method not implemented!")
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def LongRunningRecognize(self, request, context):
         """Performs asynchronous speech recognition: receive results via the
@@ -58,124 +54,90 @@ class SpeechServicer(object):
         [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details("Method not implemented!")
-        raise NotImplementedError("Method not implemented!")
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def StreamingRecognize(self, request_iterator, context):
         """Performs bidirectional streaming speech recognition: receive results while
         sending audio. This method is only available via the gRPC API (not REST).
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details("Method not implemented!")
-        raise NotImplementedError("Method not implemented!")
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_SpeechServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        "Recognize": grpc.unary_unary_rpc_method_handler(
-            servicer.Recognize,
-            request_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeRequest.FromString,
-            response_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeResponse.SerializeToString,
-        ),
-        "LongRunningRecognize": grpc.unary_unary_rpc_method_handler(
-            servicer.LongRunningRecognize,
-            request_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.LongRunningRecognizeRequest.FromString,
-            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-        ),
-        "StreamingRecognize": grpc.stream_stream_rpc_method_handler(
-            servicer.StreamingRecognize,
-            request_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeRequest.FromString,
-            response_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeResponse.SerializeToString,
-        ),
+            'Recognize': grpc.unary_unary_rpc_method_handler(
+                    servicer.Recognize,
+                    request_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeRequest.FromString,
+                    response_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeResponse.SerializeToString,
+            ),
+            'LongRunningRecognize': grpc.unary_unary_rpc_method_handler(
+                    servicer.LongRunningRecognize,
+                    request_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.LongRunningRecognizeRequest.FromString,
+                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+            ),
+            'StreamingRecognize': grpc.stream_stream_rpc_method_handler(
+                    servicer.StreamingRecognize,
+                    request_deserializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeRequest.FromString,
+                    response_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        "google.cloud.speech.v1p1beta1.Speech", rpc_method_handlers
-    )
+            'google.cloud.speech.v1p1beta1.Speech', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
-# This class is part of an EXPERIMENTAL API.
+ # This class is part of an EXPERIMENTAL API.
 class Speech(object):
     """Service that implements Google Cloud Speech API.
     """
 
     @staticmethod
-    def Recognize(
-        request,
-        target,
-        options=(),
-        channel_credentials=None,
-        call_credentials=None,
-        compression=None,
-        wait_for_ready=None,
-        timeout=None,
-        metadata=None,
-    ):
-        return grpc.experimental.unary_unary(
-            request,
+    def Recognize(request,
             target,
-            "/google.cloud.speech.v1p1beta1.Speech/Recognize",
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/google.cloud.speech.v1p1beta1.Speech/Recognize',
             google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeRequest.SerializeToString,
             google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeResponse.FromString,
-            options,
-            channel_credentials,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-        )
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def LongRunningRecognize(
-        request,
-        target,
-        options=(),
-        channel_credentials=None,
-        call_credentials=None,
-        compression=None,
-        wait_for_ready=None,
-        timeout=None,
-        metadata=None,
-    ):
-        return grpc.experimental.unary_unary(
-            request,
+    def LongRunningRecognize(request,
             target,
-            "/google.cloud.speech.v1p1beta1.Speech/LongRunningRecognize",
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/google.cloud.speech.v1p1beta1.Speech/LongRunningRecognize',
             google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.LongRunningRecognizeRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options,
-            channel_credentials,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-        )
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def StreamingRecognize(
-        request_iterator,
-        target,
-        options=(),
-        channel_credentials=None,
-        call_credentials=None,
-        compression=None,
-        wait_for_ready=None,
-        timeout=None,
-        metadata=None,
-    ):
-        return grpc.experimental.stream_stream(
-            request_iterator,
+    def StreamingRecognize(request_iterator,
             target,
-            "/google.cloud.speech.v1p1beta1.Speech/StreamingRecognize",
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/google.cloud.speech.v1p1beta1.Speech/StreamingRecognize',
             google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeRequest.SerializeToString,
             google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.StreamingRecognizeResponse.FromString,
-            options,
-            channel_credentials,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-        )
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -23,7 +23,7 @@ from google.cloud.speech_v1 import types
 
 
 __all__ = (
-    "enums",
-    "types",
-    "SpeechClient",
+    'enums',
+    'types',
+    'SpeechClient',
 )
