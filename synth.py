@@ -36,47 +36,34 @@ for version in versions:
 
     # Don't move over __init__.py, as we modify it to make the generated client
     # use helpers.py.
-    s.move(library / f"google/cloud/speech_{version}/types.py")
-    s.move(library / f"google/cloud/speech_{version}/gapic")
-    s.move(library / f"google/cloud/speech_{version}/proto")
-    s.move(library / f"tests/unit/gapic/{version}")
-    s.move(library / f"docs/gapic/{version}")
-    s.move(library / f"samples")
+    s.move(library, excludes=["setup.py", "docs/index.rst", "README.rst"])
 
 
-# Use the highest version library to generate documentation import alias.
-s.move(library / "google/cloud/speech.py")
-
-
-# Fix tests to use the direct gapic client instead of the wrapped helper
-# client.
+# Add the manually written SpeechHelpers to v1
+# See google/cloud/speech_v1/helpers.py for details
 s.replace(
-    "tests/unit/**/test*client*.py",
-    r"from google\.cloud import speech_(.+?)$",
-    r"from google.cloud.speech_\1.gapic import speech_client as speech_\1",
-)
+f"google/cloud/speech_v1/__init__.py",
+"""from .types.cloud_speech import WordInfo""",
+"""from .types.cloud_speech import WordInfo
 
+from .helpers import SpeechHelpers
 
-# Fix bad docstring
-s.replace(
-    "google/**/resource_pb2.py",
-    """``\\\\ ``e\.g\.``\\\\
-    \$MONTH\\\\ ``\.""",
-    """``\ ``e.g.``\$MONTH\ ``."""
-)
+class SpeechClient(SpeechHelpers, SpeechClient):
+    __doc__ = SpeechClient.__doc__
 
-s.replace(
-    "google/**/resource_pb2.py",
-    """\(e\.g\. ``\\\\ \{my-
-    months\}`\)\.""",
-    """(e.g. ``\ {my-months}``)."""
-)
+""",
+    )
+
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
-templated_files = common.py_library(cov_level=87, samples=True)
-s.move(templated_files)
-
+templated_files = common.py_library(
+    samples=True,  # set to True only if there are samples
+    microgenerator=True,
+)
+s.move(
+    templated_files, excludes=[".coveragerc"]
+)  # microgenerator has a good .coveragerc file
 # ----------------------------------------------------------------------------
 # Samples templates
 # ----------------------------------------------------------------------------

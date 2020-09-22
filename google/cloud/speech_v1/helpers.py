@@ -15,6 +15,7 @@
 from __future__ import absolute_import
 
 import google.api_core.gapic_v1.method
+from google.cloud import speech_v1
 
 
 class SpeechHelpers(object):
@@ -29,6 +30,7 @@ class SpeechHelpers(object):
         self,
         config,
         requests,
+        *,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
     ):
@@ -43,16 +45,14 @@ class SpeechHelpers(object):
             future.
 
         Example:
-          >>> from google.cloud.speech_v1 import enums
-          >>> from google.cloud.speech_v1 import SpeechClient
-          >>> from google.cloud.speech_v1 import types
-          >>> client = SpeechClient()
-          >>> config = types.StreamingRecognitionConfig(
-          ...     config=types.RecognitionConfig(
-          ...         encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
+          >>> from google.cloud import speech_v1
+          >>> client = speech_v1.SpeechClient()
+          >>> config = speech_v1.StreamingRecognitionConfig(
+          ...     config=speech_v1.RecognitionConfig(
+          ...         encoding=speech_v1.RecognitionConfig.AudioEncoding.FLAC,
           ...     ),
           ... )
-          >>> request = types.StreamingRecognizeRequest(audio_content=b'...')
+          >>> request = speech_v1.StreamingRecognizeRequest(audio_content=b'...')
           >>> requests = [request]
           >>> for element in client.streaming_recognize(config, requests):
           ...     # process element
@@ -74,11 +74,10 @@ class SpeechHelpers(object):
           Iterable[:class:`~.types.StreamingRecognizeResponse`]
 
         Raises:
-          :exc:`google.gax.errors.GaxError` if the RPC is aborted.
           :exc:`ValueError` if the parameters are invalid.
         """
         return super(SpeechHelpers, self).streaming_recognize(
-            self._streaming_request_iterable(config, requests),
+            requests=self._streaming_request_iterable(config, requests),
             retry=retry,
             timeout=timeout,
         )
@@ -97,6 +96,6 @@ class SpeechHelpers(object):
                 correctly formatted input for
                 :meth:`~.speech_v1.SpeechClient.streaming_recognize`.
         """
-        yield self.types.StreamingRecognizeRequest(streaming_config=config)
+        yield speech_v1.StreamingRecognizeRequest(streaming_config=config)
         for request in requests:
             yield request

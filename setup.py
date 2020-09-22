@@ -28,7 +28,11 @@ version = "1.3.2"
 # 'Development Status :: 4 - Beta'
 # 'Development Status :: 5 - Production/Stable'
 release_status = "Development Status :: 5 - Production/Stable"
-dependencies = ["google-api-core[grpc] >= 1.14.0, < 2.0.0dev"]
+dependencies = [
+    "google-api-core[grpc] >= 1.14.0, < 2.0.0dev",
+    "libcst >= 0.2.5",
+    "proto-plus >= 1.4.0",
+]
 extras = {}
 
 
@@ -43,7 +47,9 @@ with io.open(readme_filename, encoding="utf-8") as readme_file:
 # Only include packages under the 'google' namespace. Do not include tests,
 # benchmarks, etc.
 packages = [
-    package for package in setuptools.find_packages() if package.startswith("google")
+    package
+    for package in setuptools.PEP420PackageFinder.find()
+    if package.startswith("google")
 ]
 
 # Determine which namespaces are needed.
