@@ -4,6 +4,19 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+## [1.4.0](https://www.github.com/googleapis/python-speech/compare/v1.3.2...v1.4.0) (2020-09-22)
+
+
+### Features
+
+* **speech:** Add Speech-to-Text On-Prem sample [([#4223](https://www.github.com/googleapis/python-speech/issues/4223))](https://github.com/GoogleCloudPlatform/python-docs-samples/issues/4223) ([fbe1e77](https://www.github.com/googleapis/python-speech/commit/fbe1e77095f9f7414eb59e4f1e0801c69a8c385e))
+* add speech adaptation, phrase sets and custom classes; update default retry configs ([#35](https://www.github.com/googleapis/python-speech/issues/35)) ([e0fc3c7](https://www.github.com/googleapis/python-speech/commit/e0fc3c74178ba36a3a054431b31afe8a34289c0c))
+
+
+### Documentation
+
+* remove example usage from READMe ([#46](https://www.github.com/googleapis/python-speech/issues/46)) ([4214630](https://www.github.com/googleapis/python-speech/commit/4214630c3318e6c9bc0a5156e20344956faf7d52))
+
 ### [1.3.2](https://www.github.com/googleapis/python-speech/compare/v1.3.1...v1.3.2) (2020-02-03)
 
 
