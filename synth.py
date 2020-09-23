@@ -39,18 +39,17 @@ for version in versions:
     s.move(library, excludes=["setup.py", "docs/index.rst", "README.rst"])
 
 
-# Add the manually written SpeechHelpers to v1
+# Add the manually written SpeechHelpers to v1 and v1p1beta1
 # See google/cloud/speech_v1/helpers.py for details
 count = s.replace(
-f"google/cloud/speech_v1/__init__.py",
-"""from .types.cloud_speech import WordInfo""",
-"""from .types.cloud_speech import WordInfo
-
-from .helpers import SpeechHelpers
+["google/cloud/speech_v1/__init__.py", "google/cloud/speech_v1p1beta1/__init__.py"],
+"""__all__ = \(""",
+"""from google.cloud.speech_v1.helpers import SpeechHelpers
 
 class SpeechClient(SpeechHelpers, SpeechClient):
     __doc__ = SpeechClient.__doc__
 
+__all__ = (
 """,
     )
 

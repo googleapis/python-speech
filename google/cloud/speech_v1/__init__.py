@@ -34,7 +34,8 @@ from .types.cloud_speech import StreamingRecognizeRequest
 from .types.cloud_speech import StreamingRecognizeResponse
 from .types.cloud_speech import WordInfo
 
-from .helpers import SpeechHelpers
+
+from google.cloud.speech_v1.helpers import SpeechHelpers
 
 
 class SpeechClient(SpeechHelpers, SpeechClient):

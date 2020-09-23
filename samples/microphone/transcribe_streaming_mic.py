@@ -185,7 +185,9 @@ def main():
             for content in audio_generator
         )
 
-        responses = client.streaming_recognize(requests=requests, config=streaming_config)
+        responses = client.streaming_recognize(
+            requests=requests, config=streaming_config
+        )
 
         # Now, put the transcription responses to use.
         listen_print_loop(responses)

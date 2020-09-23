@@ -48,7 +48,7 @@ def transcribe_file_with_word_time_offsets(speech_file):
 
     for result in response.results:
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
 
         for word_info in alternative.words:
             word = word_info.word
@@ -84,7 +84,7 @@ def transcribe_gcs_with_word_time_offsets(gcs_uri):
 
     for result in result.results:
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
         print("Confidence: {}".format(alternative.confidence))
 
         for word_info in alternative.words:

@@ -34,9 +34,11 @@ def transcribe_onprem(local_file_path, api_endpoint):
 
     # Create a gRPC channel to your server
     channel = grpc.insecure_channel(target=api_endpoint)
-    transport = speech_v1p1beta1.services.speech.transports.SpeechGrpcTransport(channel=channel)
+    transport = speech_v1p1beta1.services.speech.transports.SpeechGrpcTransport(
+        channel=channel
+    )
 
-    client = speech_v1p1beta1.SpeechClient(channel=channel)
+    client = speech_v1p1beta1.SpeechClient(transport=transport)
 
     # The language of the supplied audio
     language_code = "en-US"

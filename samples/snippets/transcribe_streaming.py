@@ -50,10 +50,7 @@ def transcribe_streaming(stream_file):
 
     # streaming_recognize returns a generator.
     # [START speech_python_migration_streaming_response]
-    responses = client.streaming_recognize(
-        config=streaming_config,
-        requests=requests,
-    )
+    responses = client.streaming_recognize(config=streaming_config, requests=requests,)
     # [END speech_python_migration_streaming_request]
 
     for response in responses:

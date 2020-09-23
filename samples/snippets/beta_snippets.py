@@ -79,9 +79,7 @@ def transcribe_file_with_metadata():
     # Most metadata fields are specified as enums that can be found
     # in speech.RecognitionMetadata
     metadata = speech.RecognitionMetadata()
-    metadata.interaction_type = (
-        speech.RecognitionMetadata.InteractionType.DISCUSSION
-    )
+    metadata.interaction_type = speech.RecognitionMetadata.InteractionType.DISCUSSION
     metadata.microphone_distance = (
         speech.RecognitionMetadata.MicrophoneDistance.NEARFIELD
     )
@@ -108,8 +106,8 @@ def transcribe_file_with_metadata():
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print(u"First alternative of result {}".format(i))
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("First alternative of result {}".format(i))
+        print("Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_recognition_metadata_beta]
 
 
@@ -139,8 +137,8 @@ def transcribe_file_with_auto_punctuation():
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print(u"First alternative of result {}".format(i))
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("First alternative of result {}".format(i))
+        print("Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_auto_punctuation_beta]
 
 
@@ -179,9 +177,7 @@ def transcribe_file_with_diarization():
 
     # Printing out the output:
     for word_info in words_info:
-        print(
-            f"word: '{word_info.word}', speaker_tag: {word_info.speaker_tag}"
-        )
+        print(f"word: '{word_info.word}', speaker_tag: {word_info.speaker_tag}")
     # [END speech_transcribe_diarization_beta]
 
 
@@ -214,8 +210,8 @@ def transcribe_file_with_multichannel():
         alternative = result.alternatives[0]
         print("-" * 20)
         print("First alternative of result {}".format(i))
-        print(u"Transcript: {}".format(alternative.transcript))
-        print(u"Channel Tag: {}".format(result.channel_tag))
+        print("Transcript: {}".format(alternative.transcript))
+        print("Channel Tag: {}".format(result.channel_tag))
     # [END speech_transcribe_multichannel_beta]
 
 
@@ -250,8 +246,8 @@ def transcribe_file_with_multilanguage():
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print(u"First alternative of result {}: {}".format(i, alternative))
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("First alternative of result {}: {}".format(i, alternative))
+        print("Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_multilanguage_beta]
 
 
@@ -283,9 +279,9 @@ def transcribe_file_with_word_level_confidence():
         alternative = result.alternatives[0]
         print("-" * 20)
         print("First alternative of result {}".format(i))
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
         print(
-            u"First Word and Confidence: ({}, {})".format(
+            "First Word and Confidence: ({}, {})".format(
                 alternative.words[0].word, alternative.words[0].confidence
             )
         )

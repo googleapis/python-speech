@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-speech",
-        "sha": "abc7d52e98c50a5cb939735dfa0816803f0f70fb"
+        "sha": "64076bb484d3cf716f0a663f50956f147190e7c8"
       }
     },
     {
@@ -19,14 +19,14 @@
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "ca095b986918ebf96b6a644bf963131851309bda"
+        "sha": "f3c04883d6c43261ff13db1f52d03a283be06871"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "ca095b986918ebf96b6a644bf963131851309bda"
+        "sha": "f3c04883d6c43261ff13db1f52d03a283be06871"
       }
     }
   ],

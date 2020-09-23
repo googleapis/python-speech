@@ -38,6 +38,13 @@ from .types.resource import PhraseSet
 from .types.resource import SpeechAdaptation
 
 
+from google.cloud.speech_v1.helpers import SpeechHelpers
+
+
+class SpeechClient(SpeechHelpers, SpeechClient):
+    __doc__ = SpeechClient.__doc__
+
+
 __all__ = (
     "CustomClass",
     "LongRunningRecognizeMetadata",

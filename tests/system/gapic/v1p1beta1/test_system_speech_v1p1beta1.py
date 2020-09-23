@@ -78,9 +78,7 @@ class TestSystemSpeech(object):
             language_code="en-US",
             sample_rate_hertz=16000,
         )
-        streamingConfig = speech_v1p1beta1.StreamingRecognitionConfig(
-            config=config
-        )
+        streamingConfig = speech_v1p1beta1.StreamingRecognitionConfig(config=config)
 
         uri = "https://storage.googleapis.com/{}/speech/brooklyn.flac".format(BUCKET)
         streaming_requests = [
@@ -89,7 +87,9 @@ class TestSystemSpeech(object):
             )
         ]
 
-        responses = client.streaming_recognize(config=streamingConfig, requests=streaming_requests)
+        responses = client.streaming_recognize(
+            config=streamingConfig, requests=streaming_requests
+        )
 
         for response in responses:
             for result in response.results:

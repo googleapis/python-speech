@@ -82,12 +82,12 @@ class TestSystemSpeech(object):
 
         uri = "https://storage.googleapis.com/{}/speech/brooklyn.flac".format(BUCKET)
         streaming_requests = [
-            speech_v1.StreamingRecognizeRequest(
-                audio_content=requests.get(uri).content
-            )
+            speech_v1.StreamingRecognizeRequest(audio_content=requests.get(uri).content)
         ]
 
-        responses = client.streaming_recognize(config=streamingConfig, requests=streaming_requests)
+        responses = client.streaming_recognize(
+            config=streamingConfig, requests=streaming_requests
+        )
 
         for response in responses:
             for result in response.results:

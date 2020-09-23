@@ -85,7 +85,10 @@ setuptools.setup(
     install_requires=dependencies,
     extras_require=extras,
     python_requires=">=3.6",
-    scripts=["scripts/fixup_speech_v1_keywords.py", "scripts/fixup_speech_v1p1beta1_keywords.py"],
+    scripts=[
+        "scripts/fixup_speech_v1_keywords.py",
+        "scripts/fixup_speech_v1p1beta1_keywords.py",
+    ],
     include_package_data=True,
     zip_safe=False,
 )
