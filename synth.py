@@ -41,7 +41,7 @@ for version in versions:
 
 # Add the manually written SpeechHelpers to v1
 # See google/cloud/speech_v1/helpers.py for details
-s.replace(
+count = s.replace(
 f"google/cloud/speech_v1/__init__.py",
 """from .types.cloud_speech import WordInfo""",
 """from .types.cloud_speech import WordInfo
@@ -54,6 +54,13 @@ class SpeechClient(SpeechHelpers, SpeechClient):
 """,
     )
 
+# Import from speech_v1 to get the client with SpeechHelpers
+count = s.replace(
+"google/cloud/speech/__init__.py",
+"""from google\.cloud\.speech_v1\.services\.speech\.client import SpeechClient""",
+"""from google.cloud.speech_v1 import SpeechClient"""
+)
+
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
@@ -64,15 +71,12 @@ templated_files = common.py_library(
 s.move(
     templated_files, excludes=[".coveragerc"]
 )  # microgenerator has a good .coveragerc file
+
+
 # ----------------------------------------------------------------------------
 # Samples templates
 # ----------------------------------------------------------------------------
 
 python.py_samples(skip_readmes=True)
-
-
-# TODO(busunkim): Use latest sphinx after microgenerator transition
-s.replace("noxfile.py", """['"]sphinx['"]""", '"sphinx<3.0.0"')
-
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)

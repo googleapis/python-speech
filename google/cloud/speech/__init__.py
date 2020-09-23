@@ -16,7 +16,7 @@
 #
 
 from google.cloud.speech_v1.services.speech.async_client import SpeechAsyncClient
-from google.cloud.speech_v1.services.speech.client import SpeechClient
+from google.cloud.speech_v1 import SpeechClient
 from google.cloud.speech_v1.types.cloud_speech import LongRunningRecognizeMetadata
 from google.cloud.speech_v1.types.cloud_speech import LongRunningRecognizeRequest
 from google.cloud.speech_v1.types.cloud_speech import LongRunningRecognizeResponse
