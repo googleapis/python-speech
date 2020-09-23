@@ -46,7 +46,7 @@ def test_streaming_recognize():
     api_requests = kwargs["requests"]
     assert isinstance(api_requests, GeneratorType)
     assert list(api_requests) == [
-        types.StreamingRecognizeRequest(streaming_config=config),
+        {"streaming_config": config},
         requests[0],
     ]
     assert "retry" in kwargs
