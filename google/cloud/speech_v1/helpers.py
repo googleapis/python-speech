@@ -15,7 +15,6 @@
 from __future__ import absolute_import
 
 import google.api_core.gapic_v1.method
-from google.cloud import speech_v1
 
 
 class SpeechHelpers(object):
@@ -96,6 +95,8 @@ class SpeechHelpers(object):
                 correctly formatted input for
                 :meth:`~.speech_v1.SpeechClient.streaming_recognize`.
         """
-        yield speech_v1.StreamingRecognizeRequest(streaming_config=config)
+        # yield a dictionary rather than the request object since the helper
+        # is used by both the v1 and v1p1beta1
+        yield {"streaming_config": config}
         for request in requests:
             yield request
