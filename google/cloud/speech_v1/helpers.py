@@ -32,6 +32,7 @@ class SpeechHelpers(object):
         *,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=(),
     ):
         """Perform bi-directional speech recognition.
 
@@ -68,6 +69,8 @@ class SpeechHelpers(object):
             timeout (Optional[float]): The amount of time, in seconds, to wait
                 for the request to complete. Note that if ``retry`` is
                 specified, the timeout applies to each individual attempt.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
 
         Returns:
           Iterable[:class:`~.types.StreamingRecognizeResponse`]
