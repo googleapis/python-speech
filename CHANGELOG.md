@@ -13,9 +13,7 @@
 
 ### Features
 
-* migrate to microgenerator ([#61](https://www.github.com/googleapis/python-speech/issues/61)) ([283b49d](https://www.github.com/googleapis/python-speech/commit/283b49d2cb34dcfcbd12038582ca3ed37e5ab90b))
-* **speech:** Add Speech-to-Text On-Prem sample [([#4223](https://www.github.com/googleapis/python-speech/issues/4223))](https://github.com/GoogleCloudPlatform/python-docs-samples/issues/4223) ([fbe1e77](https://www.github.com/googleapis/python-speech/commit/fbe1e77095f9f7414eb59e4f1e0801c69a8c385e))
-* add speech adaptation, phrase sets and custom classes; update default retry configs ([#35](https://www.github.com/googleapis/python-speech/issues/35)) ([e0fc3c7](https://www.github.com/googleapis/python-speech/commit/e0fc3c74178ba36a3a054431b31afe8a34289c0c))
+* Migrate to microgenerator ([#61](https://www.github.com/googleapis/python-speech/issues/61)) ([283b49d](https://www.github.com/googleapis/python-speech/commit/283b49d2cb34dcfcbd12038582ca3ed37e5ab90b)). See the [migration guide](https://github.com/googleapis/python-speech/blob/release-v2.0.0/UPGRADING.md) for details.
 
 
 ### Documentation
