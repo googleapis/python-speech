@@ -200,7 +200,7 @@ def listen_print_loop(responses, stream):
         if result.result_end_time.seconds:
             result_seconds = result.result_end_time.seconds
 
-        if result.result_end_time.nanos:
+        if hasattr(result.result_end_time, 'nanos') and result.result_end_time.nanos:
             result_nanos = result.result_end_time.nanos
 
         stream.result_end_time = int((result_seconds * 1000) + (result_nanos / 1000000))
