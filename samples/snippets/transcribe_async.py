@@ -40,8 +40,8 @@ def transcribe_file(speech_file):
         content = audio_file.read()
 
     """
-     Note that transcription is limited to a 60 seconds audio file.
-     Use a GCS file for audio longer than 1 minute.
+    Note that transcription is limited to a 60 seconds audio file.
+    Use a GCS file for audio longer than 1 minute.
     """
 
     audio = types.RecognitionAudio(content=content)
