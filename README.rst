@@ -1,6 +1,12 @@
 Python Client for Cloud Speech API
 ==================================
-
+you can also use 
+#for audio output instead of print it is short and simple code.And had great effect
+import playsound
+def voice(p):
+    myobj=gTTS(text=p,lang='en',slow=False)
+    myobj.save('try.mp3')
+    playsound('try.mp3')
 
 |GA| |pypi| |versions| 
 
