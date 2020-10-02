@@ -15,15 +15,12 @@
 # limitations under the License.
 
 
-def run_multi_region():
+def sync_recognize_with_multi_region():
     # [START speech_multi_region]
 
     # Imports the Google Cloud client library
-    # [START speech_python_migration_imports]
     from google.cloud import speech
     from google.api_core import client_options
-
-    # [END speech_python_migration_imports]
 
     # Instantiates a client
 
@@ -56,5 +53,4 @@ def run_multi_region():
     # [END speech_multi_region]
 
 
-if __name__ == "__main__":
-    run_multi_region()
+sync_recognize_with_multi_region()
