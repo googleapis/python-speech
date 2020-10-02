@@ -171,6 +171,7 @@ def main():
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=RATE,
         language_code=language_code)
+
     streaming_config = speech.StreamingRecognitionConfig(
         config=config,
         interim_results=True)
