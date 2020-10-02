@@ -195,15 +195,15 @@ def listen_print_loop(responses, stream):
         transcript = result.alternatives[0].transcript
 
         result_seconds = 0
-        result_nanos = 0
+        result_micros = 0
 
         if result.result_end_time.seconds:
             result_seconds = result.result_end_time.seconds
 
-        if result.result_end_time.nanos:
-            result_nanos = result.result_end_time.nanos
+        if result.result_end_time.microseconds:
+            result_micros = result.result_end_time.microseconds
 
-        stream.result_end_time = int((result_seconds * 1000) + (result_nanos / 1000000))
+        stream.result_end_time = int((result_seconds * 1000) + (result_micros / 1000))
 
         corrected_time = (
             stream.result_end_time
@@ -245,12 +245,20 @@ def main():
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=SAMPLE_RATE,
+<<<<<<< HEAD
         language_code="en-US",
         max_alternatives=1,
     )
     streaming_config = speech.StreamingRecognitionConfig(
         config=config, interim_results=True
     )
+=======
+        language_code='en-US',
+        max_alternatives=1)
+    streaming_config = speech.StreamingRecognitionConfig(
+        config=config,
+        interim_results=True)
+>>>>>>> e56bef8 (fix: migrated samples to speech 2.0.0)
 
     mic_manager = ResumableMicrophoneStream(SAMPLE_RATE, CHUNK_SIZE)
     print(mic_manager.chunk_size)
@@ -270,10 +278,15 @@ def main():
             stream.audio_input = []
             audio_generator = stream.generator()
 
+<<<<<<< HEAD
             requests = (
                 speech.StreamingRecognizeRequest(audio_content=content)
                 for content in audio_generator
             )
+=======
+            requests = (speech.StreamingRecognizeRequest(
+                audio_content=content)for content in audio_generator)
+>>>>>>> e56bef8 (fix: migrated samples to speech 2.0.0)
 
             responses = client.streaming_recognize(
                 requests=requests, config=streaming_config

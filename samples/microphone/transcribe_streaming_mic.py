@@ -32,6 +32,10 @@ import re
 import sys
 
 from google.cloud import speech
+<<<<<<< HEAD
+=======
+
+>>>>>>> e56bef8 (fix: migrated samples to speech 2.0.0)
 import pyaudio
 from six.moves import queue
 
