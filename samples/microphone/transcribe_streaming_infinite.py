@@ -255,6 +255,7 @@ def main():
 =======
         language_code='en-US',
         max_alternatives=1)
+        
     streaming_config = speech.StreamingRecognitionConfig(
         config=config,
         interim_results=True)
