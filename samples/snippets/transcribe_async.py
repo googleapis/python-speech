@@ -38,7 +38,7 @@ def transcribe_file(speech_file):
         content = audio_file.read()
 
     """
-     Note that transcription is limited to a 60 seconds audio file.
+     Note that transcription is limited to 60 seconds audio.
      Use a GCS file for audio longer than 1 minute.
     """
     audio = speech.RecognitionAudio(content=content)
@@ -46,7 +46,10 @@ def transcribe_file(speech_file):
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
 
+    audio = speech.RecognitionAudio(content=content)
 
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=16000,
         language_code="en-US",
     )
