@@ -53,7 +53,11 @@ def transcribe_file_with_enhanced_model():
         model="phone_call",
     )
 
+<<<<<<< HEAD
     response = client.recognize(request={"config": config, "audio": audio})
+=======
+    response = client.recognize(config=config, audio=audio)
+>>>>>>> 369782f (fix: migrated samples to speech 2.0.0)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
@@ -77,6 +81,7 @@ def transcribe_file_with_metadata():
 
     # Here we construct a recognition metadata object.
     # Most metadata fields are specified as enums that can be found
+
     # in speech.RecognitionMetadata
     metadata = speech.RecognitionMetadata()
     metadata.interaction_type = speech.RecognitionMetadata.InteractionType.DISCUSSION
@@ -86,6 +91,7 @@ def transcribe_file_with_metadata():
     metadata.recording_device_type = (
         speech.RecognitionMetadata.RecordingDeviceType.SMARTPHONE
     )
+
     # Some metadata fields are free form strings
     metadata.recording_device_name = "Pixel 2 XL"
     # And some are integers, for instance the 6 digit NAICS code
@@ -101,7 +107,8 @@ def transcribe_file_with_metadata():
         metadata=metadata,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
@@ -132,7 +139,7 @@ def transcribe_file_with_auto_punctuation():
         enable_automatic_punctuation=True,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
@@ -164,8 +171,9 @@ def transcribe_file_with_diarization():
         diarization_speaker_count=2,
     )
 
-    print("Waiting for operation to complete...")
-    response = client.recognize(request={"config": config, "audio": audio})
+
+    print('Waiting for operation to complete...')
+    response = client.recognize(config=config, audio=audio)
 
     # The transcript within each result is separate and sequential per result.
     # However, the words list within an alternative includes all the words
@@ -204,7 +212,7 @@ def transcribe_file_with_multichannel():
         enable_separate_recognition_per_channel=True,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
@@ -240,8 +248,8 @@ def transcribe_file_with_multilanguage():
         alternative_language_codes=[second_lang],
     )
 
-    print("Waiting for operation to complete...")
-    response = client.recognize(request={"config": config, "audio": audio})
+    print('Waiting for operation to complete...')
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
@@ -273,7 +281,7 @@ def transcribe_file_with_word_level_confidence():
         enable_word_confidence=True,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
