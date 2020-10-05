@@ -42,10 +42,6 @@ def transcribe_file(speech_file):
      Use a GCS file for audio longer than 1 minute.
     """
     audio = speech.RecognitionAudio(content=content)
-    config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-
-    audio = speech.RecognitionAudio(content=content)
 
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
