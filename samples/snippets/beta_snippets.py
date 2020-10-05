@@ -74,8 +74,7 @@ def transcribe_file_with_metadata():
 
     # Here we construct a recognition metadata object.
     # Most metadata fields are specified as enums that can be found
-
-    # in speech.RecognitionMetadata
+    # in speech.enums.RecognitionMetadata
     metadata = speech.RecognitionMetadata()
     metadata.interaction_type = (
         speech.RecognitionMetadata.InteractionType.DISCUSSION)
@@ -83,7 +82,7 @@ def transcribe_file_with_metadata():
         speech.RecognitionMetadata.MicrophoneDistance.NEARFIELD)
     metadata.recording_device_type = (
         speech.RecognitionMetadata.RecordingDeviceType.SMARTPHONE)
-
+        
     # Some metadata fields are free form strings
     metadata.recording_device_name = "Pixel 2 XL"
     # And some are integers, for instance the 6 digit NAICS code
