@@ -82,8 +82,7 @@ def transcribe_file_with_metadata():
     metadata.microphone_distance = (
         speech.RecognitionMetadata.MicrophoneDistance.NEARFIELD)
     metadata.recording_device_type = (
-
-    speech.RecognitionMetadata.RecordingDeviceType.SMARTPHONE)
+        speech.RecognitionMetadata.RecordingDeviceType.SMARTPHONE)
 
     # Some metadata fields are free form strings
     metadata.recording_device_name = "Pixel 2 XL"

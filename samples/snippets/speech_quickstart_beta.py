@@ -27,6 +27,7 @@
 # [START speech_quickstart_beta]
 from google.cloud import speech_v1p1beta1 as speech
 
+
 def sample_recognize(storage_uri):
     """
     Performs synchronous speech recognition on an audio file

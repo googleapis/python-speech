@@ -45,19 +45,11 @@ def transcribe_file(speech_file):
 
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-
-    audio = speech.RecognitionAudio(content=content)
-
-    config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=16000,
         language_code="en-US",
     )
 
     # [START speech_python_migration_async_response
-    operation = client.long_running_recognize(
-        request={"config": config, "audio": audio}
-    )
     operation = client.long_running_recognize(config=config, audio=audio)
     # [END speech_python_migration_async_request]
 
@@ -88,10 +80,6 @@ def transcribe_gcs(gcs_uri):
         encoding=speech.RecognitionConfig.AudioEncoding.FLAC,
         sample_rate_hertz=16000,
         language_code="en-US",
-    )
-
-    operation = client.long_running_recognize(
-        request={"config": config, "audio": audio}
     )
 
     operation = client.long_running_recognize(config=config, audio=audio)
