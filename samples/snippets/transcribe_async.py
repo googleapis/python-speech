@@ -50,7 +50,8 @@ def transcribe_file(speech_file):
     )
 
 
-    # [START speech_python_migration_async_response]
+
+    # [START speech_python_migration_async_response
     operation = client.long_running_recognize(config=config, audio=audio)
     # [END speech_python_migration_async_request]
 
