@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Cloud Speech API sample application using the REST API for batch
+""" Google Cloud Speech API sample application using the REST API for batch
 processing.
 
 Example usage:
