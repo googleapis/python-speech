@@ -245,21 +245,9 @@ def main():
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=SAMPLE_RATE,
-<<<<<<< HEAD
-<<<<<<< HEAD
         language_code="en-US",
         max_alternatives=1,
     )
-=======
-        language_code='en-US',
-        max_alternatives=1)
-<<<<<<< HEAD
->>>>>>> b83fa6e (fix: fixed lint issues)
-=======
-        language_code="en-US",
-        max_alternatives=1,
-    )
->>>>>>> ea10fd4 (chore: formatting)
 
     streaming_config = speech.StreamingRecognitionConfig(
         config=config, interim_results=True
