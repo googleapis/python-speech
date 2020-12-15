@@ -20,6 +20,7 @@ Example usage:
 
 # [START speech_recognize_with_profanity_filter_gcs]
 def sync_recognize_with_profanity_filter_gcs(gcs_uri):
+
 import argparse
 
     from google.cloud import speech
