@@ -15,7 +15,7 @@
 # limitations under the License.
 
 
-def sync_recognize_with_multi_region():
+def sync_recognize_with_multi_region_gcs():
     # [START speech_multi_region]
 
     # Imports the Google Cloud client library
@@ -53,4 +53,4 @@ def sync_recognize_with_multi_region():
     # [END speech_multi_region]
 
 
-sync_recognize_with_multi_region()
+sync_recognize_with_multi_region_gcs()

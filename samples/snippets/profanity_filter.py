@@ -20,13 +20,13 @@ Example usage:
 
 
 # [START speech_recognize_with_profanity_filter_gcs]
-def sync_recognize_with_profanity_filter_gcs(storage_uri):
+def sync_recognize_with_profanity_filter_gcs(gcs_uri):
 
     from google.cloud import speech
 
     client = speech.SpeechClient()
 
-    audio = {"uri": storage_uri}
+    audio = {"uri": gcs_uri}
 
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.FLAC,
