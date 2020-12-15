@@ -22,7 +22,6 @@ Example usage:
 # [START speech_recognize_with_profanity_filter_gcs]
 def sync_recognize_with_profanity_filter_gcs(gcs_uri):
 
-
     from google.cloud import speech
 
     client = speech.SpeechClient()
@@ -48,4 +47,3 @@ def sync_recognize_with_profanity_filter_gcs(gcs_uri):
 sync_recognize_with_profanity_filter_gcs(
     "gs://cloud-samples-tests/speech/brooklyn.flac"
 )
-
