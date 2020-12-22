@@ -39,7 +39,7 @@ def transcribe_context_classes(storage_uri):
         speech_contexts=[speech_context],
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]

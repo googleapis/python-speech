@@ -53,13 +53,13 @@ def transcribe_file_with_enhanced_model():
         model="phone_call",
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print(f"First alternative of result {i}")
-        print(f"Transcript: {alternative.transcript}")
+        print(u"First alternative of result {}".format(i))
+        print(u"Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_enhanced_model_beta]
 
 
@@ -77,7 +77,7 @@ def transcribe_file_with_metadata():
 
     # Here we construct a recognition metadata object.
     # Most metadata fields are specified as enums that can be found
-    # in speech.RecognitionMetadata
+    # in speech.enums.RecognitionMetadata
     metadata = speech.RecognitionMetadata()
     metadata.interaction_type = speech.RecognitionMetadata.InteractionType.DISCUSSION
     metadata.microphone_distance = (
@@ -86,6 +86,7 @@ def transcribe_file_with_metadata():
     metadata.recording_device_type = (
         speech.RecognitionMetadata.RecordingDeviceType.SMARTPHONE
     )
+
     # Some metadata fields are free form strings
     metadata.recording_device_name = "Pixel 2 XL"
     # And some are integers, for instance the 6 digit NAICS code
@@ -101,13 +102,13 @@ def transcribe_file_with_metadata():
         metadata=metadata,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print("First alternative of result {}".format(i))
-        print("Transcript: {}".format(alternative.transcript))
+        print(u"First alternative of result {}".format(i))
+        print(u"Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_recognition_metadata_beta]
 
 
@@ -132,13 +133,13 @@ def transcribe_file_with_auto_punctuation():
         enable_automatic_punctuation=True,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print("First alternative of result {}".format(i))
-        print("Transcript: {}".format(alternative.transcript))
+        print(u"First alternative of result {}".format(i))
+        print(u"Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_auto_punctuation_beta]
 
 
@@ -165,7 +166,7 @@ def transcribe_file_with_diarization():
     )
 
     print("Waiting for operation to complete...")
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     # The transcript within each result is separate and sequential per result.
     # However, the words list within an alternative includes all the words
@@ -177,13 +178,15 @@ def transcribe_file_with_diarization():
 
     # Printing out the output:
     for word_info in words_info:
-        print(f"word: '{word_info.word}', speaker_tag: {word_info.speaker_tag}")
+        print(
+            u"word: '{}', speaker_tag: {}".format(word_info.word, word_info.speaker_tag)
+        )
     # [END speech_transcribe_diarization_beta]
 
 
 def transcribe_file_with_multichannel():
     """Transcribe the given audio file synchronously with
-      multi channel."""
+    multi channel."""
     # [START speech_transcribe_multichannel_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
@@ -204,20 +207,20 @@ def transcribe_file_with_multichannel():
         enable_separate_recognition_per_channel=True,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
         print("First alternative of result {}".format(i))
-        print("Transcript: {}".format(alternative.transcript))
-        print("Channel Tag: {}".format(result.channel_tag))
+        print(u"Transcript: {}".format(alternative.transcript))
+        print(u"Channel Tag: {}".format(result.channel_tag))
     # [END speech_transcribe_multichannel_beta]
 
 
 def transcribe_file_with_multilanguage():
     """Transcribe the given audio file synchronously with
-      multi language."""
+    multi language."""
     # [START speech_transcribe_multilanguage_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
@@ -241,19 +244,19 @@ def transcribe_file_with_multilanguage():
     )
 
     print("Waiting for operation to complete...")
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
-        print("First alternative of result {}: {}".format(i, alternative))
-        print("Transcript: {}".format(alternative.transcript))
+        print(u"First alternative of result {}: {}".format(i, alternative))
+        print(u"Transcript: {}".format(alternative.transcript))
     # [END speech_transcribe_multilanguage_beta]
 
 
 def transcribe_file_with_word_level_confidence():
     """Transcribe the given audio file synchronously with
-      word level confidence."""
+    word level confidence."""
     # [START speech_transcribe_word_level_confidence_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
@@ -273,15 +276,15 @@ def transcribe_file_with_word_level_confidence():
         enable_word_confidence=True,
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]
         print("-" * 20)
         print("First alternative of result {}".format(i))
-        print("Transcript: {}".format(alternative.transcript))
+        print(u"Transcript: {}".format(alternative.transcript))
         print(
-            "First Word and Confidence: ({}, {})".format(
+            u"First Word and Confidence: ({}, {})".format(
                 alternative.words[0].word, alternative.words[0].confidence
             )
         )

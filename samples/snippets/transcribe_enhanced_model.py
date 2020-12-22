@@ -42,14 +42,12 @@ def transcribe_file_with_enhanced_model(path):
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=8000,
         language_code="en-US",
-        # Enhanced models are only available to projects that
-        # opt in for audio data collection.
         use_enhanced=True,
         # A model must be specified to use enhanced model.
         model="phone_call",
     )
 
-    response = client.recognize(request={"config": config, "audio": audio})
+    response = client.recognize(config=config, audio=audio)
 
     for i, result in enumerate(response.results):
         alternative = result.alternatives[0]

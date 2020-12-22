@@ -37,6 +37,7 @@ def transcribe_streaming(stream_file):
 
     # In practice, stream should be a generator yielding chunks of audio data.
     stream = [content]
+
     requests = (
         speech.StreamingRecognizeRequest(audio_content=chunk) for chunk in stream
     )
@@ -46,11 +47,15 @@ def transcribe_streaming(stream_file):
         sample_rate_hertz=16000,
         language_code="en-US",
     )
+
     streaming_config = speech.StreamingRecognitionConfig(config=config)
 
     # streaming_recognize returns a generator.
     # [START speech_python_migration_streaming_response]
-    responses = client.streaming_recognize(config=streaming_config, requests=requests,)
+    responses = client.streaming_recognize(
+        config=streaming_config,
+        requests=requests,
+    )
     # [END speech_python_migration_streaming_request]
 
     for response in responses:

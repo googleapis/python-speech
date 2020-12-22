@@ -32,6 +32,7 @@ import re
 import sys
 
 from google.cloud import speech
+
 import pyaudio
 from six.moves import queue
 
@@ -174,6 +175,7 @@ def main():
         sample_rate_hertz=RATE,
         language_code=language_code,
     )
+
     streaming_config = speech.StreamingRecognitionConfig(
         config=config, interim_results=True
     )
@@ -185,9 +187,7 @@ def main():
             for content in audio_generator
         )
 
-        responses = client.streaming_recognize(
-            requests=requests, config=streaming_config
-        )
+        responses = client.streaming_recognize(streaming_config, requests)
 
         # Now, put the transcription responses to use.
         listen_print_loop(responses)

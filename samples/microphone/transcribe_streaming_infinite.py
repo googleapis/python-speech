@@ -195,15 +195,15 @@ def listen_print_loop(responses, stream):
         transcript = result.alternatives[0].transcript
 
         result_seconds = 0
-        result_nanos = 0
+        result_micros = 0
 
         if result.result_end_time.seconds:
             result_seconds = result.result_end_time.seconds
 
-        if result.result_end_time.nanos:
-            result_nanos = result.result_end_time.nanos
+        if result.result_end_time.microseconds:
+            result_micros = result.result_end_time.microseconds
 
-        stream.result_end_time = int((result_seconds * 1000) + (result_nanos / 1000000))
+        stream.result_end_time = int((result_seconds * 1000) + (result_micros / 1000))
 
         corrected_time = (
             stream.result_end_time
@@ -248,6 +248,7 @@ def main():
         language_code="en-US",
         max_alternatives=1,
     )
+
     streaming_config = speech.StreamingRecognitionConfig(
         config=config, interim_results=True
     )
@@ -275,9 +276,7 @@ def main():
                 for content in audio_generator
             )
 
-            responses = client.streaming_recognize(
-                requests=requests, config=streaming_config
-            )
+            responses = client.streaming_recognize(streaming_config, requests)
 
             # Now, put the transcription responses to use.
             listen_print_loop(responses, stream)
