@@ -90,12 +90,12 @@ def test_speech_client_from_service_account_file(client_class):
     ) as factory:
         factory.return_value = creds
         client = client_class.from_service_account_file("dummy/file/path.json")
-        assert client.transport._credentials == creds
+        assert client._transport._credentials == creds
 
         client = client_class.from_service_account_json("dummy/file/path.json")
-        assert client.transport._credentials == creds
+        assert client._transport._credentials == creds
 
-        assert client.transport._host == "speech.googleapis.com:443"
+        assert client._transport._host == "speech.googleapis.com:443"
 
 
 def test_speech_client_get_transport_class():
@@ -419,7 +419,7 @@ def test_recognize(transport: str = "grpc", request_type=cloud_speech.RecognizeR
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.recognize), "__call__") as call:
+    with mock.patch.object(type(client._transport.recognize), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = cloud_speech.RecognizeResponse()
 
@@ -432,7 +432,6 @@ def test_recognize(transport: str = "grpc", request_type=cloud_speech.RecognizeR
         assert args[0] == cloud_speech.RecognizeRequest()
 
     # Establish that the response is the type that we expect.
-
     assert isinstance(response, cloud_speech.RecognizeResponse)
 
 
@@ -441,19 +440,19 @@ def test_recognize_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_recognize_async(
-    transport: str = "grpc_asyncio", request_type=cloud_speech.RecognizeRequest
-):
+async def test_recognize_async(transport: str = "grpc_asyncio"):
     client = SpeechAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
+    request = cloud_speech.RecognizeRequest()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.recognize), "__call__") as call:
+    with mock.patch.object(
+        type(client._client._transport.recognize), "__call__"
+    ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             cloud_speech.RecognizeResponse()
@@ -465,22 +464,17 @@ async def test_recognize_async(
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == cloud_speech.RecognizeRequest()
+        assert args[0] == request
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, cloud_speech.RecognizeResponse)
-
-
-@pytest.mark.asyncio
-async def test_recognize_async_from_dict():
-    await test_recognize_async(request_type=dict)
 
 
 def test_recognize_flattened():
     client = SpeechClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.recognize), "__call__") as call:
+    with mock.patch.object(type(client._transport.recognize), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = cloud_speech.RecognizeResponse()
 
@@ -525,7 +519,9 @@ async def test_recognize_flattened_async():
     client = SpeechAsyncClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.recognize), "__call__") as call:
+    with mock.patch.object(
+        type(client._client._transport.recognize), "__call__"
+    ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = cloud_speech.RecognizeResponse()
 
@@ -582,7 +578,7 @@ def test_long_running_recognize(
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client.transport.long_running_recognize), "__call__"
+        type(client._transport.long_running_recognize), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/spam")
@@ -604,21 +600,18 @@ def test_long_running_recognize_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_long_running_recognize_async(
-    transport: str = "grpc_asyncio",
-    request_type=cloud_speech.LongRunningRecognizeRequest,
-):
+async def test_long_running_recognize_async(transport: str = "grpc_asyncio"):
     client = SpeechAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
+    request = cloud_speech.LongRunningRecognizeRequest()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client.transport.long_running_recognize), "__call__"
+        type(client._client._transport.long_running_recognize), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
@@ -631,15 +624,10 @@ async def test_long_running_recognize_async(
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == cloud_speech.LongRunningRecognizeRequest()
+        assert args[0] == request
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, future.Future)
-
-
-@pytest.mark.asyncio
-async def test_long_running_recognize_async_from_dict():
-    await test_long_running_recognize_async(request_type=dict)
 
 
 def test_long_running_recognize_flattened():
@@ -647,7 +635,7 @@ def test_long_running_recognize_flattened():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client.transport.long_running_recognize), "__call__"
+        type(client._transport.long_running_recognize), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/op")
@@ -694,7 +682,7 @@ async def test_long_running_recognize_flattened_async():
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client.transport.long_running_recognize), "__call__"
+        type(client._client._transport.long_running_recognize), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/op")
@@ -754,7 +742,7 @@ def test_streaming_recognize(
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client.transport.streaming_recognize), "__call__"
+        type(client._transport.streaming_recognize), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = iter([cloud_speech.StreamingRecognizeResponse()])
@@ -777,22 +765,20 @@ def test_streaming_recognize_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_streaming_recognize_async(
-    transport: str = "grpc_asyncio", request_type=cloud_speech.StreamingRecognizeRequest
-):
+async def test_streaming_recognize_async(transport: str = "grpc_asyncio"):
     client = SpeechAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
+    request = cloud_speech.StreamingRecognizeRequest()
 
     requests = [request]
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
-        type(client.transport.streaming_recognize), "__call__"
+        type(client._client._transport.streaming_recognize), "__call__"
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = mock.Mock(aio.StreamStreamCall, autospec=True)
@@ -811,11 +797,6 @@ async def test_streaming_recognize_async(
     # Establish that the response is the type that we expect.
     message = await response.read()
     assert isinstance(message, cloud_speech.StreamingRecognizeResponse)
-
-
-@pytest.mark.asyncio
-async def test_streaming_recognize_async_from_dict():
-    await test_streaming_recognize_async(request_type=dict)
 
 
 def test_credentials_transport_error():
@@ -854,7 +835,7 @@ def test_transport_instance():
         credentials=credentials.AnonymousCredentials(),
     )
     client = SpeechClient(transport=transport)
-    assert client.transport is transport
+    assert client._transport is transport
 
 
 def test_transport_get_channel():
@@ -887,7 +868,7 @@ def test_transport_adc(transport_class):
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
     client = SpeechClient(credentials=credentials.AnonymousCredentials(),)
-    assert isinstance(client.transport, transports.SpeechGrpcTransport,)
+    assert isinstance(client._transport, transports.SpeechGrpcTransport,)
 
 
 def test_speech_base_transport_error():
@@ -988,7 +969,7 @@ def test_speech_host_no_port():
             api_endpoint="speech.googleapis.com"
         ),
     )
-    assert client.transport._host == "speech.googleapis.com:443"
+    assert client._transport._host == "speech.googleapis.com:443"
 
 
 def test_speech_host_with_port():
@@ -998,7 +979,7 @@ def test_speech_host_with_port():
             api_endpoint="speech.googleapis.com:8000"
         ),
     )
-    assert client.transport._host == "speech.googleapis.com:8000"
+    assert client._transport._host == "speech.googleapis.com:8000"
 
 
 def test_speech_grpc_transport_channel():
@@ -1106,7 +1087,7 @@ def test_speech_grpc_lro_client():
     client = SpeechClient(
         credentials=credentials.AnonymousCredentials(), transport="grpc",
     )
-    transport = client.transport
+    transport = client._transport
 
     # Ensure that we have a api-core operations client.
     assert isinstance(transport.operations_client, operations_v1.OperationsClient,)
@@ -1119,114 +1100,13 @@ def test_speech_grpc_lro_async_client():
     client = SpeechAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport="grpc_asyncio",
     )
-    transport = client.transport
+    transport = client._client._transport
 
     # Ensure that we have a api-core operations client.
     assert isinstance(transport.operations_client, operations_v1.OperationsAsyncClient,)
 
     # Ensure that subsequent calls to the property send the exact same object.
     assert transport.operations_client is transport.operations_client
-
-
-def test_common_billing_account_path():
-    billing_account = "squid"
-
-    expected = "billingAccounts/{billing_account}".format(
-        billing_account=billing_account,
-    )
-    actual = SpeechClient.common_billing_account_path(billing_account)
-    assert expected == actual
-
-
-def test_parse_common_billing_account_path():
-    expected = {
-        "billing_account": "clam",
-    }
-    path = SpeechClient.common_billing_account_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = SpeechClient.parse_common_billing_account_path(path)
-    assert expected == actual
-
-
-def test_common_folder_path():
-    folder = "whelk"
-
-    expected = "folders/{folder}".format(folder=folder,)
-    actual = SpeechClient.common_folder_path(folder)
-    assert expected == actual
-
-
-def test_parse_common_folder_path():
-    expected = {
-        "folder": "octopus",
-    }
-    path = SpeechClient.common_folder_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = SpeechClient.parse_common_folder_path(path)
-    assert expected == actual
-
-
-def test_common_organization_path():
-    organization = "oyster"
-
-    expected = "organizations/{organization}".format(organization=organization,)
-    actual = SpeechClient.common_organization_path(organization)
-    assert expected == actual
-
-
-def test_parse_common_organization_path():
-    expected = {
-        "organization": "nudibranch",
-    }
-    path = SpeechClient.common_organization_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = SpeechClient.parse_common_organization_path(path)
-    assert expected == actual
-
-
-def test_common_project_path():
-    project = "cuttlefish"
-
-    expected = "projects/{project}".format(project=project,)
-    actual = SpeechClient.common_project_path(project)
-    assert expected == actual
-
-
-def test_parse_common_project_path():
-    expected = {
-        "project": "mussel",
-    }
-    path = SpeechClient.common_project_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = SpeechClient.parse_common_project_path(path)
-    assert expected == actual
-
-
-def test_common_location_path():
-    project = "winkle"
-    location = "nautilus"
-
-    expected = "projects/{project}/locations/{location}".format(
-        project=project, location=location,
-    )
-    actual = SpeechClient.common_location_path(project, location)
-    assert expected == actual
-
-
-def test_parse_common_location_path():
-    expected = {
-        "project": "scallop",
-        "location": "abalone",
-    }
-    path = SpeechClient.common_location_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = SpeechClient.parse_common_location_path(path)
-    assert expected == actual
 
 
 def test_client_withDEFAULT_CLIENT_INFO():
