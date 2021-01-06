@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-speech.git",
-        "sha": "29bd581e8364558c002b2f3e74ff7605ff9d434a"
+        "sha": "7722a2de041d04ff85e799b0472046878b9618a9"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "dd372aa22ded7a8ba6f0e03a80e06358a3fa0907",
-        "internalRef": "347055288"
+        "sha": "520682435235d9c503983a360a2090025aa47cd1",
+        "internalRef": "350246057"
       }
     },
     {
@@ -51,6 +51,7 @@
     }
   ],
   "generatedFiles": [
+    ".coveragerc",
     ".flake8",
     ".github/CONTRIBUTING.md",
     ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -105,8 +106,10 @@
     "docs/conf.py",
     "docs/multiprocessing.rst",
     "docs/speech_v1/services.rst",
+    "docs/speech_v1/speech.rst",
     "docs/speech_v1/types.rst",
     "docs/speech_v1p1beta1/services.rst",
+    "docs/speech_v1p1beta1/speech.rst",
     "docs/speech_v1p1beta1/types.rst",
     "google/cloud/speech/__init__.py",
     "google/cloud/speech/py.typed",
