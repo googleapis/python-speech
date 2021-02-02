@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-speech.git",
-        "sha": "29bd581e8364558c002b2f3e74ff7605ff9d434a"
+        "sha": "120b3a1e60448e00211f3819702a5f4084beb23a"
       }
     },
     {
