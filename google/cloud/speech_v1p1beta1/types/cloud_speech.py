@@ -145,6 +145,17 @@ class StreamingRecognitionConfig(proto.Message):
             ``END_OF_SINGLE_UTTERANCE`` event and cease recognition. It
             will return no more than one ``StreamingRecognitionResult``
             with the ``is_final`` flag set to ``true``.
+
+            The ``single_utterance`` field can only be used with
+            specified models, otherwise an error is thrown. The
+            ``model`` field in [``RecognitionConfig``][] must be set to:
+
+            -  ``command_and_search``
+            -  ``phone_call`` AND additional field
+               ``useEnhanced``\ =\ ``true``
+            -  The ``model`` field is left undefined. In this case the
+               API auto-selects a model based on any other parameters
+               that you set in ``RecognitionConfig``.
         interim_results (bool):
             If ``true``, interim results (tentative hypotheses) may be
             returned as they become available (these interim results are
@@ -672,8 +683,9 @@ class LongRunningRecognizeMetadata(proto.Message):
         last_update_time (google.protobuf.timestamp_pb2.Timestamp):
             Time of the most recent processing update.
         uri (str):
-            The URI of the audio file being transcribed.
-            Empty if the audio was sent as byte content.
+            Output only. The URI of the audio file being
+            transcribed. Empty if the audio was sent as byte
+            content.
     """
 
     progress_percent = proto.Field(proto.INT32, number=1)
