@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-speech.git",
-        "sha": "6d7ea1e8869e3d800220f1261b8be1d0c91c66d8"
+        "sha": "a2c510b463ec259126611b97202e5ff4748ab30f"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "9adc11e84218d5e234392e7fe81676e778895525",
-        "internalRef": "359844338"
+        "sha": "d060a12e9731b05fccb56aee4d4bf176892b7911",
+        "internalRef": "361597303"
       }
     },
     {
