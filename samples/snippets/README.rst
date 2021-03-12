@@ -43,7 +43,7 @@ Install Dependencies
 
     .. code-block:: bash
 
-        $ git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git
+        $ git clone https://github.com/googleapis/python-speech.git
 
 #. Install `pip`_ and `virtualenv`_ if you do not already have them. You may want to refer to the `Python Development Environment Setup Guide`_ for Google Cloud Platform for instructions.
 
@@ -136,7 +136,6 @@ To run this sample:
 
     Google Cloud Speech API sample application using the REST API for async
     batch processing.
-
     Example usage:
         python transcribe_async.py resources/audio.raw
         python transcribe_async.py gs://cloud-samples-tests/speech/vr.flac

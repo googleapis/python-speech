@@ -14,6 +14,7 @@
 
 
 # [START speech_transcribe_with_model_adaptation]
+import google.auth
 from google.cloud import speech_v1p1beta1 as speech
 
 
@@ -57,10 +58,8 @@ def transcribe_with_model_adaptation(project_id, location, storage_uri):
         }
     )
 
-    """
-    Next section shows how to use the newly created custom
-    class and phrase set to send a transcription request with speech adaptation
-    """
+    # Next section shows how to use the newly created custom
+    # class and phrase set to send a transcription request with speech adaptation
 
     # Speech adaptation configuration
     speech_adaptation = speech.SpeechAdaptation(
@@ -92,8 +91,7 @@ def transcribe_with_model_adaptation(project_id, location, storage_uri):
 # [END speech_transcribe_with_model_adaptation]
 
 storage_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
-project_id = "python-docs-samples-tests"
+project_id = google.auth.default()
 location = "us-west1"
 
-if __name__ == "__main__":
-    transcribe_with_model_adaptation(project_id, location, storage_uri)
+transcribe_with_model_adaptation(project_id, location, storage_uri)
