@@ -18,10 +18,9 @@ Example usage:
     python transcribe.py gs://cloud-samples-tests/speech/brooklyn.flac
 """
 
+
 # [START speech_recognize_with_profanity_filter_gcs]
 def sync_recognize_with_profanity_filter_gcs(gcs_uri):
-
-import argparse
 
     from google.cloud import speech
 
