@@ -58,7 +58,7 @@ def transcribe_with_model_adaptation(project_id, location, storage_uri):
         }
     )
 
-    # Next section shows how to use the newly created custom
+    # The next section shows how to use the newly created custom
     # class and phrase set to send a transcription request with speech adaptation
 
     # Speech adaptation configuration
