@@ -14,7 +14,7 @@
 
 
 # [START speech_transcribe_with_model_adaptation]
-import google.auth
+
 from google.cloud import speech_v1p1beta1 as speech
 
 
@@ -87,11 +87,5 @@ def transcribe_with_model_adaptation(project_id, location, storage_uri):
     for result in response.results:
         print("Transcript: {}".format(result.alternatives[0].transcript))
 
-
-# [END speech_transcribe_with_model_adaptation]
-
-storage_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
-project_id = google.auth.default()
-location = "us-west1"
-
-transcribe_with_model_adaptation(project_id, location, storage_uri)
+    # [END speech_transcribe_with_model_adaptation]
+    return response.results[0].alternatives[0].transcript
