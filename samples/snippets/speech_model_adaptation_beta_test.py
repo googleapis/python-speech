@@ -12,9 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import uuid
+
 import google.auth
 
 from google.cloud import speech_v1p1beta1 as speech
+
+import pytest
 
 import speech_model_adaptation_beta
 
@@ -22,19 +26,35 @@ import speech_model_adaptation_beta
 STORAGE_URI = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
 _, PROJECT_ID = google.auth.default()
 LOCATION = "us-west1"
-PHRASE_ID = "restaurantphrasesets"
-CUSTOM_CLASS_ID = "seattlerestaurants"
-PHRASE_PARENT = f"projects/{PROJECT_ID}/locations/{LOCATION}/phraseSets/{PHRASE_ID}"
-CLASS_PARENT = (
-    f"projects/{PROJECT_ID}/locations/{LOCATION}/customClasses/{CUSTOM_CLASS_ID}"
-)
+client = speech.AdaptationClient()
 
 
-def test_model_adaptation_beta(capsys):
+def test_model_adaptation_beta(custom_class_id, phrase_set_id, capsys):
+    class_id = custom_class_id
+    phrase_id = phrase_set_id
     transcript = speech_model_adaptation_beta.transcribe_with_model_adaptation(
-        PROJECT_ID, LOCATION, STORAGE_URI
+        PROJECT_ID, LOCATION, STORAGE_URI, class_id, phrase_id
     )
     assert "how long is the Brooklyn Bridge" in transcript
-    client = speech.AdaptationClient()
-    client.delete_phrase_set(name=PHRASE_PARENT)
+
+
+@pytest.fixture
+def custom_class_id():
+    custom_class_id = f"customClassId{uuid.uuid4()}"
+    yield custom_class_id
+    # clean up resources
+    CLASS_PARENT = (
+        f"projects/{PROJECT_ID}/locations/{LOCATION}/customClasses/{custom_class_id}"
+    )
     client.delete_custom_class(name=CLASS_PARENT)
+
+
+@pytest.fixture
+def phrase_set_id():
+    phrase_set_id = f"phraseSetId{uuid.uuid4()}"
+    yield phrase_set_id
+    # clean up resources
+    PHRASE_PARENT = (
+        f"projects/{PROJECT_ID}/locations/{LOCATION}/phraseSets/{phrase_set_id}"
+    )
+    client.delete_phrase_set(name=PHRASE_PARENT)

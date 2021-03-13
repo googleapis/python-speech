@@ -18,7 +18,9 @@
 from google.cloud import speech_v1p1beta1 as speech
 
 
-def transcribe_with_model_adaptation(project_id, location, storage_uri):
+def transcribe_with_model_adaptation(
+    project_id, location, storage_uri, custom_class_id, phrase_set_id
+):
 
     """
     Create`PhraseSet` and `CustomClasses` to create custom lists of similar
@@ -35,7 +37,7 @@ def transcribe_with_model_adaptation(project_id, location, storage_uri):
     custom_class_response = adaptation_client.create_custom_class(
         {
             "parent": parent,
-            "custom_class_id": "seattlerestaurants",
+            "custom_class_id": custom_class_id,
             "custom_class": {
                 "items": [
                     {"value": "sushido"},
@@ -50,10 +52,10 @@ def transcribe_with_model_adaptation(project_id, location, storage_uri):
     phrase_set_response = adaptation_client.create_phrase_set(
         {
             "parent": parent,
-            "phrase_set_id": "restaurantphrasesets",
+            "phrase_set_id": phrase_set_id,
             "phrase_set": {
                 "boost": 10,
-                "phrases": [{"value": "Visit restaurants like ${seattlerestaurants}"}],
+                "phrases": [{"value": f"Visit restaurants like ${custom_class_id}"}],
             },
         }
     )
