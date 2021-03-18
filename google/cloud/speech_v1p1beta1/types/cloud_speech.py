@@ -683,11 +683,23 @@ class LongRunningRecognizeResponse(proto.Message):
         results (Sequence[google.cloud.speech_v1p1beta1.types.SpeechRecognitionResult]):
             Sequential list of transcription results
             corresponding to sequential portions of audio.
+        output_config (google.cloud.speech_v1p1beta1.types.TranscriptOutputConfig):
+            Original output config if present in the
+            request.
+        output_error (google.rpc.status_pb2.Status):
+            If the transcript output fails this field
+            contains the relevant error.
     """
 
     results = proto.RepeatedField(
         proto.MESSAGE, number=2, message="SpeechRecognitionResult",
     )
+
+    output_config = proto.Field(
+        proto.MESSAGE, number=6, message="TranscriptOutputConfig",
+    )
+
+    output_error = proto.Field(proto.MESSAGE, number=7, message=status.Status,)
 
 
 class LongRunningRecognizeMetadata(proto.Message):
@@ -709,6 +721,10 @@ class LongRunningRecognizeMetadata(proto.Message):
             Output only. The URI of the audio file being
             transcribed. Empty if the audio was sent as byte
             content.
+        output_config (google.cloud.speech_v1p1beta1.types.TranscriptOutputConfig):
+            Output only. A copy of the
+            TranscriptOutputConfig if it was set in the
+            request.
     """
 
     progress_percent = proto.Field(proto.INT32, number=1)
@@ -720,6 +736,10 @@ class LongRunningRecognizeMetadata(proto.Message):
     )
 
     uri = proto.Field(proto.STRING, number=4)
+
+    output_config = proto.Field(
+        proto.MESSAGE, number=5, message="TranscriptOutputConfig",
+    )
 
 
 class StreamingRecognizeResponse(proto.Message):
