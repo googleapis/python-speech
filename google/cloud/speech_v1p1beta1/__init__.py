@@ -33,6 +33,7 @@ from .types.cloud_speech import StreamingRecognitionConfig
 from .types.cloud_speech import StreamingRecognitionResult
 from .types.cloud_speech import StreamingRecognizeRequest
 from .types.cloud_speech import StreamingRecognizeResponse
+from .types.cloud_speech import TranscriptOutputConfig
 from .types.cloud_speech import WordInfo
 from .types.cloud_speech_adaptation import CreateCustomClassRequest
 from .types.cloud_speech_adaptation import CreatePhraseSetRequest
@@ -59,6 +60,7 @@ class SpeechClient(SpeechHelpers, SpeechClient):
 
 
 __all__ = (
+    "AdaptationClient",
     "CreateCustomClassRequest",
     "CreatePhraseSetRequest",
     "CustomClass",
@@ -81,7 +83,6 @@ __all__ = (
     "RecognizeResponse",
     "SpeakerDiarizationConfig",
     "SpeechAdaptation",
-    "SpeechClient",
     "SpeechContext",
     "SpeechRecognitionAlternative",
     "SpeechRecognitionResult",
@@ -89,8 +90,9 @@ __all__ = (
     "StreamingRecognitionResult",
     "StreamingRecognizeRequest",
     "StreamingRecognizeResponse",
+    "TranscriptOutputConfig",
     "UpdateCustomClassRequest",
     "UpdatePhraseSetRequest",
     "WordInfo",
-    "AdaptationClient",
+    "SpeechClient",
 )
