@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "93b078ae0decd51e618041bb337a8d592d0c998b",
-        "internalRef": "367239272"
+        "sha": "05958a4be99ee175858e14dbba580faa18079b07",
+        "internalRef": "367294563"
       }
     },
     {
@@ -175,6 +175,7 @@
     "scripts/readme-gen/templates/install_deps.tmpl.rst",
     "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
     "setup.cfg",
+    "speech-v1p1beta1-py.tar.gz",
     "testing/.gitignore",
     "tests/unit/gapic/speech_v1/__init__.py",
     "tests/unit/gapic/speech_v1/test_speech.py",
