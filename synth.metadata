@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-speech.git",
-        "sha": "cc9cc3ecdef32a8bf1198aa2ff8561398bf359f8"
+        "sha": "11c3cdfef6c5caafcc9d654f6d2cc00b36c77ef7"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "847464c110e3cb6a5078b6b15086c73c4b622938",
-        "internalRef": "367346981"
+        "sha": "9f2dcbf032a77508144cf8a50b0d261e33653568",
+        "internalRef": "369759326"
       }
     },
     {
@@ -175,6 +175,7 @@
     "scripts/readme-gen/templates/install_deps.tmpl.rst",
     "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
     "setup.cfg",
+    "speech-v1p1beta1-py.tar.gz",
     "testing/.gitignore",
     "tests/unit/gapic/speech_v1/__init__.py",
     "tests/unit/gapic/speech_v1/test_speech.py",
