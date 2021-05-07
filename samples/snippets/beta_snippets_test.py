@@ -21,6 +21,7 @@ from beta_snippets import (
     transcribe_file_with_multichannel,
     transcribe_file_with_multilanguage,
     transcribe_file_with_word_level_confidence,
+    transcribe_file_with_spoken_punctuation_end_emojis,
 )
 
 RESOURCES = os.path.join(os.path.dirname(__file__), "resources")
@@ -71,6 +72,12 @@ def test_transcribe_multilanguage_file(capsys):
 
 def test_transcribe_word_level_confidence(capsys):
     transcribe_file_with_word_level_confidence()
+    out, err = capsys.readouterr()
+
+    assert "OK Google stream stranger things from Netflix to my TV" in out
+
+def transcribe_file_with_spoken_punctuation_end_emojis(capsys):
+    transcribe_file_with_spoken_punctuation_end_emojis()
     out, err = capsys.readouterr()
 
     assert "OK Google stream stranger things from Netflix to my TV" in out
