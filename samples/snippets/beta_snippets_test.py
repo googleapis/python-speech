@@ -80,4 +80,4 @@ def transcribe_file_with_spoken_punctuation_end_emojis(capsys):
     transcribe_file_with_spoken_punctuation_end_emojis()
     out, err = capsys.readouterr()
 
-    assert "OK Google stream stranger things from Netflix to my TV" in out
+    assert "First alternative of result " in out
