@@ -293,7 +293,7 @@ def transcribe_file_with_word_level_confidence():
 
 def transcribe_file_with_spoken_punctuation_end_emojis():
     """Transcribe the given audio file with spoken punctuation and emojis enabled."""
-    # [START speech_transcribe_spoken_punctuation_emoji_beta]
+    # [START speech_transcribe_spoken_punctuation_emojis_beta]
     from google.cloud import speech_v1p1beta1 as speech
     from google.protobuf import wrappers_pb2
 
@@ -311,8 +311,8 @@ def transcribe_file_with_spoken_punctuation_end_emojis():
         language_code="en-US",
         # Enable spoken punctuation
         enable_spoken_punctuation=wrappers_pb2.BoolValue(value=True),
-        # Enable spoken emoji
-        enable_spoken_emoji=wrappers_pb2.BoolValue(value=True),
+        # Enable spoken emojis
+        enable_spoken_emojis=wrappers_pb2.BoolValue(value=True),
     )
 
     response = client.recognize(config=config, audio=audio)
@@ -322,7 +322,7 @@ def transcribe_file_with_spoken_punctuation_end_emojis():
         print("-" * 20)
         print(u"First alternative of result {}".format(i))
         print(u"Transcript: {}".format(alternative.transcript))
-    # [END speech_transcribe_spoken_punctuation_emoji_beta]
+    # [END speech_transcribe_spoken_punctuation_emojis_beta]
 
 
 if __name__ == "__main__":
