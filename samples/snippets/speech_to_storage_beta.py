@@ -35,7 +35,7 @@ def export_transcript_to_storage_beta(
         language_code=language_code,
     )
 
-    # Package the long-running request
+    # Compose the long-running request
     request = speech.LongRunningRecognizeRequest(
         audio=audio, config=config, output_config=output_config
     )
