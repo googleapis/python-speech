@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -22,16 +20,16 @@ from typing import Dict, Sequence, Tuple, Type, Union
 import pkg_resources
 
 import google.api_core.client_options as ClientOptions  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
 from google.cloud.speech_v1p1beta1.services.adaptation import pagers
 from google.cloud.speech_v1p1beta1.types import cloud_speech_adaptation
 from google.cloud.speech_v1p1beta1.types import resource
-
+from google.protobuf import field_mask_pb2  # type: ignore
 from .transports.base import AdaptationTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import AdaptationGrpcAsyncIOTransport
 from .client import AdaptationClient
@@ -49,25 +47,20 @@ class AdaptationAsyncClient:
     parse_custom_class_path = staticmethod(AdaptationClient.parse_custom_class_path)
     phrase_set_path = staticmethod(AdaptationClient.phrase_set_path)
     parse_phrase_set_path = staticmethod(AdaptationClient.parse_phrase_set_path)
-
     common_billing_account_path = staticmethod(
         AdaptationClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         AdaptationClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(AdaptationClient.common_folder_path)
     parse_common_folder_path = staticmethod(AdaptationClient.parse_common_folder_path)
-
     common_organization_path = staticmethod(AdaptationClient.common_organization_path)
     parse_common_organization_path = staticmethod(
         AdaptationClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(AdaptationClient.common_project_path)
     parse_common_project_path = staticmethod(AdaptationClient.parse_common_project_path)
-
     common_location_path = staticmethod(AdaptationClient.common_location_path)
     parse_common_location_path = staticmethod(
         AdaptationClient.parse_common_location_path
@@ -75,7 +68,8 @@ class AdaptationAsyncClient:
 
     @classmethod
     def from_service_account_info(cls, info: dict, *args, **kwargs):
-        """Creates an instance of this client using the provided credentials info.
+        """Creates an instance of this client using the provided credentials
+            info.
 
         Args:
             info (dict): The service account private key info.
@@ -90,7 +84,7 @@ class AdaptationAsyncClient:
     @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
-        file.
+            file.
 
         Args:
             filename (str): The path to the service account private key json
@@ -107,7 +101,7 @@ class AdaptationAsyncClient:
 
     @property
     def transport(self) -> AdaptationTransport:
-        """Return the transport used by the client instance.
+        """Returns the transport used by the client instance.
 
         Returns:
             AdaptationTransport: The transport used by the client instance.
@@ -121,12 +115,12 @@ class AdaptationAsyncClient:
     def __init__(
         self,
         *,
-        credentials: credentials.Credentials = None,
+        credentials: ga_credentials.Credentials = None,
         transport: Union[str, AdaptationTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
-        """Instantiate the adaptation client.
+        """Instantiates the adaptation client.
 
         Args:
             credentials (Optional[google.auth.credentials.Credentials]): The
@@ -158,7 +152,6 @@ class AdaptationAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
-
         self._client = AdaptationClient(
             credentials=credentials,
             transport=transport,
@@ -209,7 +202,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``phrase_set_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -237,7 +229,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if phrase_set is not None:
@@ -288,7 +279,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -316,7 +306,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -363,7 +352,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -393,7 +381,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
 
@@ -427,6 +414,8 @@ class AdaptationAsyncClient:
         self,
         request: cloud_speech_adaptation.UpdatePhraseSetRequest = None,
         *,
+        phrase_set: resource.PhraseSet = None,
+        update_mask: field_mask_pb2.FieldMask = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -437,7 +426,21 @@ class AdaptationAsyncClient:
             request (:class:`google.cloud.speech_v1p1beta1.types.UpdatePhraseSetRequest`):
                 The request object. Message sent by the client for the
                 `UpdatePhraseSet` method.
+            phrase_set (:class:`google.cloud.speech_v1p1beta1.types.PhraseSet`):
+                Required. The phrase set to update.
 
+                The phrase set's ``name`` field is used to identify the
+                set to be updated. Format:
+                {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+
+                This corresponds to the ``phrase_set`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
+                The list of fields to be updated.
+                This corresponds to the ``update_mask`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -452,8 +455,23 @@ class AdaptationAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
+        # Sanity check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([phrase_set, update_mask])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
 
         request = cloud_speech_adaptation.UpdatePhraseSetRequest(request)
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+        if phrase_set is not None:
+            request.phrase_set = phrase_set
+        if update_mask is not None:
+            request.update_mask = update_mask
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -499,7 +517,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -520,7 +537,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -583,7 +599,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``custom_class_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -615,7 +630,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if custom_class is not None:
@@ -666,7 +680,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -698,7 +711,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -745,7 +757,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -775,7 +786,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
 
@@ -809,6 +819,8 @@ class AdaptationAsyncClient:
         self,
         request: cloud_speech_adaptation.UpdateCustomClassRequest = None,
         *,
+        custom_class: resource.CustomClass = None,
+        update_mask: field_mask_pb2.FieldMask = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -819,7 +831,21 @@ class AdaptationAsyncClient:
             request (:class:`google.cloud.speech_v1p1beta1.types.UpdateCustomClassRequest`):
                 The request object. Message sent by the client for the
                 `UpdateCustomClass` method.
+            custom_class (:class:`google.cloud.speech_v1p1beta1.types.CustomClass`):
+                Required. The custom class to update.
 
+                The custom class's ``name`` field is used to identify
+                the custom class to be updated. Format:
+                {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+
+                This corresponds to the ``custom_class`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
+                The list of fields to be updated.
+                This corresponds to the ``update_mask`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -838,8 +864,23 @@ class AdaptationAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
+        # Sanity check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([custom_class, update_mask])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
 
         request = cloud_speech_adaptation.UpdateCustomClassRequest(request)
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+        if custom_class is not None:
+            request.custom_class = custom_class
+        if update_mask is not None:
+            request.update_mask = update_mask
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -886,7 +927,6 @@ class AdaptationAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -907,7 +947,6 @@ class AdaptationAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 

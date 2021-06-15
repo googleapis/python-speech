@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,10 @@
 #
 
 from .services.adaptation import AdaptationClient
+from .services.adaptation import AdaptationAsyncClient
 from .services.speech import SpeechClient
+from .services.speech import SpeechAsyncClient
+
 from .types.cloud_speech import LongRunningRecognizeMetadata
 from .types.cloud_speech import LongRunningRecognizeRequest
 from .types.cloud_speech import LongRunningRecognizeResponse
@@ -33,6 +35,7 @@ from .types.cloud_speech import StreamingRecognitionConfig
 from .types.cloud_speech import StreamingRecognitionResult
 from .types.cloud_speech import StreamingRecognizeRequest
 from .types.cloud_speech import StreamingRecognizeResponse
+from .types.cloud_speech import TranscriptOutputConfig
 from .types.cloud_speech import WordInfo
 from .types.cloud_speech_adaptation import CreateCustomClassRequest
 from .types.cloud_speech_adaptation import CreatePhraseSetRequest
@@ -50,7 +53,6 @@ from .types.resource import CustomClass
 from .types.resource import PhraseSet
 from .types.resource import SpeechAdaptation
 
-
 from google.cloud.speech_v1.helpers import SpeechHelpers
 
 
@@ -59,6 +61,9 @@ class SpeechClient(SpeechHelpers, SpeechClient):
 
 
 __all__ = (
+    "AdaptationAsyncClient",
+    "SpeechAsyncClient",
+    "AdaptationClient",
     "CreateCustomClassRequest",
     "CreatePhraseSetRequest",
     "CustomClass",
@@ -89,8 +94,8 @@ __all__ = (
     "StreamingRecognitionResult",
     "StreamingRecognizeRequest",
     "StreamingRecognizeResponse",
+    "TranscriptOutputConfig",
     "UpdateCustomClassRequest",
     "UpdatePhraseSetRequest",
     "WordInfo",
-    "AdaptationClient",
 )

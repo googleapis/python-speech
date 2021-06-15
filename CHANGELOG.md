@@ -4,6 +4,41 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+## [2.4.0](https://www.github.com/googleapis/python-speech/compare/v2.3.0...v2.4.0) (2021-05-22)
+
+
+### Features
+
+* add webm opus support ([eb360ae](https://www.github.com/googleapis/python-speech/commit/eb360aefdac09648852a073ef0837dc7c7b18679))
+* support self-signed JWT flow for service accounts ([eb360ae](https://www.github.com/googleapis/python-speech/commit/eb360aefdac09648852a073ef0837dc7c7b18679))
+
+
+### Bug Fixes
+
+* add async client to %name_%version/init.py ([eb360ae](https://www.github.com/googleapis/python-speech/commit/eb360aefdac09648852a073ef0837dc7c7b18679))
+
+## [2.3.0](https://www.github.com/googleapis/python-speech/compare/v2.2.1...v2.3.0) (2021-04-08)
+
+
+### Features
+
+* Support for spoken punctuation and spoken emojis ([#143](https://www.github.com/googleapis/python-speech/issues/143)) ([b6bddbe](https://www.github.com/googleapis/python-speech/commit/b6bddbe46172debd962c3d8e566a7c410fb4f279))
+
+### [2.2.1](https://www.github.com/googleapis/python-speech/compare/v2.2.0...v2.2.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* use correct retry deadline ([#134](https://www.github.com/googleapis/python-speech/issues/134)) ([07a30a1](https://www.github.com/googleapis/python-speech/commit/07a30a18ab4e38cca46af905cfd4221ce06daeb3))
+
+## [2.2.0](https://www.github.com/googleapis/python-speech/compare/v2.1.0...v2.2.0) (2021-03-19)
+
+
+### Features
+
+* adds model adaptation sample ([#121](https://www.github.com/googleapis/python-speech/issues/121)) ([24b9424](https://www.github.com/googleapis/python-speech/commit/24b94247bab22b8fad15a251bff06ec8620f0f90))
+* Support output transcript to Google Cloud Storage for LongRunningRecognize ([#128](https://www.github.com/googleapis/python-speech/issues/128)) ([5974564](https://www.github.com/googleapis/python-speech/commit/59745644b08328c883e71d53f3fcc5537644e3c7))
+
 ## [2.1.0](https://www.github.com/googleapis/python-speech/compare/v2.0.1...v2.1.0) (2021-02-26)
 
 
