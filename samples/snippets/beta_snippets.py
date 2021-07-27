@@ -291,6 +291,7 @@ def transcribe_file_with_word_level_confidence():
         )
     # [END speech_transcribe_word_level_confidence_beta]
 
+
 def transcribe_file_with_spoken_punctuation_end_emojis():
     """Transcribe the given audio file with spoken punctuation and emojis enabled."""
     # [START speech_transcribe_spoken_punctuation_emojis_beta]
