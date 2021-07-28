@@ -9,7 +9,6 @@
 
 ### Features
 
-* add Samples section to CONTRIBUTING.rst ([#211](https://www.github.com/googleapis/python-speech/issues/211)) ([4b7e4c4](https://www.github.com/googleapis/python-speech/commit/4b7e4c46b57585f5db4adceca6ba5717d02ebb64))
 * **v1p1beta1:** add total_billed_time response field ([#219](https://www.github.com/googleapis/python-speech/issues/219)) ([e7efa67](https://www.github.com/googleapis/python-speech/commit/e7efa6790111861084ff5a98a262432c04834dec))
 
 
@@ -23,6 +22,7 @@
 ### Documentation
 
 * **samples:** Add Spoken Punctuation and Emojis code samples ([#155](https://www.github.com/googleapis/python-speech/issues/155)) ([cc6b234](https://www.github.com/googleapis/python-speech/commit/cc6b2341cde1fec270afd500c8c5fe2b9023b346))
+* add Samples section to CONTRIBUTING.rst ([#211](https://www.github.com/googleapis/python-speech/issues/211)) ([4b7e4c4](https://www.github.com/googleapis/python-speech/commit/4b7e4c46b57585f5db4adceca6ba5717d02ebb64))
 
 ### [2.5.1](https://www.github.com/googleapis/python-speech/compare/v2.5.0...v2.5.1) (2021-07-21)
 
