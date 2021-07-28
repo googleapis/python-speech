@@ -20,8 +20,8 @@ from beta_snippets import (
     transcribe_file_with_metadata,
     transcribe_file_with_multichannel,
     transcribe_file_with_multilanguage,
-    transcribe_file_with_word_level_confidence,
     transcribe_file_with_spoken_punctuation_end_emojis,
+    transcribe_file_with_word_level_confidence,
 )
 
 RESOURCES = os.path.join(os.path.dirname(__file__), "resources")
