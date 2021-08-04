@@ -15,7 +15,6 @@ import os
 
 from beta_snippets import (
     transcribe_file_with_auto_punctuation,
-    transcribe_file_with_diarization,
     transcribe_file_with_enhanced_model,
     transcribe_file_with_metadata,
     transcribe_file_with_multichannel,
@@ -46,14 +45,6 @@ def test_transcribe_file_with_auto_punctuation(capsys):
     out, _ = capsys.readouterr()
 
     assert "First alternative of result " in out
-
-
-def test_transcribe_diarization(capsys):
-    transcribe_file_with_diarization()
-    out, err = capsys.readouterr()
-
-    assert "word:" in out
-    assert "speaker_tag:" in out
 
 
 def test_transcribe_multichannel_file(capsys):
