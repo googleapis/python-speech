@@ -14,14 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Cloud Speech API sample application using the REST API for async
+"""Google Cloud Speech API sample application using gRPC for async
 batch processing.
-Example usage:
-    python transcribe_async.py resources/audio.raw
-    python transcribe_async.py gs://cloud-samples-tests/speech/vr.flac
 """
-
-import argparse
 
 
 # [START speech_transcribe_async]
@@ -65,12 +60,3 @@ def transcribe_file(speech_file):
 
 
 # [END speech_transcribe_async]
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
-    )
-    parser.add_argument("--path", help="File or GCS path for audio file to be recognized")
-    args = parser.parse_args()
-    transcribe_file(args.path)
