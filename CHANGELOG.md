@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+### [2.7.1](https://www.github.com/googleapis/python-speech/compare/v2.7.0...v2.7.1) (2021-08-13)
+
+
+### Documentation
+
+* **samples:** remove io dependency in transcribe samples ([#223](https://www.github.com/googleapis/python-speech/issues/223)) ([928ca3a](https://www.github.com/googleapis/python-speech/commit/928ca3aeb8f8665dedfa7663c56ee3bb464481cd))
+
 ## [2.7.0](https://www.github.com/googleapis/python-speech/compare/v2.6.0...v2.7.0) (2021-08-10)
 
 
