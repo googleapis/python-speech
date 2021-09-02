@@ -85,7 +85,7 @@ def transcribe_with_model_adaptation(
 
     # Create the speech client
     speech_client = speech.SpeechClient()
-    print("WE GOT TO THIS POINT...")
+
     response = speech_client.recognize(config=config, audio=audio)
 
     for result in response.results:
