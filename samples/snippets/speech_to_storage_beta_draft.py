@@ -14,10 +14,11 @@
 
 
 # [START speech_transcribe_with_speech_to_storage_beta]
+# google.cloud.speech_v1.types.RecognizeResponse
 
-from google.cloud import speech_v1p1beta1 as speech
+from google.cloud import speech
+from google.cloud.speech_v1 import types
 from google.cloud import storage
-import json
 
 
 def export_transcript_to_storage_beta(
@@ -27,7 +28,7 @@ def export_transcript_to_storage_beta(
     sample_rate_hertz,
     language_code,
     bucket_name,
-    bucket_prefix,
+    object_name,
 ):
 
     # input_uri URI for audio file in Cloud Storage, e.g. gs://[BUCKET]/[FILE]
@@ -41,7 +42,6 @@ def export_transcript_to_storage_beta(
         encoding=encoding,
         sample_rate_hertz=sample_rate_hertz,
         language_code=language_code,
-        audio_channel_count=2,
     )
 
     # Compose the long-running request
@@ -59,37 +59,28 @@ def export_transcript_to_storage_beta(
     operation = speech_client.long_running_recognize(request=request)
 
     print("Waiting for operation to complete...")
-    response = operation.result(timeout=90)
+    operation.result(timeout=90)
 
     # get bucket with name
     bucket = storage_client.get_bucket(bucket_name)
 
     # get blob from bucket
-    blob = bucket.get_blob(bucket_prefix)
+    blob = bucket.get_blob(object_name)
 
     # get content as string
     results_string = blob.download_as_string()
 
-    # load content into key-value format
-    results_dict = json.loads(results_string)
-
     # get transcript exported in storage bucket
-    storage_transcript = (
-        results_dict.get("results")[0].get("alternatives")[0].get("transcript")
+    storage_transcript = types.RecognizeResponse.from_json(
+        results_string, ignore_unknown_fields=True
     )
 
     # Each result is for a consecutive portion of the audio. Iterate through
     # them to get the transcripts for the entire audio file.
-    for result in response.results:
+    for result in storage_transcript.results:
         # The first alternative is the most likely one for this portion.
-        print("Transcript: {}".format(result.alternatives[0].transcript))
-        print("Confidence: {}".format(result.alternatives[0].confidence))
-
-    # get transcript from the recognizer
-    speech_transcript = response.results[0].alternatives[0].transcript
-
-    # Assert one is in the other
-    assert speech_transcript in storage_transcript
+        print(f"Transcript: {result.alternatives[0].transcript}")
+        print(f"Confidence: {result.alternatives[0].confidence}")
 
     # [END speech_transcribe_with_speech_to_storage_beta]
-    return response.results[0].alternatives[0].transcript
+    return storage_transcript.results
