@@ -84,3 +84,4 @@ def export_transcript_to_storage_beta(
 
     # [END speech_transcribe_with_speech_to_storage_beta]
     return storage_transcript.results
+    
