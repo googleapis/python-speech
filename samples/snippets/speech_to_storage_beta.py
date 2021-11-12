@@ -71,7 +71,7 @@ def export_transcript_to_storage_beta(
     results_string = blob.download_as_string()
 
     # get transcript exported in storage bucket
-    storage_transcript = types.RecognizeResponse.from_json(
+    storage_transcript = types.LongRunningRecognizeResponse.from_json(
         results_string, ignore_unknown_fields=True
     )
 
@@ -84,4 +84,3 @@ def export_transcript_to_storage_beta(
 
     # [END speech_transcribe_with_speech_to_storage_beta]
     return storage_transcript.results
-    
