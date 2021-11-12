@@ -14,7 +14,6 @@
 
 
 # [START speech_transcribe_with_speech_to_storage_beta]
-# google.cloud.speech_v1.types.RecognizeResponse
 
 from google.cloud import speech
 from google.cloud import storage
