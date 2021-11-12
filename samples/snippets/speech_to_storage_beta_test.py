@@ -45,7 +45,7 @@ def test_export_transcript_to_storage_beta(bucket, capsys):
         sample_rate_hertz,
         language_code,
         BUCKET_NAME,
-        BUCKET_PREFIX
+        BUCKET_PREFIX,
     )
     assert len(results) > 0
 

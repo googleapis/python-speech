@@ -17,8 +17,8 @@
 # google.cloud.speech_v1.types.RecognizeResponse
 
 from google.cloud import speech
-from google.cloud.speech_v1 import types
 from google.cloud import storage
+from google.cloud.speech_v1 import types
 
 
 def export_transcript_to_storage_beta(
