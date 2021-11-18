@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+### [2.11.2](https://www.github.com/googleapis/python-speech/compare/v2.11.1...v2.11.2) (2021-11-18)
+
+
+### Documentation
+
+* **samples:** a draft that refactors speech_to_storage_beta sample ([#276](https://www.github.com/googleapis/python-speech/issues/276)) ([43ee601](https://www.github.com/googleapis/python-speech/commit/43ee6010e3d61db2d290a5825ceacf83a5d49637))
+
 ### [2.11.1](https://www.github.com/googleapis/python-speech/compare/v2.11.0...v2.11.1) (2021-11-01)
 
 
