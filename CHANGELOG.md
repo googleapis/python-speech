@@ -4,6 +4,25 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+## [2.12.0](https://www.github.com/googleapis/python-speech/compare/v2.11.1...v2.12.0) (2022-01-08)
+
+
+### Features
+
+* add hint boost in SpeechContext ([3fdef1f](https://www.github.com/googleapis/python-speech/commit/3fdef1f6057a67c21ef738f4a2e843c8e97274b4))
+* add result_end_time to SpeechRecognitionResult ([#291](https://www.github.com/googleapis/python-speech/issues/291)) ([6ac4df6](https://www.github.com/googleapis/python-speech/commit/6ac4df60485243aa5a99aa1b6bfdfdbd47006474))
+* add SpeechAdaptation configuration ([3fdef1f](https://www.github.com/googleapis/python-speech/commit/3fdef1f6057a67c21ef738f4a2e843c8e97274b4))
+* add spoken punctuation and spoken emojis ([3fdef1f](https://www.github.com/googleapis/python-speech/commit/3fdef1f6057a67c21ef738f4a2e843c8e97274b4))
+* add WEBM_OPUS codec ([3fdef1f](https://www.github.com/googleapis/python-speech/commit/3fdef1f6057a67c21ef738f4a2e843c8e97274b4))
+* add word confidence ([3fdef1f](https://www.github.com/googleapis/python-speech/commit/3fdef1f6057a67c21ef738f4a2e843c8e97274b4))
+* added alternative_language_codes to RecognitionConfig ([#290](https://www.github.com/googleapis/python-speech/issues/290)) ([3fdef1f](https://www.github.com/googleapis/python-speech/commit/3fdef1f6057a67c21ef738f4a2e843c8e97274b4))
+
+
+### Documentation
+
+* add clarification for global and regional endpoints ([6ac4df6](https://www.github.com/googleapis/python-speech/commit/6ac4df60485243aa5a99aa1b6bfdfdbd47006474))
+* **samples:** a draft that refactors speech_to_storage_beta sample ([#276](https://www.github.com/googleapis/python-speech/issues/276)) ([43ee601](https://www.github.com/googleapis/python-speech/commit/43ee6010e3d61db2d290a5825ceacf83a5d49637))
+
 ### [2.11.1](https://www.github.com/googleapis/python-speech/compare/v2.11.0...v2.11.1) (2021-11-01)
 
 
