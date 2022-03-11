@@ -28,7 +28,7 @@ version = "1.3.2"
 # 'Development Status :: 4 - Beta'
 # 'Development Status :: 5 - Production/Stable'
 release_status = "Development Status :: 5 - Production/Stable"
-dependencies = ["google-api-core[grpc] >= 1.14.0, < 2.0.0dev"]
+dependencies = ["google-api-core[grpc] >= 1.31.5, <3.0.0dev,!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0",]
 extras = {}
 
 
