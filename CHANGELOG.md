@@ -257,6 +257,6 @@ This is the (hopefully) final release candidate before 1.0.
 - Upgrading to `google-cloud-core >= 0.28.0` and adding dependency
   on `google-api-core` (#4221, #4280)
 - Deferring to `google-api-core` for `grpcio` and
-  `googleapis-common-protos`dependencies (#4096, #4098)
+  `googleapis-common-protos` dependencies (#4096, #4098)
 
 PyPI: https://pypi.org/project/google-cloud-speech/0.30.0/
