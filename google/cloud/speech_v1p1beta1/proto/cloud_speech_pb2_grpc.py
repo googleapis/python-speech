@@ -10,15 +10,14 @@ from google.longrunning import (
 
 
 class SpeechStub(object):
-    """Service that implements Google Cloud Speech API.
-  """
+    """Service that implements Google Cloud Speech API."""
 
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.Recognize = channel.unary_unary(
             "/google.cloud.speech.v1p1beta1.Speech/Recognize",
             request_serializer=google_dot_cloud_dot_speech__v1p1beta1_dot_proto_dot_cloud__speech__pb2.RecognizeRequest.SerializeToString,
@@ -37,33 +36,32 @@ class SpeechStub(object):
 
 
 class SpeechServicer(object):
-    """Service that implements Google Cloud Speech API.
-  """
+    """Service that implements Google Cloud Speech API."""
 
     def Recognize(self, request, context):
         """Performs synchronous speech recognition: receive results after all audio
-    has been sent and processed.
-    """
+        has been sent and processed.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def LongRunningRecognize(self, request, context):
         """Performs asynchronous speech recognition: receive results via the
-    google.longrunning.Operations interface. Returns either an
-    `Operation.error` or an `Operation.response` which contains
-    a `LongRunningRecognizeResponse` message.
-    For more information on asynchronous speech recognition, see the
-    [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
-    """
+        google.longrunning.Operations interface. Returns either an
+        `Operation.error` or an `Operation.response` which contains
+        a `LongRunningRecognizeResponse` message.
+        For more information on asynchronous speech recognition, see the
+        [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def StreamingRecognize(self, request_iterator, context):
         """Performs bidirectional streaming speech recognition: receive results while
-    sending audio. This method is only available via the gRPC API (not REST).
-    """
+        sending audio. This method is only available via the gRPC API (not REST).
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")

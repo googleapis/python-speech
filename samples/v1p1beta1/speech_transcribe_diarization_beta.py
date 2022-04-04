@@ -65,17 +65,17 @@ def sample_long_running_recognize(local_file_path):
 
     operation = client.long_running_recognize(config, audio)
 
-    print(u"Waiting for operation to complete...")
+    print("Waiting for operation to complete...")
     response = operation.result()
 
     for result in response.results:
         # First alternative has words tagged with speakers
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
         # Print the speaker_tag of each word
         for word in alternative.words:
-            print(u"Word: {}".format(word.word))
-            print(u"Speaker tag: {}".format(word.speaker_tag))
+            print("Word: {}".format(word.word))
+            print("Speaker tag: {}".format(word.speaker_tag))
 
 
 # [END speech_transcribe_diarization_beta]

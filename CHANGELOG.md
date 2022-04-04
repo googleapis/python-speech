@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+### [1.3.3](https://github.com/googleapis/python-speech/compare/v1.3.2...v1.3.3) (2022-04-04)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core >= 1.31.5, >= 2.3.2 on v1 release ([#339](https://github.com/googleapis/python-speech/issues/339)) ([f4e9446](https://github.com/googleapis/python-speech/commit/f4e9446de79a8528789b6b7212ab51244b55a326))
+
 ### [1.3.2](https://www.github.com/googleapis/python-speech/compare/v1.3.1...v1.3.2) (2020-02-03)
 
 
