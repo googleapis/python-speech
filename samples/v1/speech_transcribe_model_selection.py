@@ -56,7 +56,7 @@ def sample_recognize(local_file_path, model):
     for result in response.results:
         # First alternative is the most probable result
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
 
 
 # [END speech_transcribe_model_selection]

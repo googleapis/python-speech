@@ -62,11 +62,11 @@ def sample_recognize(local_file_path):
     result = response.results[0]
     # First alternative is the most probable result
     alternative = result.alternatives[0]
-    print(u"Transcript: {}".format(alternative.transcript))
+    print("Transcript: {}".format(alternative.transcript))
     # Print the confidence level of each word
     for word in alternative.words:
-        print(u"Word: {}".format(word.word))
-        print(u"Confidence: {}".format(word.confidence))
+        print("Word: {}".format(word.word))
+        print("Confidence: {}".format(word.confidence))
 
 
 # [END speech_transcribe_word_level_confidence_beta]

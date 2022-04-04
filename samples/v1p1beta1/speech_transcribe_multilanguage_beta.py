@@ -66,10 +66,10 @@ def sample_recognize(local_file_path):
     response = client.recognize(config, audio)
     for result in response.results:
         # The language_code which was detected as the most likely being spoken in the audio
-        print(u"Detected language: {}".format(result.language_code))
+        print("Detected language: {}".format(result.language_code))
         # First alternative is the most probable result
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
 
 
 # [END speech_transcribe_multilanguage_beta]

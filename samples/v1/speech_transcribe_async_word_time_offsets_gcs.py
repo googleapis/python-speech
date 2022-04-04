@@ -54,24 +54,24 @@ def sample_long_running_recognize(storage_uri):
 
     operation = client.long_running_recognize(config, audio)
 
-    print(u"Waiting for operation to complete...")
+    print("Waiting for operation to complete...")
     response = operation.result()
 
     # The first result includes start and end time word offsets
     result = response.results[0]
     # First alternative is the most probable result
     alternative = result.alternatives[0]
-    print(u"Transcript: {}".format(alternative.transcript))
+    print("Transcript: {}".format(alternative.transcript))
     # Print the start and end time of each word
     for word in alternative.words:
-        print(u"Word: {}".format(word.word))
+        print("Word: {}".format(word.word))
         print(
-            u"Start time: {} seconds {} nanos".format(
+            "Start time: {} seconds {} nanos".format(
                 word.start_time.seconds, word.start_time.nanos
             )
         )
         print(
-            u"End time: {} seconds {} nanos".format(
+            "End time: {} seconds {} nanos".format(
                 word.end_time.seconds, word.end_time.nanos
             )
         )

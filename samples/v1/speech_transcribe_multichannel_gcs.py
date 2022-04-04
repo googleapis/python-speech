@@ -60,10 +60,10 @@ def sample_recognize(storage_uri):
     response = client.recognize(config, audio)
     for result in response.results:
         # channel_tag to recognize which audio channel this result is for
-        print(u"Channel tag: {}".format(result.channel_tag))
+        print("Channel tag: {}".format(result.channel_tag))
         # First alternative is the most probable result
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
 
 
 # [END speech_transcribe_multichannel_gcs]

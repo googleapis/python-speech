@@ -55,7 +55,7 @@ def sample_recognize(storage_uri, model):
     for result in response.results:
         # First alternative is the most probable result
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
+        print("Transcript: {}".format(alternative.transcript))
 
 
 # [END speech_transcribe_model_selection_gcs]
