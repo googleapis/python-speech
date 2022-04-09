@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -467,7 +467,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_create_phrase_set():
                 # Create a client
@@ -594,7 +594,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_get_phrase_set():
                 # Create a client
@@ -700,7 +700,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_list_phrase_set():
                 # Create a client
@@ -819,7 +819,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_update_phrase_set():
                 # Create a client
@@ -935,7 +935,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_delete_phrase_set():
                 # Create a client
@@ -1021,7 +1021,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_create_custom_class():
                 # Create a client
@@ -1152,7 +1152,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_get_custom_class():
                 # Create a client
@@ -1254,7 +1254,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_list_custom_classes():
                 # Create a client
@@ -1373,7 +1373,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_update_custom_class():
                 # Create a client
@@ -1493,7 +1493,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import speech_v1p1beta1
+                    from google.cloud import speech_v1p1beta1
 
             def sample_delete_custom_class():
                 # Create a client
