@@ -67,7 +67,7 @@ def export_transcript_to_storage_beta(
     blob = bucket.get_blob(object_name)
 
     # get content as string
-    results_string = blob.download_as_string()
+    results_string = blob.download_as_bytes()
 
     # get transcript exported in storage bucket
     storage_transcript = types.LongRunningRecognizeResponse.from_json(
