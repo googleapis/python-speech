@@ -3752,7 +3752,6 @@ def test_adaptation_transport_auth_adc(transport_class):
     [
         transports.AdaptationGrpcTransport,
         transports.AdaptationGrpcAsyncIOTransport,
-        transports.AdaptationRestTransport,
     ],
 )
 def test_adaptation_transport_auth_gdch_credentials(transport_class):

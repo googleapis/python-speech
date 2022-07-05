@@ -1336,7 +1336,6 @@ def test_speech_transport_auth_adc(transport_class):
     [
         transports.SpeechGrpcTransport,
         transports.SpeechGrpcAsyncIOTransport,
-        transports.SpeechRestTransport,
     ],
 )
 def test_speech_transport_auth_gdch_credentials(transport_class):
