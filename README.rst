@@ -3,7 +3,7 @@ Python Client for Cloud Speech API
 
 |stable| |pypi| |versions|
 
-`Cloud Speech API`_: 
+`Cloud Speech API`_: enables easy integration of Google speech recognition technologies into developer applications. Send audio and receive a text transcription from the Speech-to-Text API service.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
