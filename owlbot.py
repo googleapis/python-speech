@@ -23,11 +23,12 @@ common = gcp.CommonTemplates()
 default_version = "v1"
 
 for library in s.get_staging_dirs(default_version):
-    # Add the manually written SpeechHelpers to v1 and v1p1beta1
-    # See google/cloud/speech_v1/helpers.py for details
-    count = s.replace(library / f"google/cloud/speech_{library.name}/__init__.py",
-                        """__all__ = \(""",
-                        """from google.cloud.speech_v1.helpers import SpeechHelpers
+    if "v1" in library.name:
+        # Add the manually written SpeechHelpers to v1 and v1p1beta1
+        # See google/cloud/speech_v1/helpers.py for details
+        count = s.replace(library / f"google/cloud/speech_{library.name}/__init__.py",
+                            """__all__ = \(""",
+                            """from google.cloud.speech_v1.helpers import SpeechHelpers
 
 class SpeechClient(SpeechHelpers, SpeechClient):
     __doc__ = SpeechClient.__doc__

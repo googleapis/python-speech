@@ -69,7 +69,6 @@ from .types.cloud_speech import UpdatePhraseSetRequest
 from .types.cloud_speech import UpdateRecognizerRequest
 from .types.cloud_speech import WordInfo
 
-
 __all__ = (
     "SpeechAsyncClient",
     "AutoDetectDecodingConfig",
