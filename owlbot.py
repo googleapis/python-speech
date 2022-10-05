@@ -36,6 +36,7 @@ class SpeechClient(SpeechHelpers, SpeechClient):
 __all__ = (
                         """,
                     )
+        assert count == 1
 
     if library.name == "v1":
         # Import from speech_v1 to get the client with SpeechHelpers
@@ -43,9 +44,8 @@ __all__ = (
             """from google\.cloud\.speech_v1\.services\.speech\.client import SpeechClient""",
             """from google.cloud.speech_v1 import SpeechClient"""
             )
+        assert count == 1
 
-    # Don't move over __init__.py, as we modify it to make the generated client
-    # use helpers.py.
     s.move(library, excludes=["setup.py"])
 
 s.remove_staging_dirs()
