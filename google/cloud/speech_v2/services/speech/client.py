@@ -19,6 +19,8 @@ import re
 from typing import (
     Dict,
     Mapping,
+    MutableMapping,
+    MutableSequence,
     Optional,
     Iterable,
     Iterator,
@@ -72,7 +74,7 @@ class SpeechClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[SpeechTransport]:
         """Returns an appropriate transport class.
 
@@ -462,7 +464,7 @@ class SpeechClient(metaclass=SpeechClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, SpeechTransport, None] = None,
+        transport: Optional[Union[str, SpeechTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -560,13 +562,13 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def create_recognizer(
         self,
-        request: Union[cloud_speech.CreateRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.CreateRecognizerRequest, dict]] = None,
         *,
-        parent: str = None,
-        recognizer: cloud_speech.Recognizer = None,
-        recognizer_id: str = None,
+        parent: Optional[str] = None,
+        recognizer: Optional[cloud_speech.Recognizer] = None,
+        recognizer_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -706,11 +708,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def list_recognizers(
         self,
-        request: Union[cloud_speech.ListRecognizersRequest, dict] = None,
+        request: Optional[Union[cloud_speech.ListRecognizersRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListRecognizersPager:
         r"""Lists Recognizers.
@@ -824,11 +826,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def get_recognizer(
         self,
-        request: Union[cloud_speech.GetRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetRecognizerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.Recognizer:
         r"""Returns the requested
@@ -931,12 +933,12 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def update_recognizer(
         self,
-        request: Union[cloud_speech.UpdateRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdateRecognizerRequest, dict]] = None,
         *,
-        recognizer: cloud_speech.Recognizer = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        recognizer: Optional[cloud_speech.Recognizer] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -1070,11 +1072,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def delete_recognizer(
         self,
-        request: Union[cloud_speech.DeleteRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.DeleteRecognizerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes the [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -1189,11 +1191,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def undelete_recognizer(
         self,
-        request: Union[cloud_speech.UndeleteRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UndeleteRecognizerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Undeletes the [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -1309,15 +1311,15 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def recognize(
         self,
-        request: Union[cloud_speech.RecognizeRequest, dict] = None,
+        request: Optional[Union[cloud_speech.RecognizeRequest, dict]] = None,
         *,
-        recognizer: str = None,
-        config: cloud_speech.RecognitionConfig = None,
-        config_mask: field_mask_pb2.FieldMask = None,
-        content: bytes = None,
-        uri: str = None,
+        recognizer: Optional[str] = None,
+        config: Optional[cloud_speech.RecognitionConfig] = None,
+        config_mask: Optional[field_mask_pb2.FieldMask] = None,
+        content: Optional[bytes] = None,
+        uri: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.RecognizeResponse:
         r"""Performs synchronous Speech recognition: receive
@@ -1491,10 +1493,10 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def streaming_recognize(
         self,
-        requests: Iterator[cloud_speech.StreamingRecognizeRequest] = None,
+        requests: Optional[Iterator[cloud_speech.StreamingRecognizeRequest]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> Iterable[cloud_speech.StreamingRecognizeResponse]:
         r"""Performs bidirectional streaming speech recognition:
@@ -1641,14 +1643,16 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def batch_recognize(
         self,
-        request: Union[cloud_speech.BatchRecognizeRequest, dict] = None,
+        request: Optional[Union[cloud_speech.BatchRecognizeRequest, dict]] = None,
         *,
-        recognizer: str = None,
-        config: cloud_speech.RecognitionConfig = None,
-        config_mask: field_mask_pb2.FieldMask = None,
-        files: Sequence[cloud_speech.BatchRecognizeFileMetadata] = None,
+        recognizer: Optional[str] = None,
+        config: Optional[cloud_speech.RecognitionConfig] = None,
+        config_mask: Optional[field_mask_pb2.FieldMask] = None,
+        files: Optional[
+            MutableSequence[cloud_speech.BatchRecognizeFileMetadata]
+        ] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Performs batch asynchronous speech recognition: send
@@ -1729,7 +1733,7 @@ class SpeechClient(metaclass=SpeechClientMeta):
                 This corresponds to the ``config_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            files (Sequence[google.cloud.speech_v2.types.BatchRecognizeFileMetadata]):
+            files (MutableSequence[google.cloud.speech_v2.types.BatchRecognizeFileMetadata]):
                 Audio files with file metadata for
                 ASR.
 
@@ -1812,11 +1816,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def get_config(
         self,
-        request: Union[cloud_speech.GetConfigRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetConfigRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.Config:
         r"""Returns the requested [Config][google.cloud.speech.v2.Config].
@@ -1919,12 +1923,12 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def update_config(
         self,
-        request: Union[cloud_speech.UpdateConfigRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdateConfigRequest, dict]] = None,
         *,
-        config: cloud_speech.Config = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        config: Optional[cloud_speech.Config] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.Config:
         r"""Updates the [Config][google.cloud.speech.v2.Config].
@@ -2036,13 +2040,13 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def create_custom_class(
         self,
-        request: Union[cloud_speech.CreateCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.CreateCustomClassRequest, dict]] = None,
         *,
-        parent: str = None,
-        custom_class: cloud_speech.CustomClass = None,
-        custom_class_id: str = None,
+        parent: Optional[str] = None,
+        custom_class: Optional[cloud_speech.CustomClass] = None,
+        custom_class_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2177,11 +2181,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def list_custom_classes(
         self,
-        request: Union[cloud_speech.ListCustomClassesRequest, dict] = None,
+        request: Optional[Union[cloud_speech.ListCustomClassesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListCustomClassesPager:
         r"""Lists CustomClasses.
@@ -2295,11 +2299,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def get_custom_class(
         self,
-        request: Union[cloud_speech.GetCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetCustomClassRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.CustomClass:
         r"""Returns the requested
@@ -2404,12 +2408,12 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def update_custom_class(
         self,
-        request: Union[cloud_speech.UpdateCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdateCustomClassRequest, dict]] = None,
         *,
-        custom_class: cloud_speech.CustomClass = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        custom_class: Optional[cloud_speech.CustomClass] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2538,11 +2542,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def delete_custom_class(
         self,
-        request: Union[cloud_speech.DeleteCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.DeleteCustomClassRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes the [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2657,11 +2661,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def undelete_custom_class(
         self,
-        request: Union[cloud_speech.UndeleteCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UndeleteCustomClassRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Undeletes the [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2777,13 +2781,13 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def create_phrase_set(
         self,
-        request: Union[cloud_speech.CreatePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.CreatePhraseSetRequest, dict]] = None,
         *,
-        parent: str = None,
-        phrase_set: cloud_speech.PhraseSet = None,
-        phrase_set_id: str = None,
+        parent: Optional[str] = None,
+        phrase_set: Optional[cloud_speech.PhraseSet] = None,
+        phrase_set_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -2917,11 +2921,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def list_phrase_sets(
         self,
-        request: Union[cloud_speech.ListPhraseSetsRequest, dict] = None,
+        request: Optional[Union[cloud_speech.ListPhraseSetsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListPhraseSetsPager:
         r"""Lists PhraseSets.
@@ -3035,11 +3039,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def get_phrase_set(
         self,
-        request: Union[cloud_speech.GetPhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetPhraseSetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.PhraseSet:
         r"""Returns the requested
@@ -3143,12 +3147,12 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def update_phrase_set(
         self,
-        request: Union[cloud_speech.UpdatePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdatePhraseSetRequest, dict]] = None,
         *,
-        phrase_set: cloud_speech.PhraseSet = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        phrase_set: Optional[cloud_speech.PhraseSet] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -3276,11 +3280,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def delete_phrase_set(
         self,
-        request: Union[cloud_speech.DeletePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.DeletePhraseSetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes the [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -3394,11 +3398,11 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def undelete_phrase_set(
         self,
-        request: Union[cloud_speech.UndeletePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UndeletePhraseSetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Undeletes the [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -3525,10 +3529,10 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -3579,10 +3583,10 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -3633,10 +3637,10 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def delete_operation(
         self,
-        request: operations_pb2.DeleteOperationRequest = None,
+        request: Optional[operations_pb2.DeleteOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a long-running operation.
@@ -3688,10 +3692,10 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.

@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -57,7 +68,7 @@ class AdaptationClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[AdaptationTransport]:
         """Returns an appropriate transport class.
 
@@ -354,7 +365,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, AdaptationTransport, None] = None,
+        transport: Optional[Union[str, AdaptationTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -452,13 +463,15 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def create_phrase_set(
         self,
-        request: Union[cloud_speech_adaptation.CreatePhraseSetRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.CreatePhraseSetRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        phrase_set: resource.PhraseSet = None,
-        phrase_set_id: str = None,
+        parent: Optional[str] = None,
+        phrase_set: Optional[resource.PhraseSet] = None,
+        phrase_set_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource.PhraseSet:
         r"""Create a set of phrase hints. Each item in the set
@@ -593,11 +606,13 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def get_phrase_set(
         self,
-        request: Union[cloud_speech_adaptation.GetPhraseSetRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.GetPhraseSetRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource.PhraseSet:
         r"""Get a phrase set.
@@ -706,11 +721,13 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def list_phrase_set(
         self,
-        request: Union[cloud_speech_adaptation.ListPhraseSetRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.ListPhraseSetRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListPhraseSetPager:
         r"""List phrase sets.
@@ -831,12 +848,14 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def update_phrase_set(
         self,
-        request: Union[cloud_speech_adaptation.UpdatePhraseSetRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.UpdatePhraseSetRequest, dict]
+        ] = None,
         *,
-        phrase_set: resource.PhraseSet = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        phrase_set: Optional[resource.PhraseSet] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource.PhraseSet:
         r"""Update a phrase set.
@@ -955,11 +974,13 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def delete_phrase_set(
         self,
-        request: Union[cloud_speech_adaptation.DeletePhraseSetRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.DeletePhraseSetRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Delete a phrase set.
@@ -1046,13 +1067,15 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def create_custom_class(
         self,
-        request: Union[cloud_speech_adaptation.CreateCustomClassRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.CreateCustomClassRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        custom_class: resource.CustomClass = None,
-        custom_class_id: str = None,
+        parent: Optional[str] = None,
+        custom_class: Optional[resource.CustomClass] = None,
+        custom_class_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource.CustomClass:
         r"""Create a custom class.
@@ -1188,11 +1211,13 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def get_custom_class(
         self,
-        request: Union[cloud_speech_adaptation.GetCustomClassRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.GetCustomClassRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource.CustomClass:
         r"""Get a custom class.
@@ -1297,11 +1322,13 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def list_custom_classes(
         self,
-        request: Union[cloud_speech_adaptation.ListCustomClassesRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.ListCustomClassesRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListCustomClassesPager:
         r"""List custom classes.
@@ -1422,12 +1449,14 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def update_custom_class(
         self,
-        request: Union[cloud_speech_adaptation.UpdateCustomClassRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.UpdateCustomClassRequest, dict]
+        ] = None,
         *,
-        custom_class: resource.CustomClass = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        custom_class: Optional[resource.CustomClass] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> resource.CustomClass:
         r"""Update a custom class.
@@ -1550,11 +1579,13 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
 
     def delete_custom_class(
         self,
-        request: Union[cloud_speech_adaptation.DeleteCustomClassRequest, dict] = None,
+        request: Optional[
+            Union[cloud_speech_adaptation.DeleteCustomClassRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Delete a custom class.

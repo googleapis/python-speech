@@ -19,6 +19,8 @@ import re
 from typing import (
     Dict,
     Mapping,
+    MutableMapping,
+    MutableSequence,
     Optional,
     Iterable,
     Iterator,
@@ -69,7 +71,7 @@ class SpeechClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[SpeechTransport]:
         """Returns an appropriate transport class.
 
@@ -366,7 +368,7 @@ class SpeechClient(metaclass=SpeechClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, SpeechTransport, None] = None,
+        transport: Optional[Union[str, SpeechTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -464,12 +466,12 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def recognize(
         self,
-        request: Union[cloud_speech.RecognizeRequest, dict] = None,
+        request: Optional[Union[cloud_speech.RecognizeRequest, dict]] = None,
         *,
-        config: cloud_speech.RecognitionConfig = None,
-        audio: cloud_speech.RecognitionAudio = None,
+        config: Optional[cloud_speech.RecognitionConfig] = None,
+        audio: Optional[cloud_speech.RecognitionAudio] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.RecognizeResponse:
         r"""Performs synchronous speech recognition: receive
@@ -580,12 +582,12 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def long_running_recognize(
         self,
-        request: Union[cloud_speech.LongRunningRecognizeRequest, dict] = None,
+        request: Optional[Union[cloud_speech.LongRunningRecognizeRequest, dict]] = None,
         *,
-        config: cloud_speech.RecognitionConfig = None,
-        audio: cloud_speech.RecognitionAudio = None,
+        config: Optional[cloud_speech.RecognitionConfig] = None,
+        audio: Optional[cloud_speech.RecognitionAudio] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Performs asynchronous speech recognition: receive results via
@@ -717,10 +719,10 @@ class SpeechClient(metaclass=SpeechClientMeta):
 
     def streaming_recognize(
         self,
-        requests: Iterator[cloud_speech.StreamingRecognizeRequest] = None,
+        requests: Optional[Iterator[cloud_speech.StreamingRecognizeRequest]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> Iterable[cloud_speech.StreamingRecognizeResponse]:
         r"""Performs bidirectional streaming speech recognition:

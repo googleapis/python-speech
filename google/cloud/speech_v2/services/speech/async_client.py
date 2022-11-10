@@ -19,6 +19,8 @@ import re
 from typing import (
     Dict,
     Mapping,
+    MutableMapping,
+    MutableSequence,
     Optional,
     AsyncIterable,
     Awaitable,
@@ -177,9 +179,9 @@ class SpeechAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, SpeechTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the speech client.
@@ -223,13 +225,13 @@ class SpeechAsyncClient:
 
     async def create_recognizer(
         self,
-        request: Union[cloud_speech.CreateRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.CreateRecognizerRequest, dict]] = None,
         *,
-        parent: str = None,
-        recognizer: cloud_speech.Recognizer = None,
-        recognizer_id: str = None,
+        parent: Optional[str] = None,
+        recognizer: Optional[cloud_speech.Recognizer] = None,
+        recognizer_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Creates a [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -270,7 +272,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.CreateRecognizerRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.CreateRecognizerRequest, dict]]):
                 The request object. Request message for the
                 [CreateRecognizer][google.cloud.speech.v2.Speech.CreateRecognizer]
                 method.
@@ -369,11 +371,11 @@ class SpeechAsyncClient:
 
     async def list_recognizers(
         self,
-        request: Union[cloud_speech.ListRecognizersRequest, dict] = None,
+        request: Optional[Union[cloud_speech.ListRecognizersRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListRecognizersAsyncPager:
         r"""Lists Recognizers.
@@ -406,7 +408,7 @@ class SpeechAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.ListRecognizersRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.ListRecognizersRequest, dict]]):
                 The request object. Request message for the
                 [ListRecognizers][google.cloud.speech.v2.Speech.ListRecognizers]
                 method.
@@ -487,11 +489,11 @@ class SpeechAsyncClient:
 
     async def get_recognizer(
         self,
-        request: Union[cloud_speech.GetRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetRecognizerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.Recognizer:
         r"""Returns the requested
@@ -526,7 +528,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.GetRecognizerRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.GetRecognizerRequest, dict]]):
                 The request object. Request message for the
                 [GetRecognizer][google.cloud.speech.v2.Speech.GetRecognizer]
                 method.
@@ -594,12 +596,12 @@ class SpeechAsyncClient:
 
     async def update_recognizer(
         self,
-        request: Union[cloud_speech.UpdateRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdateRecognizerRequest, dict]] = None,
         *,
-        recognizer: cloud_speech.Recognizer = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        recognizer: Optional[cloud_speech.Recognizer] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Updates the [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -639,7 +641,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UpdateRecognizerRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UpdateRecognizerRequest, dict]]):
                 The request object. Request message for the
                 [UpdateRecognizer][google.cloud.speech.v2.Speech.UpdateRecognizer]
                 method.
@@ -733,11 +735,11 @@ class SpeechAsyncClient:
 
     async def delete_recognizer(
         self,
-        request: Union[cloud_speech.DeleteRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.DeleteRecognizerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Deletes the [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -773,7 +775,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.DeleteRecognizerRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.DeleteRecognizerRequest, dict]]):
                 The request object. Request message for the
                 [DeleteRecognizer][google.cloud.speech.v2.Speech.DeleteRecognizer]
                 method.
@@ -852,11 +854,11 @@ class SpeechAsyncClient:
 
     async def undelete_recognizer(
         self,
-        request: Union[cloud_speech.UndeleteRecognizerRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UndeleteRecognizerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Undeletes the [Recognizer][google.cloud.speech.v2.Recognizer].
@@ -892,7 +894,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UndeleteRecognizerRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UndeleteRecognizerRequest, dict]]):
                 The request object. Request message for the
                 [UndeleteRecognizer][google.cloud.speech.v2.Speech.UndeleteRecognizer]
                 method.
@@ -972,15 +974,15 @@ class SpeechAsyncClient:
 
     async def recognize(
         self,
-        request: Union[cloud_speech.RecognizeRequest, dict] = None,
+        request: Optional[Union[cloud_speech.RecognizeRequest, dict]] = None,
         *,
-        recognizer: str = None,
-        config: cloud_speech.RecognitionConfig = None,
-        config_mask: field_mask_pb2.FieldMask = None,
-        content: bytes = None,
-        uri: str = None,
+        recognizer: Optional[str] = None,
+        config: Optional[cloud_speech.RecognitionConfig] = None,
+        config_mask: Optional[field_mask_pb2.FieldMask] = None,
+        content: Optional[bytes] = None,
+        uri: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.RecognizeResponse:
         r"""Performs synchronous Speech recognition: receive
@@ -1014,7 +1016,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.RecognizeRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.RecognizeRequest, dict]]):
                 The request object. Request message for the
                 [Recognize][google.cloud.speech.v2.Speech.Recognize]
                 method. Either `content` or `uri` must be supplied.
@@ -1154,10 +1156,12 @@ class SpeechAsyncClient:
 
     def streaming_recognize(
         self,
-        requests: AsyncIterator[cloud_speech.StreamingRecognizeRequest] = None,
+        requests: Optional[
+            AsyncIterator[cloud_speech.StreamingRecognizeRequest]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> Awaitable[AsyncIterable[cloud_speech.StreamingRecognizeResponse]]:
         r"""Performs bidirectional streaming speech recognition:
@@ -1308,14 +1312,16 @@ class SpeechAsyncClient:
 
     async def batch_recognize(
         self,
-        request: Union[cloud_speech.BatchRecognizeRequest, dict] = None,
+        request: Optional[Union[cloud_speech.BatchRecognizeRequest, dict]] = None,
         *,
-        recognizer: str = None,
-        config: cloud_speech.RecognitionConfig = None,
-        config_mask: field_mask_pb2.FieldMask = None,
-        files: Sequence[cloud_speech.BatchRecognizeFileMetadata] = None,
+        recognizer: Optional[str] = None,
+        config: Optional[cloud_speech.RecognitionConfig] = None,
+        config_mask: Optional[field_mask_pb2.FieldMask] = None,
+        files: Optional[
+            MutableSequence[cloud_speech.BatchRecognizeFileMetadata]
+        ] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Performs batch asynchronous speech recognition: send
@@ -1354,7 +1360,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.BatchRecognizeRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.BatchRecognizeRequest, dict]]):
                 The request object. Request message for the
                 [BatchRecognize][google.cloud.speech.v2.Speech.BatchRecognize]
                 method.
@@ -1396,7 +1402,7 @@ class SpeechAsyncClient:
                 This corresponds to the ``config_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            files (:class:`Sequence[google.cloud.speech_v2.types.BatchRecognizeFileMetadata]`):
+            files (:class:`MutableSequence[google.cloud.speech_v2.types.BatchRecognizeFileMetadata]`):
                 Audio files with file metadata for
                 ASR.
 
@@ -1479,11 +1485,11 @@ class SpeechAsyncClient:
 
     async def get_config(
         self,
-        request: Union[cloud_speech.GetConfigRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetConfigRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.Config:
         r"""Returns the requested [Config][google.cloud.speech.v2.Config].
@@ -1515,7 +1521,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.GetConfigRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.GetConfigRequest, dict]]):
                 The request object. Request message for the
                 [GetConfig][google.cloud.speech.v2.Speech.GetConfig]
                 method.
@@ -1586,12 +1592,12 @@ class SpeechAsyncClient:
 
     async def update_config(
         self,
-        request: Union[cloud_speech.UpdateConfigRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdateConfigRequest, dict]] = None,
         *,
-        config: cloud_speech.Config = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        config: Optional[cloud_speech.Config] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.Config:
         r"""Updates the [Config][google.cloud.speech.v2.Config].
@@ -1622,7 +1628,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UpdateConfigRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UpdateConfigRequest, dict]]):
                 The request object. Request message for the
                 [UpdateConfig][google.cloud.speech.v2.Speech.UpdateConfig]
                 method.
@@ -1703,13 +1709,13 @@ class SpeechAsyncClient:
 
     async def create_custom_class(
         self,
-        request: Union[cloud_speech.CreateCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.CreateCustomClassRequest, dict]] = None,
         *,
-        parent: str = None,
-        custom_class: cloud_speech.CustomClass = None,
-        custom_class_id: str = None,
+        parent: Optional[str] = None,
+        custom_class: Optional[cloud_speech.CustomClass] = None,
+        custom_class_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Creates a [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -1745,7 +1751,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.CreateCustomClassRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.CreateCustomClassRequest, dict]]):
                 The request object. Request message for the
                 [CreateCustomClass][google.cloud.speech.v2.Speech.CreateCustomClass]
                 method.
@@ -1844,11 +1850,11 @@ class SpeechAsyncClient:
 
     async def list_custom_classes(
         self,
-        request: Union[cloud_speech.ListCustomClassesRequest, dict] = None,
+        request: Optional[Union[cloud_speech.ListCustomClassesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListCustomClassesAsyncPager:
         r"""Lists CustomClasses.
@@ -1881,7 +1887,7 @@ class SpeechAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.ListCustomClassesRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.ListCustomClassesRequest, dict]]):
                 The request object. Request message for the
                 [ListCustomClasses][google.cloud.speech.v2.Speech.ListCustomClasses]
                 method.
@@ -1962,11 +1968,11 @@ class SpeechAsyncClient:
 
     async def get_custom_class(
         self,
-        request: Union[cloud_speech.GetCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetCustomClassRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.CustomClass:
         r"""Returns the requested
@@ -1999,7 +2005,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.GetCustomClassRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.GetCustomClassRequest, dict]]):
                 The request object. Request message for the
                 [GetCustomClass][google.cloud.speech.v2.Speech.GetCustomClass]
                 method.
@@ -2071,12 +2077,12 @@ class SpeechAsyncClient:
 
     async def update_custom_class(
         self,
-        request: Union[cloud_speech.UpdateCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdateCustomClassRequest, dict]] = None,
         *,
-        custom_class: cloud_speech.CustomClass = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        custom_class: Optional[cloud_speech.CustomClass] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Updates the [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2111,7 +2117,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UpdateCustomClassRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UpdateCustomClassRequest, dict]]):
                 The request object. Request message for the
                 [UpdateCustomClass][google.cloud.speech.v2.Speech.UpdateCustomClass]
                 method.
@@ -2205,11 +2211,11 @@ class SpeechAsyncClient:
 
     async def delete_custom_class(
         self,
-        request: Union[cloud_speech.DeleteCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.DeleteCustomClassRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Deletes the [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2245,7 +2251,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.DeleteCustomClassRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.DeleteCustomClassRequest, dict]]):
                 The request object. Request message for the
                 [DeleteCustomClass][google.cloud.speech.v2.Speech.DeleteCustomClass]
                 method.
@@ -2324,11 +2330,11 @@ class SpeechAsyncClient:
 
     async def undelete_custom_class(
         self,
-        request: Union[cloud_speech.UndeleteCustomClassRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UndeleteCustomClassRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Undeletes the [CustomClass][google.cloud.speech.v2.CustomClass].
@@ -2364,7 +2370,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UndeleteCustomClassRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UndeleteCustomClassRequest, dict]]):
                 The request object. Request message for the
                 [UndeleteCustomClass][google.cloud.speech.v2.Speech.UndeleteCustomClass]
                 method.
@@ -2444,13 +2450,13 @@ class SpeechAsyncClient:
 
     async def create_phrase_set(
         self,
-        request: Union[cloud_speech.CreatePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.CreatePhraseSetRequest, dict]] = None,
         *,
-        parent: str = None,
-        phrase_set: cloud_speech.PhraseSet = None,
-        phrase_set_id: str = None,
+        parent: Optional[str] = None,
+        phrase_set: Optional[cloud_speech.PhraseSet] = None,
+        phrase_set_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Creates a [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -2486,7 +2492,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.CreatePhraseSetRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.CreatePhraseSetRequest, dict]]):
                 The request object. Request message for the
                 [CreatePhraseSet][google.cloud.speech.v2.Speech.CreatePhraseSet]
                 method.
@@ -2584,11 +2590,11 @@ class SpeechAsyncClient:
 
     async def list_phrase_sets(
         self,
-        request: Union[cloud_speech.ListPhraseSetsRequest, dict] = None,
+        request: Optional[Union[cloud_speech.ListPhraseSetsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListPhraseSetsAsyncPager:
         r"""Lists PhraseSets.
@@ -2621,7 +2627,7 @@ class SpeechAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.ListPhraseSetsRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.ListPhraseSetsRequest, dict]]):
                 The request object. Request message for the
                 [ListPhraseSets][google.cloud.speech.v2.Speech.ListPhraseSets]
                 method.
@@ -2702,11 +2708,11 @@ class SpeechAsyncClient:
 
     async def get_phrase_set(
         self,
-        request: Union[cloud_speech.GetPhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.GetPhraseSetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.PhraseSet:
         r"""Returns the requested
@@ -2739,7 +2745,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.GetPhraseSetRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.GetPhraseSetRequest, dict]]):
                 The request object. Request message for the
                 [GetPhraseSet][google.cloud.speech.v2.Speech.GetPhraseSet]
                 method.
@@ -2810,12 +2816,12 @@ class SpeechAsyncClient:
 
     async def update_phrase_set(
         self,
-        request: Union[cloud_speech.UpdatePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UpdatePhraseSetRequest, dict]] = None,
         *,
-        phrase_set: cloud_speech.PhraseSet = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        phrase_set: Optional[cloud_speech.PhraseSet] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Updates the [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -2850,7 +2856,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UpdatePhraseSetRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UpdatePhraseSetRequest, dict]]):
                 The request object. Request message for the
                 [UpdatePhraseSet][google.cloud.speech.v2.Speech.UpdatePhraseSet]
                 method.
@@ -2943,11 +2949,11 @@ class SpeechAsyncClient:
 
     async def delete_phrase_set(
         self,
-        request: Union[cloud_speech.DeletePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.DeletePhraseSetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Deletes the [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -2983,7 +2989,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.DeletePhraseSetRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.DeletePhraseSetRequest, dict]]):
                 The request object. Request message for the
                 [DeletePhraseSet][google.cloud.speech.v2.Speech.DeletePhraseSet]
                 method.
@@ -3061,11 +3067,11 @@ class SpeechAsyncClient:
 
     async def undelete_phrase_set(
         self,
-        request: Union[cloud_speech.UndeletePhraseSetRequest, dict] = None,
+        request: Optional[Union[cloud_speech.UndeletePhraseSetRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Undeletes the [PhraseSet][google.cloud.speech.v2.PhraseSet].
@@ -3101,7 +3107,7 @@ class SpeechAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.speech_v2.types.UndeletePhraseSetRequest, dict]):
+            request (Optional[Union[google.cloud.speech_v2.types.UndeletePhraseSetRequest, dict]]):
                 The request object. Request message for the
                 [UndeletePhraseSet][google.cloud.speech.v2.Speech.UndeletePhraseSet]
                 method.
@@ -3179,10 +3185,10 @@ class SpeechAsyncClient:
 
     async def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -3233,10 +3239,10 @@ class SpeechAsyncClient:
 
     async def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -3287,10 +3293,10 @@ class SpeechAsyncClient:
 
     async def delete_operation(
         self,
-        request: operations_pb2.DeleteOperationRequest = None,
+        request: Optional[operations_pb2.DeleteOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a long-running operation.
@@ -3342,10 +3348,10 @@ class SpeechAsyncClient:
 
     async def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
