@@ -385,7 +385,6 @@ protobuf==3.20.3 \
     #   gcp-docuploader
     #   gcp-releasetool
     #   google-api-core
-    #   googleapis-common-protos
 py==1.11.0 \
     --hash=sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719 \
     --hash=sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378
