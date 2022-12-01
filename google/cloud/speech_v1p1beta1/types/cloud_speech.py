@@ -45,6 +45,7 @@ __protobuf__ = proto.module(
         "SpeechRecognitionResult",
         "SpeechRecognitionAlternative",
         "WordInfo",
+        "SpeechAdaptationInfo",
     },
 )
 
@@ -263,12 +264,11 @@ class RecognitionConfig(proto.Message):
         audio_channel_count (int):
             The number of channels in the input audio data. ONLY set
             this for MULTI-CHANNEL recognition. Valid values for
-            LINEAR16 and FLAC are ``1``-``8``. Valid values for OGG_OPUS
-            are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and
-            SPEEX_WITH_HEADER_BYTE is only ``1``. If ``0`` or omitted,
-            defaults to one channel (mono). Note: We only recognize the
-            first channel by default. To perform independent recognition
-            on each channel set
+            LINEAR16, OGG_OPUS and FLAC are ``1``-``8``. Valid value for
+            MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only ``1``.
+            If ``0`` or omitted, defaults to one channel (mono). Note:
+            We only recognize the first channel by default. To perform
+            independent recognition on each channel set
             ``enable_separate_recognition_per_channel`` to 'true'.
         enable_separate_recognition_per_channel (bool):
             This needs to be set to ``true`` explicitly and
@@ -864,6 +864,12 @@ class RecognizeResponse(proto.Message):
         total_billed_time (google.protobuf.duration_pb2.Duration):
             When available, billed audio seconds for the
             corresponding request.
+        speech_adaptation_info (google.cloud.speech_v1p1beta1.types.SpeechAdaptationInfo):
+            Provides information on adaptation behavior
+            in response
+        request_id (int):
+            The ID associated with the request. This is a
+            unique ID specific only to the given request.
     """
 
     results: MutableSequence["SpeechRecognitionResult"] = proto.RepeatedField(
@@ -875,6 +881,15 @@ class RecognizeResponse(proto.Message):
         proto.MESSAGE,
         number=3,
         message=duration_pb2.Duration,
+    )
+    speech_adaptation_info: "SpeechAdaptationInfo" = proto.Field(
+        proto.MESSAGE,
+        number=7,
+        message="SpeechAdaptationInfo",
+    )
+    request_id: int = proto.Field(
+        proto.INT64,
+        number=8,
     )
 
 
@@ -899,6 +914,12 @@ class LongRunningRecognizeResponse(proto.Message):
         output_error (google.rpc.status_pb2.Status):
             If the transcript output fails this field
             contains the relevant error.
+        speech_adaptation_info (google.cloud.speech_v1p1beta1.types.SpeechAdaptationInfo):
+            Provides information on speech adaptation
+            behavior in response
+        request_id (int):
+            The ID associated with the request. This is a
+            unique ID specific only to the given request.
     """
 
     results: MutableSequence["SpeechRecognitionResult"] = proto.RepeatedField(
@@ -920,6 +941,15 @@ class LongRunningRecognizeResponse(proto.Message):
         proto.MESSAGE,
         number=7,
         message=status_pb2.Status,
+    )
+    speech_adaptation_info: "SpeechAdaptationInfo" = proto.Field(
+        proto.MESSAGE,
+        number=8,
+        message="SpeechAdaptationInfo",
+    )
+    request_id: int = proto.Field(
+        proto.INT64,
+        number=9,
     )
 
 
@@ -1043,6 +1073,12 @@ class StreamingRecognizeResponse(proto.Message):
             When available, billed audio seconds for the
             stream. Set only if this is the last response in
             the stream.
+        speech_adaptation_info (google.cloud.speech_v1p1beta1.types.SpeechAdaptationInfo):
+            Provides information on adaptation behavior
+            in response
+        request_id (int):
+            The ID associated with the request. This is a
+            unique ID specific only to the given request.
     """
 
     class SpeechEventType(proto.Enum):
@@ -1069,6 +1105,15 @@ class StreamingRecognizeResponse(proto.Message):
         proto.MESSAGE,
         number=5,
         message=duration_pb2.Duration,
+    )
+    speech_adaptation_info: "SpeechAdaptationInfo" = proto.Field(
+        proto.MESSAGE,
+        number=9,
+        message="SpeechAdaptationInfo",
+    )
+    request_id: int = proto.Field(
+        proto.INT64,
+        number=10,
     )
 
 
@@ -1287,6 +1332,29 @@ class WordInfo(proto.Message):
     speaker_tag: int = proto.Field(
         proto.INT32,
         number=5,
+    )
+
+
+class SpeechAdaptationInfo(proto.Message):
+    r"""Information on speech adaptation use in results
+
+    Attributes:
+        adaptation_timeout (bool):
+            Whether there was a timeout when applying
+            speech adaptation. If true, adaptation had no
+            effect in the response transcript.
+        timeout_message (str):
+            If set, returns a message specifying which
+            part of the speech adaptation request timed out.
+    """
+
+    adaptation_timeout: bool = proto.Field(
+        proto.BOOL,
+        number=1,
+    )
+    timeout_message: str = proto.Field(
+        proto.STRING,
+        number=4,
     )
 
 
