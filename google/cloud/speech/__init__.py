@@ -34,6 +34,7 @@ from google.cloud.speech_v1.types.cloud_speech import RecognitionMetadata
 from google.cloud.speech_v1.types.cloud_speech import RecognizeRequest
 from google.cloud.speech_v1.types.cloud_speech import RecognizeResponse
 from google.cloud.speech_v1.types.cloud_speech import SpeakerDiarizationConfig
+from google.cloud.speech_v1.types.cloud_speech import SpeechAdaptationInfo
 from google.cloud.speech_v1.types.cloud_speech import SpeechContext
 from google.cloud.speech_v1.types.cloud_speech import SpeechRecognitionAlternative
 from google.cloud.speech_v1.types.cloud_speech import SpeechRecognitionResult
@@ -83,6 +84,7 @@ __all__ = (
     "RecognizeRequest",
     "RecognizeResponse",
     "SpeakerDiarizationConfig",
+    "SpeechAdaptationInfo",
     "SpeechContext",
     "SpeechRecognitionAlternative",
     "SpeechRecognitionResult",
