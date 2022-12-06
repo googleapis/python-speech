@@ -30,7 +30,8 @@ from typing import (
     Union,
     cast,
 )
-import pkg_resources
+
+from google.cloud.speech_v1p1beta1 import gapic_version as package_version
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -471,7 +472,7 @@ class SpeechClient(metaclass=SpeechClientMeta):
         config: Optional[cloud_speech.RecognitionConfig] = None,
         audio: Optional[cloud_speech.RecognitionAudio] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.RecognizeResponse:
         r"""Performs synchronous speech recognition: receive
@@ -587,7 +588,7 @@ class SpeechClient(metaclass=SpeechClientMeta):
         config: Optional[cloud_speech.RecognitionConfig] = None,
         audio: Optional[cloud_speech.RecognitionAudio] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Performs asynchronous speech recognition: receive results via
@@ -722,7 +723,7 @@ class SpeechClient(metaclass=SpeechClientMeta):
         requests: Optional[Iterator[cloud_speech.StreamingRecognizeRequest]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> Iterable[cloud_speech.StreamingRecognizeResponse]:
         r"""Performs bidirectional streaming speech recognition:
@@ -878,14 +879,9 @@ class SpeechClient(metaclass=SpeechClientMeta):
         self.transport.close()
 
 
-try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution(
-            "google-cloud-speech",
-        ).version,
-    )
-except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+    gapic_version=package_version.__version__
+)
 
 
 __all__ = ("SpeechClient",)

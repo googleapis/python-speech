@@ -30,7 +30,8 @@ from typing import (
     Type,
     Union,
 )
-import pkg_resources
+
+from google.cloud.speech_v1 import gapic_version as package_version
 
 from google.api_core.client_options import ClientOptions
 from google.api_core import exceptions as core_exceptions
@@ -217,7 +218,7 @@ class SpeechAsyncClient:
         config: Optional[cloud_speech.RecognitionConfig] = None,
         audio: Optional[cloud_speech.RecognitionAudio] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_speech.RecognizeResponse:
         r"""Performs synchronous speech recognition: receive
@@ -343,7 +344,7 @@ class SpeechAsyncClient:
         config: Optional[cloud_speech.RecognitionConfig] = None,
         audio: Optional[cloud_speech.RecognitionAudio] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Performs asynchronous speech recognition: receive results via
@@ -385,7 +386,7 @@ class SpeechAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = await operation.result()
+                response = (await operation).result()
 
                 # Handle the response
                 print(response)
@@ -480,7 +481,7 @@ class SpeechAsyncClient:
         ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> Awaitable[AsyncIterable[cloud_speech.StreamingRecognizeResponse]]:
         r"""Performs bidirectional streaming speech recognition:
@@ -643,14 +644,9 @@ class SpeechAsyncClient:
         await self.transport.close()
 
 
-try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution(
-            "google-cloud-speech",
-        ).version,
-    )
-except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+    gapic_version=package_version.__version__
+)
 
 
 __all__ = ("SpeechAsyncClient",)
