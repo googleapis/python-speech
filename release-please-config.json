@@ -4,6 +4,9 @@
       ".": {
         "release-type": "python",
         "extra-files": [
+          "google/cloud/speech_v2/gapic_version.py",
+          "google/cloud/speech_v1/gapic_version.py",
+          "google/cloud/speech_v1p1beta1/gapic_version.py",
           "google/cloud/speech/gapic_version.py",
           {
             "type": "json",
