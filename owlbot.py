@@ -59,6 +59,11 @@ __all__ = (
             )
         assert count == 1
 
+    s.replace(
+        library / "google/cloud/speech_v*/__init__.py",
+        "from google.cloud.speech import gapic_version as package_version",
+        f"from google.cloud.speech_{library.name} import gapic_version as package_version",
+    )
     s.move([library], excludes=["**/gapic_version.py"])
 s.remove_staging_dirs()
 
