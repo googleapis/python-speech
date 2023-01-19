@@ -31,7 +31,7 @@ def transcribe_file_with_word_time_offsets(speech_file):
     offsets."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     with io.open(speech_file, "rb") as audio_file:
         content = audio_file.read()
@@ -66,7 +66,7 @@ def transcribe_gcs_with_word_time_offsets(gcs_uri):
     offsets."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     audio = speech.RecognitionAudio(uri=gcs_uri)
     config = speech.RecognitionConfig(

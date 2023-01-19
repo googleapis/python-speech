@@ -26,7 +26,7 @@ def run_quickstart():
 
     # Instantiates a client
     # [START speech_python_migration_client]
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
     # [END speech_python_migration_client]
 
     # The name of the audio file to transcribe

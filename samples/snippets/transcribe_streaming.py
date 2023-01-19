@@ -29,7 +29,7 @@ def transcribe_streaming(stream_file):
     import io
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # [START speech_python_migration_streaming_request]
     with io.open(stream_file, "rb") as audio_file:

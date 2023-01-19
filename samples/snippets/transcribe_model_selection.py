@@ -33,7 +33,7 @@ def transcribe_model_selection(speech_file, model):
     the selected model."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     with open(speech_file, "rb") as audio_file:
         content = audio_file.read()
@@ -65,7 +65,7 @@ def transcribe_model_selection_gcs(gcs_uri, model):
     the selected model."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     audio = speech.RecognitionAudio(uri=gcs_uri)
 

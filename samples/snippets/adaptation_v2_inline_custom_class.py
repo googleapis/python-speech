@@ -22,7 +22,7 @@ from google.cloud.speech_v2.types import cloud_speech
 
 def adaptation_v2_inline_custom_class(project_id, recognizer_id, audio_file):
     # Instantiates a client
-    client = SpeechClient()
+    client = SpeechClient(transport="rest")
 
     request = cloud_speech.CreateRecognizerRequest(
         parent=f"projects/{project_id}/locations/global",

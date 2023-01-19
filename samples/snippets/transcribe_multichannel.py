@@ -31,7 +31,7 @@ def transcribe_file_with_multichannel(speech_file):
     # [START speech_transcribe_multichannel]
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     with open(speech_file, "rb") as audio_file:
         content = audio_file.read()
@@ -63,7 +63,7 @@ def transcribe_gcs_with_multichannel(gcs_uri):
     # [START speech_transcribe_multichannel_gcs]
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     audio = speech.RecognitionAudio(uri=gcs_uri)
 

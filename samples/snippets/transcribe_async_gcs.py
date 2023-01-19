@@ -22,7 +22,7 @@ def transcribe_gcs(gcs_uri):
     """Asynchronously transcribes the audio file specified by the gcs_uri."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     audio = speech.RecognitionAudio(uri=gcs_uri)
     config = speech.RecognitionConfig(

@@ -24,7 +24,7 @@ def sync_recognize_with_profanity_filter_gcs(gcs_uri):
 
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     audio = {"uri": gcs_uri}
 

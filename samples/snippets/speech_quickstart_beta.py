@@ -36,7 +36,7 @@ def sample_recognize(storage_uri):
       storage_uri URI for audio file in Cloud Storage, e.g. gs://[BUCKET]/[FILE]
     """
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # storage_uri = 'gs://cloud-samples-data/speech/brooklyn_bridge.mp3'
 

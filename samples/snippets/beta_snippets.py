@@ -37,7 +37,7 @@ def transcribe_file_with_enhanced_model():
     # [START speech_transcribe_enhanced_model_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/commercial_mono.wav"
 
@@ -69,7 +69,7 @@ def transcribe_file_with_metadata():
     # [START speech_transcribe_recognition_metadata_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/commercial_mono.wav"
 
@@ -118,7 +118,7 @@ def transcribe_file_with_auto_punctuation():
     # [START speech_transcribe_auto_punctuation_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/commercial_mono.wav"
 
@@ -149,7 +149,7 @@ def transcribe_file_with_diarization():
     # [START speech_transcribe_diarization_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/commercial_mono.wav"
 
@@ -196,7 +196,7 @@ def transcribe_file_with_multichannel():
     # [START speech_transcribe_multichannel_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/Google_Gnome.wav"
 
@@ -230,7 +230,7 @@ def transcribe_file_with_multilanguage():
     # [START speech_transcribe_multilanguage_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/multi.wav"
     first_lang = "en-US"
@@ -266,7 +266,7 @@ def transcribe_file_with_word_level_confidence():
     # [START speech_transcribe_word_level_confidence_beta]
     from google.cloud import speech_v1p1beta1 as speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/Google_Gnome.wav"
 
@@ -303,7 +303,7 @@ def transcribe_file_with_spoken_punctuation_end_emojis():
     from google.cloud import speech_v1p1beta1 as speech
     from google.protobuf import wrappers_pb2
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     speech_file = "resources/commercial_mono.wav"
 

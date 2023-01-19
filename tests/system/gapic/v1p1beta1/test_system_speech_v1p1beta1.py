@@ -27,7 +27,7 @@ class TestSystemSpeech(object):
         except KeyError:
             BUCKET = "cloud-samples-tests"
 
-        client = speech_v1p1beta1.SpeechClient()
+        client = speech_v1p1beta1.SpeechClient(transport="rest")
 
         config = {
             "encoding": speech_v1p1beta1.RecognitionConfig.AudioEncoding.FLAC,
@@ -49,7 +49,7 @@ class TestSystemSpeech(object):
         except KeyError:
             BUCKET = "cloud-samples-tests"
 
-        client = speech_v1p1beta1.SpeechClient()
+        client = speech_v1p1beta1.SpeechClient(transport="rest")
 
         config = speech_v1p1beta1.types.RecognitionConfig(
             encoding=speech_v1p1beta1.RecognitionConfig.AudioEncoding.FLAC,
@@ -71,7 +71,7 @@ class TestSystemSpeech(object):
         except KeyError:
             BUCKET = "cloud-samples-tests"
 
-        client = speech_v1p1beta1.SpeechClient()
+        client = speech_v1p1beta1.SpeechClient(transport="rest")
 
         config = speech_v1p1beta1.RecognitionConfig(
             encoding=speech_v1p1beta1.RecognitionConfig.AudioEncoding.FLAC,

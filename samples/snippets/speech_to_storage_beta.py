@@ -49,7 +49,7 @@ def export_transcript_to_storage_beta(
     )
 
     # create the speech client
-    speech_client = speech.SpeechClient()
+    speech_client = speech.SpeechClient(transport="rest")
 
     # create the storage client
     storage_client = storage.Client()

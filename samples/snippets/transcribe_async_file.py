@@ -22,7 +22,7 @@ def transcribe_file(speech_file):
     """Transcribe the given audio file asynchronously."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # [START speech_python_migration_async_request]
     with open(speech_file, "rb") as audio_file:

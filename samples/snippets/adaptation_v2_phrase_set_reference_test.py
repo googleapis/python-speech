@@ -24,13 +24,13 @@ RESOURCES = os.path.join(os.path.dirname(__file__), "resources")
 
 
 def delete_recognizer(name):
-    client = SpeechClient()
+    client = SpeechClient(transport="rest")
     request = cloud_speech.DeleteRecognizerRequest(name=name)
     client.delete_recognizer(request=request)
 
 
 def delete_phrase_set(name):
-    client = SpeechClient()
+    client = SpeechClient(transport="rest")
     request = cloud_speech.DeletePhraseSetRequest(name=name)
     client.delete_phrase_set(request=request)
 

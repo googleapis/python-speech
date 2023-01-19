@@ -37,7 +37,7 @@ def sample_recognize(storage_uri, phrase):
       phrase Phrase "hints" help recognize the specified phrases from your audio.
     """
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # storage_uri = 'gs://cloud-samples-data/speech/brooklyn_bridge.mp3'
     # phrase = 'Brooklyn Bridge'

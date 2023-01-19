@@ -22,7 +22,7 @@ import transcribe_gcs_v2
 
 
 def delete_recognizer(name):
-    client = SpeechClient()
+    client = SpeechClient(transport="rest")
     request = cloud_speech.DeleteRecognizerRequest(name=name)
     client.delete_recognizer(request=request)
 

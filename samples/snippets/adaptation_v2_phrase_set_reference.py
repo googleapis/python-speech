@@ -24,7 +24,7 @@ def adaptation_v2_phrase_set_reference(
     project_id, recognizer_id, phrase_set_id, audio_file
 ):
     # Instantiates a client
-    client = SpeechClient()
+    client = SpeechClient(transport="rest")
 
     request = cloud_speech.CreateRecognizerRequest(
         parent=f"projects/{project_id}/locations/global",

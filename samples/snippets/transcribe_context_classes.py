@@ -19,7 +19,7 @@ def transcribe_context_classes(storage_uri):
     # [START speech_context_classes]
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # storage_uri = 'gs://YOUR_BUCKET_ID/path/to/your/file.wav'
     audio = speech.RecognitionAudio(uri=storage_uri)

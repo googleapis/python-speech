@@ -30,7 +30,7 @@ def transcribe_file_with_auto_punctuation(path):
     # [START speech_transcribe_auto_punctuation]
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # path = 'resources/commercial_mono.wav'
     with io.open(path, "rb") as audio_file:

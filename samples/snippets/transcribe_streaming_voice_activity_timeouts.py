@@ -28,7 +28,7 @@ def transcribe_streaming_voice_activity_timeouts(
     project_id, recognizer_id, speech_start_timeout, speech_end_timeout, audio_file
 ):
     # Instantiates a client
-    client = SpeechClient()
+    client = SpeechClient(transport="rest")
 
     request = cloud_speech.CreateRecognizerRequest(
         parent=f"projects/{project_id}/locations/global",

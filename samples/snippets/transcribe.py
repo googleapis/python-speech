@@ -31,7 +31,7 @@ def transcribe_file(speech_file):
     from google.cloud import speech
     import io
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # [START speech_python_migration_sync_request]
     # [START speech_python_migration_config]
@@ -66,7 +66,7 @@ def transcribe_gcs(gcs_uri):
     """Transcribes the audio file specified by the gcs_uri."""
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # [START speech_python_migration_config_gcs]
     audio = speech.RecognitionAudio(uri=gcs_uri)

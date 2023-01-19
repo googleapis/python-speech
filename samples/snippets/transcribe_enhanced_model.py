@@ -31,7 +31,7 @@ def transcribe_file_with_enhanced_model(path):
 
     from google.cloud import speech
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(transport="rest")
 
     # path = 'resources/commercial_mono.wav'
     with io.open(path, "rb") as audio_file:

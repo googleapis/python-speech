@@ -84,7 +84,7 @@ def transcribe_with_model_adaptation(
     audio = speech.RecognitionAudio(uri=storage_uri)
 
     # Create the speech client
-    speech_client = speech.SpeechClient()
+    speech_client = speech.SpeechClient(transport="rest")
 
     response = speech_client.recognize(config=config, audio=audio)
 
