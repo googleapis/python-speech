@@ -1683,7 +1683,7 @@ class AdaptationClient(metaclass=AdaptationClientMeta):
             metadata=metadata,
         )
 
-    def __enter__(self):
+    def __enter__(self) -> "AdaptationClient":
         return self
 
     def __exit__(self, type, value, traceback):

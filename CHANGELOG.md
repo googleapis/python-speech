@@ -4,6 +4,32 @@
 
 [1]: https://pypi.org/project/google-cloud-speech/#history
 
+## [2.17.3](https://github.com/googleapis/python-speech/compare/v2.17.2...v2.17.3) (2023-02-02)
+
+
+### Documentation
+
+* **v1:** Clarified boost usage ([#491](https://github.com/googleapis/python-speech/issues/491)) ([8a2a41a](https://github.com/googleapis/python-speech/commit/8a2a41ad40c5dd6282b4774b13b62a1af85f7f15))
+
+## [2.17.2](https://github.com/googleapis/python-speech/compare/v2.17.1...v2.17.2) (2023-01-30)
+
+
+### Documentation
+
+* Clarify boost usage in Reference ([#486](https://github.com/googleapis/python-speech/issues/486)) ([e75f4a2](https://github.com/googleapis/python-speech/commit/e75f4a26db936b6646240cdca158eb5f7b15b314))
+
+## [2.17.1](https://github.com/googleapis/python-speech/compare/v2.17.0...v2.17.1) (2023-01-23)
+
+
+### Bug Fixes
+
+* Add context manager return types ([ed80330](https://github.com/googleapis/python-speech/commit/ed80330f0d3427a17bc0c43a9b84a9f535e82d6d))
+
+
+### Documentation
+
+* Add documentation for enums ([ed80330](https://github.com/googleapis/python-speech/commit/ed80330f0d3427a17bc0c43a9b84a9f535e82d6d))
+
 ## [2.17.0](https://github.com/googleapis/python-speech/compare/v2.16.2...v2.17.0) (2023-01-16)
 
 
