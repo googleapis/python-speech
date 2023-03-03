@@ -3,7 +3,7 @@
 Google Cloud Speech API Python Samples
 ===============================================================================
 
-The samples for this repository have moved [here](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/main/speech/).
+The samples for this repository moved to https://github.com/GoogleCloudPlatform/python-docs-samples/tree/main/speech/
 
 .. image:: https://gstatic.com/cloudssh/images/open-btn.png
    :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/GoogleCloudPlatform/python-docs-samples&page=editor&open_in_editor=speech/cloud-client/README.rst
