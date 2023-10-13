@@ -6880,6 +6880,70 @@ def test_create_recognizer_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "kms_key_version_name": "kms_key_version_name_value",
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.CreateRecognizerRequest.meta.fields["recognizer"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["recognizer"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["recognizer"][field])):
+                    del request_init["recognizer"][field][i][subfield]
+            else:
+                del request_init["recognizer"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -7072,89 +7136,6 @@ def test_create_recognizer_rest_bad_request(
 
     # send a request that will satisfy transcoding
     request_init = {"parent": "projects/sample1/locations/sample2"}
-    request_init["recognizer"] = {
-        "name": "name_value",
-        "uid": "uid_value",
-        "display_name": "display_name_value",
-        "model": "model_value",
-        "language_codes": ["language_codes_value1", "language_codes_value2"],
-        "default_recognition_config": {
-            "auto_decoding_config": {},
-            "explicit_decoding_config": {
-                "encoding": 1,
-                "sample_rate_hertz": 1817,
-                "audio_channel_count": 2002,
-            },
-            "model": "model_value",
-            "language_codes": ["language_codes_value1", "language_codes_value2"],
-            "features": {
-                "profanity_filter": True,
-                "enable_word_time_offsets": True,
-                "enable_word_confidence": True,
-                "enable_automatic_punctuation": True,
-                "enable_spoken_punctuation": True,
-                "enable_spoken_emojis": True,
-                "multi_channel_mode": 1,
-                "diarization_config": {
-                    "min_speaker_count": 1814,
-                    "max_speaker_count": 1816,
-                },
-                "max_alternatives": 1719,
-            },
-            "adaptation": {
-                "phrase_sets": [
-                    {
-                        "phrase_set": "phrase_set_value",
-                        "inline_phrase_set": {
-                            "name": "name_value",
-                            "uid": "uid_value",
-                            "phrases": [{"value": "value_value", "boost": 0.551}],
-                            "boost": 0.551,
-                            "display_name": "display_name_value",
-                            "state": 2,
-                            "create_time": {"seconds": 751, "nanos": 543},
-                            "update_time": {},
-                            "delete_time": {},
-                            "expire_time": {},
-                            "annotations": {},
-                            "etag": "etag_value",
-                            "reconciling": True,
-                            "kms_key_name": "kms_key_name_value",
-                            "kms_key_version_name": "kms_key_version_name_value",
-                        },
-                    }
-                ],
-                "custom_classes": [
-                    {
-                        "name": "name_value",
-                        "uid": "uid_value",
-                        "display_name": "display_name_value",
-                        "items": [{"value": "value_value"}],
-                        "state": 2,
-                        "create_time": {},
-                        "update_time": {},
-                        "delete_time": {},
-                        "expire_time": {},
-                        "annotations": {},
-                        "etag": "etag_value",
-                        "reconciling": True,
-                        "kms_key_name": "kms_key_name_value",
-                        "kms_key_version_name": "kms_key_version_name_value",
-                    }
-                ],
-            },
-        },
-        "annotations": {},
-        "state": 2,
-        "create_time": {},
-        "update_time": {},
-        "delete_time": {},
-        "expire_time": {},
-        "etag": "etag_value",
-        "reconciling": True,
-        "kms_key_name": "kms_key_name_value",
-        "kms_key_version_name": "kms_key_version_name_value",
-    }
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a BadRequest error.
@@ -7261,8 +7242,9 @@ def test_list_recognizers_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.ListRecognizersResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.ListRecognizersResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -7345,8 +7327,9 @@ def test_list_recognizers_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.ListRecognizersResponse.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.ListRecognizersResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -7478,8 +7461,9 @@ def test_list_recognizers_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.ListRecognizersResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.ListRecognizersResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -7610,8 +7594,9 @@ def test_get_recognizer_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.Recognizer.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.Recognizer.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -7695,8 +7680,9 @@ def test_get_recognizer_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.Recognizer.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.Recognizer.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -7821,8 +7807,9 @@ def test_get_recognizer_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.Recognizer.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.Recognizer.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -7960,6 +7947,70 @@ def test_update_recognizer_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "kms_key_version_name": "kms_key_version_name_value",
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.UpdateRecognizerRequest.meta.fields["recognizer"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["recognizer"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["recognizer"][field])):
+                    del request_init["recognizer"][field][i][subfield]
+            else:
+                del request_init["recognizer"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -8143,89 +8194,6 @@ def test_update_recognizer_rest_bad_request(
     # send a request that will satisfy transcoding
     request_init = {
         "recognizer": {"name": "projects/sample1/locations/sample2/recognizers/sample3"}
-    }
-    request_init["recognizer"] = {
-        "name": "projects/sample1/locations/sample2/recognizers/sample3",
-        "uid": "uid_value",
-        "display_name": "display_name_value",
-        "model": "model_value",
-        "language_codes": ["language_codes_value1", "language_codes_value2"],
-        "default_recognition_config": {
-            "auto_decoding_config": {},
-            "explicit_decoding_config": {
-                "encoding": 1,
-                "sample_rate_hertz": 1817,
-                "audio_channel_count": 2002,
-            },
-            "model": "model_value",
-            "language_codes": ["language_codes_value1", "language_codes_value2"],
-            "features": {
-                "profanity_filter": True,
-                "enable_word_time_offsets": True,
-                "enable_word_confidence": True,
-                "enable_automatic_punctuation": True,
-                "enable_spoken_punctuation": True,
-                "enable_spoken_emojis": True,
-                "multi_channel_mode": 1,
-                "diarization_config": {
-                    "min_speaker_count": 1814,
-                    "max_speaker_count": 1816,
-                },
-                "max_alternatives": 1719,
-            },
-            "adaptation": {
-                "phrase_sets": [
-                    {
-                        "phrase_set": "phrase_set_value",
-                        "inline_phrase_set": {
-                            "name": "name_value",
-                            "uid": "uid_value",
-                            "phrases": [{"value": "value_value", "boost": 0.551}],
-                            "boost": 0.551,
-                            "display_name": "display_name_value",
-                            "state": 2,
-                            "create_time": {"seconds": 751, "nanos": 543},
-                            "update_time": {},
-                            "delete_time": {},
-                            "expire_time": {},
-                            "annotations": {},
-                            "etag": "etag_value",
-                            "reconciling": True,
-                            "kms_key_name": "kms_key_name_value",
-                            "kms_key_version_name": "kms_key_version_name_value",
-                        },
-                    }
-                ],
-                "custom_classes": [
-                    {
-                        "name": "name_value",
-                        "uid": "uid_value",
-                        "display_name": "display_name_value",
-                        "items": [{"value": "value_value"}],
-                        "state": 2,
-                        "create_time": {},
-                        "update_time": {},
-                        "delete_time": {},
-                        "expire_time": {},
-                        "annotations": {},
-                        "etag": "etag_value",
-                        "reconciling": True,
-                        "kms_key_name": "kms_key_name_value",
-                        "kms_key_version_name": "kms_key_version_name_value",
-                    }
-                ],
-            },
-        },
-        "annotations": {},
-        "state": 2,
-        "create_time": {},
-        "update_time": {},
-        "delete_time": {},
-        "expire_time": {},
-        "etag": "etag_value",
-        "reconciling": True,
-        "kms_key_name": "kms_key_name_value",
-        "kms_key_version_name": "kms_key_version_name_value",
     }
     request = request_type(**request_init)
 
@@ -8879,8 +8847,9 @@ def test_recognize_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.RecognizeResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.RecognizeResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -8953,8 +8922,9 @@ def test_recognize_rest_required_fields(request_type=cloud_speech.RecognizeReque
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.RecognizeResponse.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.RecognizeResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -9081,8 +9051,9 @@ def test_recognize_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.RecognizeResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.RecognizeResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -9437,8 +9408,9 @@ def test_get_config_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.Config.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.Config.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -9512,8 +9484,9 @@ def test_get_config_rest_required_fields(request_type=cloud_speech.GetConfigRequ
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.Config.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.Config.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -9632,8 +9605,9 @@ def test_get_config_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.Config.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.Config.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -9690,6 +9664,70 @@ def test_update_config_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "update_time": {"seconds": 751, "nanos": 543},
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.UpdateConfigRequest.meta.fields["config"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["config"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["config"][field])):
+                    del request_init["config"][field][i][subfield]
+            else:
+                del request_init["config"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -9703,8 +9741,9 @@ def test_update_config_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.Config.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.Config.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -9778,8 +9817,9 @@ def test_update_config_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.Config.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.Config.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -9863,11 +9903,6 @@ def test_update_config_rest_bad_request(
 
     # send a request that will satisfy transcoding
     request_init = {"config": {"name": "projects/sample1/locations/sample2/config"}}
-    request_init["config"] = {
-        "name": "projects/sample1/locations/sample2/config",
-        "kms_key_name": "kms_key_name_value",
-        "update_time": {"seconds": 751, "nanos": 543},
-    }
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a BadRequest error.
@@ -9908,8 +9943,9 @@ def test_update_config_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.Config.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.Config.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -9979,6 +10015,70 @@ def test_create_custom_class_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "kms_key_version_name": "kms_key_version_name_value",
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.CreateCustomClassRequest.meta.fields["custom_class"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["custom_class"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["custom_class"][field])):
+                    del request_init["custom_class"][field][i][subfield]
+            else:
+                del request_init["custom_class"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -10171,22 +10271,6 @@ def test_create_custom_class_rest_bad_request(
 
     # send a request that will satisfy transcoding
     request_init = {"parent": "projects/sample1/locations/sample2"}
-    request_init["custom_class"] = {
-        "name": "name_value",
-        "uid": "uid_value",
-        "display_name": "display_name_value",
-        "items": [{"value": "value_value"}],
-        "state": 2,
-        "create_time": {"seconds": 751, "nanos": 543},
-        "update_time": {},
-        "delete_time": {},
-        "expire_time": {},
-        "annotations": {},
-        "etag": "etag_value",
-        "reconciling": True,
-        "kms_key_name": "kms_key_name_value",
-        "kms_key_version_name": "kms_key_version_name_value",
-    }
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a BadRequest error.
@@ -10293,8 +10377,9 @@ def test_list_custom_classes_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.ListCustomClassesResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.ListCustomClassesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -10377,8 +10462,9 @@ def test_list_custom_classes_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.ListCustomClassesResponse.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.ListCustomClassesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -10510,8 +10596,9 @@ def test_list_custom_classes_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.ListCustomClassesResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.ListCustomClassesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -10640,8 +10727,9 @@ def test_get_custom_class_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.CustomClass.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.CustomClass.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -10723,8 +10811,9 @@ def test_get_custom_class_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.CustomClass.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.CustomClass.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -10849,8 +10938,9 @@ def test_get_custom_class_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.CustomClass.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.CustomClass.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -10923,6 +11013,70 @@ def test_update_custom_class_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "kms_key_version_name": "kms_key_version_name_value",
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.UpdateCustomClassRequest.meta.fields["custom_class"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["custom_class"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["custom_class"][field])):
+                    del request_init["custom_class"][field][i][subfield]
+            else:
+                del request_init["custom_class"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -11108,22 +11262,6 @@ def test_update_custom_class_rest_bad_request(
         "custom_class": {
             "name": "projects/sample1/locations/sample2/customClasses/sample3"
         }
-    }
-    request_init["custom_class"] = {
-        "name": "projects/sample1/locations/sample2/customClasses/sample3",
-        "uid": "uid_value",
-        "display_name": "display_name_value",
-        "items": [{"value": "value_value"}],
-        "state": 2,
-        "create_time": {"seconds": 751, "nanos": 543},
-        "update_time": {},
-        "delete_time": {},
-        "expire_time": {},
-        "annotations": {},
-        "etag": "etag_value",
-        "reconciling": True,
-        "kms_key_name": "kms_key_name_value",
-        "kms_key_version_name": "kms_key_version_name_value",
     }
     request = request_type(**request_init)
 
@@ -11782,6 +11920,70 @@ def test_create_phrase_set_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "kms_key_version_name": "kms_key_version_name_value",
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.CreatePhraseSetRequest.meta.fields["phrase_set"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["phrase_set"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["phrase_set"][field])):
+                    del request_init["phrase_set"][field][i][subfield]
+            else:
+                del request_init["phrase_set"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -11974,23 +12176,6 @@ def test_create_phrase_set_rest_bad_request(
 
     # send a request that will satisfy transcoding
     request_init = {"parent": "projects/sample1/locations/sample2"}
-    request_init["phrase_set"] = {
-        "name": "name_value",
-        "uid": "uid_value",
-        "phrases": [{"value": "value_value", "boost": 0.551}],
-        "boost": 0.551,
-        "display_name": "display_name_value",
-        "state": 2,
-        "create_time": {"seconds": 751, "nanos": 543},
-        "update_time": {},
-        "delete_time": {},
-        "expire_time": {},
-        "annotations": {},
-        "etag": "etag_value",
-        "reconciling": True,
-        "kms_key_name": "kms_key_name_value",
-        "kms_key_version_name": "kms_key_version_name_value",
-    }
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a BadRequest error.
@@ -12096,8 +12281,9 @@ def test_list_phrase_sets_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.ListPhraseSetsResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.ListPhraseSetsResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -12180,8 +12366,9 @@ def test_list_phrase_sets_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.ListPhraseSetsResponse.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.ListPhraseSetsResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -12313,8 +12500,9 @@ def test_list_phrase_sets_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.ListPhraseSetsResponse.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.ListPhraseSetsResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -12443,8 +12631,9 @@ def test_get_phrase_set_rest(request_type):
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.PhraseSet.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.PhraseSet.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
 
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
@@ -12527,8 +12716,9 @@ def test_get_phrase_set_rest_required_fields(
             response_value = Response()
             response_value.status_code = 200
 
-            pb_return_value = cloud_speech.PhraseSet.pb(return_value)
-            json_return_value = json_format.MessageToJson(pb_return_value)
+            # Convert return value to protobuf type
+            return_value = cloud_speech.PhraseSet.pb(return_value)
+            json_return_value = json_format.MessageToJson(return_value)
 
             response_value._content = json_return_value.encode("UTF-8")
             req.return_value = response_value
@@ -12653,8 +12843,9 @@ def test_get_phrase_set_rest_flattened():
         # Wrap the value into a proper Response obj
         response_value = Response()
         response_value.status_code = 200
-        pb_return_value = cloud_speech.PhraseSet.pb(return_value)
-        json_return_value = json_format.MessageToJson(pb_return_value)
+        # Convert return value to protobuf type
+        return_value = cloud_speech.PhraseSet.pb(return_value)
+        json_return_value = json_format.MessageToJson(return_value)
         response_value._content = json_return_value.encode("UTF-8")
         req.return_value = response_value
 
@@ -12725,6 +12916,70 @@ def test_update_phrase_set_rest(request_type):
         "kms_key_name": "kms_key_name_value",
         "kms_key_version_name": "kms_key_version_name_value",
     }
+    # The version of a generated dependency at test runtime may differ from the version used during generation.
+    # Delete any fields which are not present in the current runtime dependency
+    # See https://github.com/googleapis/gapic-generator-python/issues/1748
+
+    # Determine if the message type is proto-plus or protobuf
+    test_field = cloud_speech.UpdatePhraseSetRequest.meta.fields["phrase_set"]
+
+    def get_message_fields(field):
+        # Given a field which is a message (composite type), return a list with
+        # all the fields of the message.
+        # If the field is not a composite type, return an empty list.
+        message_fields = []
+
+        if hasattr(field, "message") and field.message:
+            is_field_type_proto_plus_type = not hasattr(field.message, "DESCRIPTOR")
+
+            if is_field_type_proto_plus_type:
+                message_fields = field.message.meta.fields.values()
+            else:
+                message_fields = field.message.DESCRIPTOR.fields
+        return message_fields
+
+    runtime_nested_fields = [
+        (field.name, nested_field.name)
+        for field in get_message_fields(test_field)
+        for nested_field in get_message_fields(field)
+    ]
+
+    subfields_not_in_runtime = []
+
+    # For each item in the sample request, create a list of sub fields which are not present at runtime
+    for field, value in request_init["phrase_set"].items():
+        result = None
+        is_repeated = False
+        # For repeated fields
+        if isinstance(value, list) and len(value):
+            is_repeated = True
+            result = value[0]
+        # For fields where the type is another message
+        if isinstance(value, dict):
+            result = value
+
+        if result and hasattr(result, "keys"):
+            for subfield in result.keys():
+                if (field, subfield) not in runtime_nested_fields:
+                    subfields_not_in_runtime.append(
+                        {
+                            "field": field,
+                            "subfield": subfield,
+                            "is_repeated": is_repeated,
+                        }
+                    )
+
+    # Remove fields from the sample request which are not present in the runtime version of the dependency
+    for subfield_to_delete in subfields_not_in_runtime:
+        field = subfield_to_delete.get("field")
+        field_repeated = subfield_to_delete.get("is_repeated")
+        subfield = subfield_to_delete.get("subfield")
+        if subfield:
+            if field_repeated:
+                for i in range(0, len(request_init["phrase_set"][field])):
+                    del request_init["phrase_set"][field][i][subfield]
+            else:
+                del request_init["phrase_set"][field][subfield]
     request = request_type(**request_init)
 
     # Mock the http request call within the method and fake a response.
@@ -12908,23 +13163,6 @@ def test_update_phrase_set_rest_bad_request(
     # send a request that will satisfy transcoding
     request_init = {
         "phrase_set": {"name": "projects/sample1/locations/sample2/phraseSets/sample3"}
-    }
-    request_init["phrase_set"] = {
-        "name": "projects/sample1/locations/sample2/phraseSets/sample3",
-        "uid": "uid_value",
-        "phrases": [{"value": "value_value", "boost": 0.551}],
-        "boost": 0.551,
-        "display_name": "display_name_value",
-        "state": 2,
-        "create_time": {"seconds": 751, "nanos": 543},
-        "update_time": {},
-        "delete_time": {},
-        "expire_time": {},
-        "annotations": {},
-        "etag": "etag_value",
-        "reconciling": True,
-        "kms_key_name": "kms_key_name_value",
-        "kms_key_version_name": "kms_key_version_name_value",
     }
     request = request_type(**request_init)
 
