@@ -554,7 +554,7 @@ class RecognitionConfig(proto.Message):
                 is supported. ``sample_rate_hertz`` must be 16000.
             WEBM_OPUS (9):
                 Opus encoded audio frames in WebM container
-                (`OggOpus <https://wiki.xiph.org/OggOpus>`__).
+                (`WebM <https://www.webmproject.org/docs/container/>`__).
                 ``sample_rate_hertz`` must be one of 8000, 12000, 16000,
                 24000, or 48000.
         """
