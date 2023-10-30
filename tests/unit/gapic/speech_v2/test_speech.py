@@ -6868,6 +6868,15 @@ def test_create_recognizer_rest(request_type):
                     }
                 ],
             },
+            "transcript_normalization": {
+                "entries": [
+                    {
+                        "search": "search_value",
+                        "replace": "replace_value",
+                        "case_sensitive": True,
+                    }
+                ]
+            },
         },
         "annotations": {},
         "state": 2,
@@ -7937,6 +7946,15 @@ def test_update_recognizer_rest(request_type):
                         "kms_key_version_name": "kms_key_version_name_value",
                     }
                 ],
+            },
+            "transcript_normalization": {
+                "entries": [
+                    {
+                        "search": "search_value",
+                        "replace": "replace_value",
+                        "case_sensitive": True,
+                    }
+                ]
             },
         },
         "annotations": {},

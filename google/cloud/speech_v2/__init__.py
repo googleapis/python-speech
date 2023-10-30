@@ -29,6 +29,7 @@ from .types.cloud_speech import BatchRecognizeRequest
 from .types.cloud_speech import BatchRecognizeResponse
 from .types.cloud_speech import BatchRecognizeResults
 from .types.cloud_speech import BatchRecognizeTranscriptionMetadata
+from .types.cloud_speech import CloudStorageResult
 from .types.cloud_speech import Config
 from .types.cloud_speech import CreateCustomClassRequest
 from .types.cloud_speech import CreatePhraseSetRequest
@@ -44,6 +45,7 @@ from .types.cloud_speech import GetCustomClassRequest
 from .types.cloud_speech import GetPhraseSetRequest
 from .types.cloud_speech import GetRecognizerRequest
 from .types.cloud_speech import InlineOutputConfig
+from .types.cloud_speech import InlineResult
 from .types.cloud_speech import ListCustomClassesRequest
 from .types.cloud_speech import ListCustomClassesResponse
 from .types.cloud_speech import ListPhraseSetsRequest
@@ -68,6 +70,7 @@ from .types.cloud_speech import StreamingRecognitionFeatures
 from .types.cloud_speech import StreamingRecognitionResult
 from .types.cloud_speech import StreamingRecognizeRequest
 from .types.cloud_speech import StreamingRecognizeResponse
+from .types.cloud_speech import TranscriptNormalization
 from .types.cloud_speech import UndeleteCustomClassRequest
 from .types.cloud_speech import UndeletePhraseSetRequest
 from .types.cloud_speech import UndeleteRecognizerRequest
@@ -87,6 +90,7 @@ __all__ = (
     "BatchRecognizeResponse",
     "BatchRecognizeResults",
     "BatchRecognizeTranscriptionMetadata",
+    "CloudStorageResult",
     "Config",
     "CreateCustomClassRequest",
     "CreatePhraseSetRequest",
@@ -102,6 +106,7 @@ __all__ = (
     "GetPhraseSetRequest",
     "GetRecognizerRequest",
     "InlineOutputConfig",
+    "InlineResult",
     "ListCustomClassesRequest",
     "ListCustomClassesResponse",
     "ListPhraseSetsRequest",
@@ -127,6 +132,7 @@ __all__ = (
     "StreamingRecognitionResult",
     "StreamingRecognizeRequest",
     "StreamingRecognizeResponse",
+    "TranscriptNormalization",
     "UndeleteCustomClassRequest",
     "UndeletePhraseSetRequest",
     "UndeleteRecognizerRequest",
